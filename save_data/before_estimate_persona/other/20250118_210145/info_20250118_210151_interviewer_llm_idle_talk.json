@@ -1,0 +1,61 @@
+﻿{
+    "execution_time": "2025/01/18 21:01:45",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "model='models/gemini-1.5-flash-002' google_api_key=SecretStr('**********') temperature=0.1 client=<google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x7fe79bec9090> default_metadata=()",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_turns": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か面白いことありましたか？  週末はゆっくりできました？  それで、今後のキャリアプランについてお話ししましょうか。"
+        ],
+        "speak_count": {
+            "total_count": 1,
+            "interviewer_count": 1,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_turns": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            }
+        }
+    }
+}

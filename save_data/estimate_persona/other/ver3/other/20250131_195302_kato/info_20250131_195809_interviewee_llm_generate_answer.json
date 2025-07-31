@@ -1,0 +1,158 @@
+﻿{
+    "execution_time": "2025/01/31 19:53:02",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f8d61243650> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f8d6112d310> root_client=<openai.OpenAI object at 0x7f8d61123050> root_async_client=<openai.AsyncOpenAI object at 0x7f8d64e93210> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 個人の基本的な情報 ##\n加藤アオイ\n32歳\n岡山県\n女性\n## 性格 ##\n観察力が鋭く、状況を的確に判断できる: 入院中の子供たちの表情や仕草のわずかな変化にも気づき、適切な対応を心がける\n共感力が高く、患者や家族に寄り添う: 長期入院の子供やその家族の不安を理解し、安心できるような声かけを大切にしている\n## 過去のキャリア ##\n看護師になって10年目\n大学病院の小児科に勤め続けている\n新人時代は基礎的な看護技術を学びながら、子供の疾患や発達段階に応じたケアを習得\n## 現在のキャリア ##\n大学病院の小児科で勤務\n子供との関りにやりがいを感じている\n## 未来像 ##\n専門看護師資格を取得して専門性を深めたい\n## 悩みや不満点 ##\n小児科に苦手な後輩がいて、人間関係に悩んでいる\n## 昇進や転職の考え ##\n仕事のやりがいから、小児科での経験を活かしながら専門看護師としてキャリアアップを目指している\n## 趣味・プライベート ##\n趣味は映画鑑賞と小説を書くこと\n仕事の気分転換として、休日はよく映画館で映画を観るか、カフェで小説の執筆を行っている\n執筆を通じて、患者の気持ちを想像する力を養い、より深い共感を持って接することを心がけている\n## 家族・家庭 ##\n夫も医療関係者で、お互いの仕事について理解し合い、支え合っている\n家庭と仕事の両立を意識しながらキャリアを積んでいる\n## 思い出・エピソード ##\n長期入院の女の子から感謝の手紙をもらい、今も大切にしている\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 2,
+                "value": null
+            },
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での役割": {
+                "question_priority": 2,
+                "value": null
+            },
+            "キャリアの目標": {
+                "question_priority": 2,
+                "value": null
+            },
+            "スキル開発の方向性": {
+                "question_priority": 1,
+                "value": null
+            },
+            "趣味やリフレッシュ方法": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での人間関係と信頼関係": {
+                "question_priority": 1,
+                "value": null
+            },
+            "読書のテーマや関心分野": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での人間関係の質": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 1,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の合間にリフレッシュできる時間は取れていますか？何か趣味や楽しみなことがあれば教えてください！",
+            "インタビュー対象者: 趣味は映画鑑賞と小説を書くことで、休日には映画館やカフェでリフレッシュしています。",
+            "インタビュアー: 現在、どのようなスキルを伸ばしたいと考えていますか？",
+            "インタビュー対象者: 専門看護師資格を取得するために、専門性を深めるスキルを伸ばしたいと考えています。",
+            "インタビュアー: 職場での同僚や上司との関係についてどのように感じていますか？",
+            "インタビュー対象者: 小児科に苦手な後輩がいて人間関係に悩むこともありますが、上司や他の同僚には支えられています。",
+            "インタビュアー: 現在の職場でどのような役割を担っていますか？",
+            "インタビュー対象者: 大学病院の小児科で勤務しており、子供たちのケアや家族へのサポートを行っています。",
+            "インタビュアー: 現在の職場で特に満足している点は何ですか？",
+            "インタビュー対象者: 子供たちとの関わりにやりがいを感じており、日々成長を見守れる点に満足しています。",
+            "インタビュアー: 現在の職場で働く中で、特にモチベーションを感じる瞬間はどのようなときですか？",
+            "インタビュー対象者: 子供たちが笑顔を見せてくれたり、家族から感謝の言葉をいただける瞬間です。"
+        ],
+        "speak_count": {
+            "total_count": 12,
+            "interviewer_count": 6,
+            "interviewee_count": 6,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 5,
+            "interviewee_generate_answer_count": 5
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "60",
+        "estimate_persona": "- キャリア・職場: 済  \n- 悩みやストレス: 済  \n- キャリア目標とスキル開発: 済  \n- 職場での人間関係と信頼関係: 済  \n- 趣味やリフレッシュ方法: 済",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 2,
+                "value": "大学病院の小児科で勤務しており、子供たちのケアや家族へのサポートを行っている"
+            },
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": "小児科に苦手な後輩がいて人間関係に悩むことがある"
+            },
+            "職場での役割": {
+                "question_priority": 2,
+                "value": "大学病院の小児科で勤務し、子供たちのケアや家族へのサポートを行っている"
+            },
+            "キャリアの目標": {
+                "question_priority": 2,
+                "value": "専門看護師資格を取得すること"
+            },
+            "スキル開発の方向性": {
+                "question_priority": 1,
+                "value": "専門看護師資格を取得するために、専門性を深めるスキルを伸ばしたい"
+            },
+            "趣味やリフレッシュ方法": {
+                "question_priority": 1,
+                "value": "趣味は映画鑑賞と小説を書くことで、休日には映画館やカフェでリフレッシュしている"
+            },
+            "職場での人間関係と信頼関係": {
+                "question_priority": 1,
+                "value": "小児科に苦手な後輩がいるが、上司や他の同僚には支えられている"
+            },
+            "読書のテーマや関心分野": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": "子供たちとの関わりにやりがいを感じており、日々成長を見守れる点に満足している"
+            },
+            "職場での人間関係の質": {
+                "question_priority": 1,
+                "value": "小児科に苦手な後輩がいるが、上司や他の同僚には支えられている"
+            },
+            "職場での信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 1,
+                "value": null
+            }
+        }
+    }
+}

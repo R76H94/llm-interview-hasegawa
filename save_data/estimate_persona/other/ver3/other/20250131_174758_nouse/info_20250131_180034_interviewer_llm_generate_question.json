@@ -1,0 +1,283 @@
+﻿{
+    "execution_time": "2025/01/31 17:47:58",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f6cfea42710> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f6cfe65fc10> root_client=<openai.OpenAI object at 0x7f6cfeb29110> root_async_client=<openai.AsyncOpenAI object at 0x7f6cfeb4e890> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 個人の基本的な情報 ##\n岩橋アオイ\n41歳\n千葉県\n女性\n## 性格 ##\n外交的で開放的: 周囲とのコミュニケーションを大切にし、チーム全体の連携を意識している\nリーダーシップがあり、組織の運営に積極的: 現場の管理職として、スタッフのサポートや業務の調整に尽力している\n## 過去のキャリア ##\n看護師になって19年目\n大学病院に勤め続け、循環器科での専門知識を深めながら、管理職としての経験を積んできた\n## 現在のキャリア・職場 ##\n大学病院の循環器科で勤務\n看護について深い知識を持ち、看護管理を務めている\n## 未来像 ##\n看護管理をこのまま続けたい\n他の部署との連携を強化したいと考えている\n## 悩みや不満点 ##\n管理職としての職務は自身に向いていると考えているが、患者との直接的な関わりを失うことへの不安も感じている\n## 昇進や転職の考え ##\n今の職場で管理職を続けたいと考えている\n## 趣味・プライベート ##\n趣味はランニングで、休みの日によく走っている\n体力維持を心がけ、仕事のパフォーマンス向上にもつなげている\n気分転換としてストレスを発散し、管理職としての冷静な判断を保つ手助けにもなっている\n## 家族・家庭 ##\n夫は自宅でリモートワークをしており、子供の世話を含む多くの家事を担当している\nそのため仕事に集中しやすい環境が整い、管理職としての責務を果たしながらキャリアを積むことができている\n## 思い出・エピソード ##\n休日のランニング中に偶然元患者と再会し、患者とのつながりの大切さを再認識した\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "0",
+        "slots": {
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 2,
+                "value": null
+            },
+            "キャリアの目標": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": null
+            },
+            "現在のキャリア": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での役割": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での成功体験": {
+                "question_priority": 1,
+                "value": null
+            },
+            "リフレッシュ方法と趣味": {
+                "question_priority": 1,
+                "value": null
+            },
+            "個人の興味と学び": {
+                "question_priority": 1,
+                "value": null
+            },
+            "生活環境とサポート体制": {
+                "question_priority": 1,
+                "value": null
+            },
+            "スキル開発の方向性": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での学びの姿勢": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での自己評価": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での自己成長の視点": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での学びや成長": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での人間関係の質": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な価値観": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な充足感": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的なモチベーション": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な自己理解": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の優先順位": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の充実感": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での挑戦意識": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的なストレス対策": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の価値観": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の中で何か楽しかったことや印象に残った出来事はありましたか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の職場で、どのようなことがあなたのモチベーションを高める要因になっていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: あなたが職場で大切にしている価値観や信念は何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: あなたが日々の生活や仕事の中で特に大切にしている価値観は何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: あなたの生活環境で、仕事とプライベートのバランスを取るために工夫していることはありますか？",
+            "インタビュー対象者: 夫が多くの家事を担当してくれるおかげで、仕事に集中しやすい環境です。",
+            "インタビュアー: 現在の職場でどのような役割を担っていますか？",
+            "インタビュー対象者: 大学病院の循環器科で勤務しており、看護管理を務めています。",
+            "インタビュアー: 今後、どのようなスキルを身につけたいと考えていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 仕事の疲れを癒すために、どのようなリフレッシュ方法を取り入れていますか？",
+            "インタビュー対象者: 趣味のランニングを取り入れています。気分転換になり、ストレス発散にも役立っています。",
+            "インタビュアー: 最近、仕事以外で新たに興味を持ったことや学びたいと思ったことはありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 夫が家事を担当してくれる以外に、生活環境で仕事を支える要因はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の職場で、新しい知識やスキルを学ぶためにどのような取り組みをしていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 夫以外に、家族や友人などからどのようなサポートを受けていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の職場で、看護管理の中で特に力を入れている業務は何ですか？"
+        ],
+        "speak_count": {
+            "total_count": 25,
+            "interviewer_count": 13,
+            "interviewee_count": 12,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 12,
+            "interviewee_generate_answer_count": 11
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "30",
+        "estimate_persona": "- キャリア・職場: 済  \n- 悩みやストレス: 済  \n- キャリア目標とスキル開発: 済  \n- 職場での人間関係と信頼関係: 済  \n- リフレッシュ方法と趣味: 済  \n- 個人の興味と学び: 済  \n- 生活環境とサポート体制: 済  \n- 心理的な価値観と充足感: 済  \n- 職場での挑戦意識と自己成長: 済  \n- 生活の価値観と優先順位: 済",
+        "slots": {
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 2,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "キャリアの目標": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "現在のキャリア": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での役割": {
+                "question_priority": 1,
+                "value": "大学病院の循環器科で勤務しており、看護管理を務めています。"
+            },
+            "職場での成功体験": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "リフレッシュ方法と趣味": {
+                "question_priority": 1,
+                "value": "趣味のランニングを取り入れています。気分転換になり、ストレス発散にも役立っています。"
+            },
+            "個人の興味と学び": {
+                "question_priority": 1,
+                "value": null
+            },
+            "生活環境とサポート体制": {
+                "question_priority": 1,
+                "value": "夫が多くの家事を担当してくれるおかげで、仕事に集中しやすい環境です。"
+            },
+            "スキル開発の方向性": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での学びの姿勢": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での自己評価": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での自己成長の視点": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での学びや成長": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での人間関係の質": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な価値観": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な充足感": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的なモチベーション": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的な自己理解": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の優先順位": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の充実感": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での挑戦意識": {
+                "question_priority": 0,
+                "value": null
+            },
+            "心理的なストレス対策": {
+                "question_priority": 0,
+                "value": null
+            },
+            "生活の価値観": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    }
+}

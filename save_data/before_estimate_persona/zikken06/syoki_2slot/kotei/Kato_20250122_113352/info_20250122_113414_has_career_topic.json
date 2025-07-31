@@ -1,0 +1,57 @@
+﻿{
+    "execution_time": "2025/01/22 11:33:52",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f50949559d0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f5094a04cd0> root_client=<openai.OpenAI object at 0x7f50948d6310> root_async_client=<openai.AsyncOpenAI object at 0x7f50947ecbd0> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 加藤アオイ\n## 年齢\n- 32歳\n## 出身\n- 岡山県\n## 性別\n- 女性\n## 性格\n- 内向的、誠実\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって10年目、この大学病院の小児科でずっと勤務してきた。\n## 現在のキャリア\n- 小児科で勤務、子供との関りにやりがいを感じている。\n## 未来像\n- 専門看護師資格を取得して専門性を深めたい。\n## 考え\n- 小児科に苦手な後輩が居る。内向的な性格や仕事のやりがいなどから他の科への異動をためらっている。\n## その他の設定\n- 既婚者、子供はいない。趣味は映画鑑賞と小説を書くこと。休日はよく映画館で映画を観るか、カフェで小説の執筆を行っている。好きなジャンルはホラー。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近、映画館でホラー映画を観たんです。怖いけど、あの緊張感がたまらなくて。観終わった後のスッキリ感が好きなんですよね。",
+            "インタビュアー: ホラー映画でリフレッシュできるのいいですね！仕事の緊張感とも似てる部分ありますよね。",
+            "インタビュー対象者: そうなんですよね。仕事の緊張感とは違うけど、集中している感じが似ている気がします。映画の中の世界に没頭できるのが好きなんです。"
+        ],
+        "speak_count": {
+            "total_count": 4,
+            "interviewer_count": 2,
+            "interviewee_count": 2,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    }
+}

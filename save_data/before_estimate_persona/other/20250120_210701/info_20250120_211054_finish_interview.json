@@ -1,0 +1,129 @@
+﻿{
+    "execution_time": "2025/01/20 21:07:01",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f08e484f810> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f08e48fc290> root_client=<openai.OpenAI object at 0x7f08e4b8b010> root_async_client=<openai.AsyncOpenAI object at 0x7f08e4a97190> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 遠藤アオイ\n## 年齢\n- 30歳\n## 出身\n- 新潟県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって8年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 内科で勤務、チームの副リーダー的存在。\n## 未来像\n- 看護管理職への進出を目指している。\n## 考え\n- 現在の職場の人間関係が良好だが、昇進機会の少なさに不満を感じている。今後も同じ病院で勤務したい。\n## その他の設定\n- 趣味は手芸、子供1人がいる。両親が近くに住んでおり子育ての協力が得られている。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近、子どもと一緒に手芸を楽しむ時間が増えました。",
+            "インタビュアー: 看護管理領域でのキャリアを目指す中で、現在困っていることや課題はありますか？",
+            "インタビュー対象者: 昇進機会が少なく、リーダーシップを発揮する場が限られています。",
+            "インタビュアー: 昇進機会が少ないと感じる中で、どのようなサポートや環境があれば改善できると思いますか？",
+            "インタビュー対象者: リーダーシップ研修や役割を増やす機会があると助かります。",
+            "インタビュアー: リーダーシップ研修を受けることで、どのようなスキルや知識を身につけたいと考えていますか？",
+            "インタビュー対象者: チーム運営力や意思決定力を高め、管理職に備えたいです。",
+            "インタビュアー: リーダーシップを発揮する場を増やすために、具体的にどのような役割を希望しますか？",
+            "インタビュー対象者: プロジェクトの調整役や新人教育の担当を希望します。",
+            "インタビュアー: プロジェクトの調整役や新人教育の担当として、具体的にどのような成果を目指したいですか？",
+            "インタビュー対象者: チームの成長や新人の早期戦力化を目指したいです。",
+            "インタビュアー: プロジェクトの調整役や新人教育の担当として、具体的にどのような方法で成果を達成したいと考えていますか？",
+            "インタビュー対象者: メンバーと密に連携し、個々の強みを活かす体制を作ります。",
+            "インタビュアー: リーダーシップ研修や役割拡大の機会を得るために、どのような行動を取る予定ですか？",
+            "インタビュー対象者: 上司に相談し、自分の意欲や目標を積極的に伝えます。"
+        ],
+        "speak_count": {
+            "total_count": 16,
+            "interviewer_count": 8,
+            "interviewee_count": 8,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 7,
+            "interviewee_generate_answer_count": 7
+        },
+        "max_total_count": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": "看護管理領域に関心があり、リーダーシップ中級編研修を希望している。"
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": "昇進機会が少なく、リーダーシップを発揮する場が限られている。"
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": "看護管理領域でのキャリアを継続したい。"
+            },
+            "趣味としての手芸": {
+                "category": "個人的な懸念, キャリアの懸念",
+                "value": "最近、子どもと一緒に手芸を楽しむ時間が増えた。"
+            },
+            "昇進機会の制限": {
+                "category": "キャリアの懸念",
+                "value": "昇進機会が少ないと感じている。"
+            },
+            "リーダーシップ発揮の場": {
+                "category": "キャリア目標, キャリアの懸念",
+                "value": "リーダーシップを発揮する場が限られている。"
+            },
+            "子どもとの手芸活動": {
+                "category": "個人的な懸念",
+                "value": "最近、子どもと一緒に手芸を楽しむ時間が増えた。"
+            },
+            "さらなる教育の意向": {
+                "category": "キャリア目標, 教育",
+                "value": "リーダーシップ中級編研修を希望している。"
+            },
+            "研修プログラムへの関心": {
+                "category": "キャリア目標, 教育",
+                "value": "院内でのリーダーシップ中級編研修に関心がある。"
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア目標",
+                "value": "継続"
+            },
+            "リーダーシップ研修の必要性": {
+                "category": "キャリア目標, キャリアの懸念",
+                "value": "リーダーシップ研修を受けることで、チーム運営力や意思決定力を高め、管理職に備えたい。"
+            },
+            "役割拡大の機会": {
+                "category": "キャリア目標, キャリアの懸念",
+                "value": "リーダーシップ研修や役割を増やす機会があると助かる。"
+            },
+            "希望する役割": {
+                "category": "キャリア目標",
+                "value": "プロジェクトの調整役や新人教育の担当を希望する。"
+            },
+            "目指す成果": {
+                "category": "キャリア目標",
+                "value": "チームの成長や新人の早期戦力化を目指したい。"
+            },
+            "成果達成の方法": {
+                "category": "キャリア目標",
+                "value": "メンバーと密に連携し、個々の強みを活かす体制を作る。"
+            },
+            "行動計画": {
+                "category": "キャリア目標",
+                "value": "上司に相談し、自分の意欲や目標を積極的に伝える。"
+            }
+        }
+    }
+}

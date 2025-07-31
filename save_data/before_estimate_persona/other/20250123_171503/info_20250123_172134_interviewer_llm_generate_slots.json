@@ -1,0 +1,134 @@
+﻿{
+    "execution_time": "2025/01/23 17:15:03",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f82ef2ef0d0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f82ef1c8250> root_client=<openai.OpenAI object at 0x7f82ef1cba10> root_async_client=<openai.AsyncOpenAI object at 0x7f82ef1cb090> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 遠藤アオイ\n## 年齢\n- 30歳\n## 出身\n- 新潟県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって8年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 内科で勤務、チームの副リーダー的存在。\n## 未来像\n- 看護管理職への進出を目指している。\n## 考え\n- 現在の職場の人間関係が良好だが、昇進機会の少なさに不満を感じている。今後も同じ病院で勤務したい。\n## その他の設定\n- 趣味は手芸、子供1人がいる。両親が近くに住んでおり子育ての協力が得られている。\n",
+    "self_evaluation": "{\n  \"questionnaire\": {\n    \"user_id\": \"Endo_Aoi\",\n    \"careerPlan\": \"看護管理領域\",\n    \"additionalComments_careerPlan\": \"特に無し\",\n    \"trainingPreference\": \"院内\",\n    \"additionalComments_training\": \"リーダーシップ中級編研修\",\n    \"nextYearPlan\": \"継続\"\n  }\n}",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: こんにちは、今日はお時間いただきありがとうございます。最近お仕事以外で何か楽しいことはありましたか？",
+            "インタビュー対象者: 趣味の手芸で新しい作品を作りました。リラックスできて楽しい時間でした。",
+            "インタビュアー: 素敵ですね！手芸は集中できて癒されますよね。ちなみに、看護師としてのお仕事と手芸、何か共通点を感じることはありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在、どのような部署で働いていますか？",
+            "インタビュー対象者: 内科で勤務しています。チームの副リーダー的な役割を担っています。",
+            "インタビュアー: 現在の内科での勤務において、何か悩みや不満点はありますか？",
+            "インタビュー対象者: 昇進機会の少なさに不満を感じていますが、人間関係は良好で働きやすいです。",
+            "インタビュアー: あなたが看護師として大切にしている価値観や信念は何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 副リーダーとして、どのような役割や責任を担っていると感じますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 将来、看護師としてどのようなキャリアを築きたいと考えていますか？",
+            "インタビュー対象者: 看護管理職への進出を目指しています。同じ病院でキャリアを築きたいです。",
+            "インタビュアー: 看護師として働く中で、特に大切にしている信念や価値観はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 看護師として働く中で、患者さんや同僚に対してどのような姿勢を大切にしていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 看護師として働く中で、どのような信念や価値観を大切にしていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 副リーダー的な役割を担う中で、どのようにチームをサポートしていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 看護師として働く中で、どのような場面でやりがいを感じますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 内科での勤務や副リーダー的な役割を担う中で、感情的にどのような変化を感じることがありますか？",
+            "インタビュー対象者: わかりません。"
+        ],
+        "speak_count": {
+            "total_count": 26,
+            "interviewer_count": 13,
+            "interviewee_count": 13,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 11,
+            "interviewee_generate_answer_count": 11
+        },
+        "max_total_count": null,
+        "persona_coverage": "50",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "内科で勤務しており、チームの副リーダー的な役割を担っている。"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "昇進機会の少なさに不満を感じているが、人間関係は良好で働きやすい。"
+            },
+            "個人の興味": {
+                "category": "プライベート",
+                "value": "趣味の手芸で新しい作品を作ること。リラックスできて楽しい時間を過ごせる。"
+            },
+            "内面的な価値観": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "役割の視点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "将来の展望": {
+                "category": "キャリア,プライベート",
+                "value": "看護管理職への進出を目指しており、同じ病院でキャリアを築きたい。"
+            },
+            "職場環境": {
+                "category": "キャリア",
+                "value": "人間関係は良好で働きやすい。"
+            },
+            "感情の変化": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "リーダーシップ": {
+                "category": "キャリア",
+                "value": null
+            },
+            "職業の満足度": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "自己成長": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "職業の意義": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "職業の挑戦": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "職業の影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "職業の動機": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    }
+}

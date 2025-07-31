@@ -1,0 +1,284 @@
+﻿{
+    "execution_time": "2025/01/24 17:39:44",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f4411dd1c90> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f4411b19d90> root_client=<openai.OpenAI object at 0x7f4411ea9710> root_async_client=<openai.AsyncOpenAI object at 0x7f4415fd4510> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 岩橋アオイ\n## 年齢\n- 41歳\n## 出身\n- 千葉県\n## 性別\n- 女性\n## 性格\n- 外交的、開放的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって19年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 循環器科で勤務しており、看護について深い知識を持ち、看護管理を務めている。\n## 未来像\n- 看護管理をこのまま続けたいが、別の部署間のつながりが欲しいと考えている。\n## 考え\n- 管理職としての職務は自身に向いていると考えているが、患者との直接的な関わりを失うことへの不安も感じている。\n## その他の設定\n- 趣味はランニングで、休みの日によく走っている。夫は自宅でリモートワークをしていて、子供の世話を含む多くの家事を担当している。\n",
+    "self_evaluation": "{\n    \"questionnaire\": {\n      \"user_id\": \"Iwahashi_Aoi\",\n      \"careerPlan\": \"看護管理領域\",\n      \"additionalComments_careerPlan\": \"特に無し\",\n      \"trainingPreference\": \"院内\",\n      \"additionalComments_training\": \"リーダーシップ中級編研修\",\n      \"nextYearPlan\": \"継続\"\n    }\n  }",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リーダー経験": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "将来の展望": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場文化": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "学びの姿勢": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "地域貢献": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "価値観": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "職場での役割": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場外活動": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "ストレス管理": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "成長の動機": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の期待": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己成長意識": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "コミュニケーション": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "心理的影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "患者理解": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "文化的背景": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "職場の信念": {
+                "category": "キャリア,価値観",
+                "value": null
+            },
+            "専門分野志向": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の挑戦": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の満足度": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の支援": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "キャリア転機": {
+                "category": "キャリア,経験",
+                "value": null
+            },
+            "キャリアの影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "キャリアの動機": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "人生の転機": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "キャリアの視点": {
+                "category": "キャリア,価値観",
+                "value": null
+            },
+            "キャリアの課題": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己啓発影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: こんにちは、今日はお時間いただきありがとうございます。まずは簡単に自己紹介をお願いできますか？",
+            "インタビュー対象者: こんにちは、岩橋アオイと申します。千葉県出身で、看護師として19年目になります。",
+            "インタビュアー: 現在の職場で何か悩みや不満点はありますか？",
+            "インタビュー対象者: 別の部署間のつながりが欲しいと考えていますが、具体的な方法に悩んでいます。"
+        ],
+        "speak_count": {
+            "total_count": 4,
+            "interviewer_count": 2,
+            "interviewee_count": 2,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 1,
+            "interviewee_generate_answer_count": 1
+        },
+        "max_total_count": 40,
+        "persona_coverage": "14",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "看護師として19年目"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リーダー経験": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "将来の展望": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場文化": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "学びの姿勢": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "地域貢献": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "価値観": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "職場での役割": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場外活動": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "ストレス管理": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "成長の動機": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の期待": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己成長意識": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "コミュニケーション": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "心理的影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "患者理解": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "文化的背景": {
+                "category": "プライベート,キャリア",
+                "value": "千葉県出身"
+            },
+            "職場の信念": {
+                "category": "キャリア,価値観",
+                "value": null
+            },
+            "専門分野志向": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の挑戦": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の満足度": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の支援": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "キャリア転機": {
+                "category": "キャリア,経験",
+                "value": null
+            },
+            "キャリアの影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "キャリアの動機": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "人生の転機": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "キャリアの視点": {
+                "category": "キャリア,価値観",
+                "value": null
+            },
+            "キャリアの課題": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己啓発影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+﻿{
+    "execution_time": "2025/01/23 19:48:13",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f543b53a8d0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f543b622590> root_client=<openai.OpenAI object at 0x7f543b621e50> root_async_client=<openai.AsyncOpenAI object at 0x7f543b5a0590> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 遠藤アオイ\n## 年齢\n- 30歳\n## 出身\n- 新潟県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって8年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 内科で勤務、チームの副リーダー的存在。\n## 未来像\n- 看護管理職への進出を目指している。\n## 考え\n- 現在の職場の人間関係が良好だが、昇進機会の少なさに不満を感じている。今後も同じ病院で勤務したい。\n## その他の設定\n- 趣味は手芸、子供1人がいる。両親が近くに住んでおり子育ての協力が得られている。\n",
+    "self_evaluation": "{\n  \"questionnaire\": {\n    \"user_id\": \"Endo_Aoi\",\n    \"careerPlan\": \"看護管理領域\",\n    \"additionalComments_careerPlan\": \"特に無し\",\n    \"trainingPreference\": \"院内\",\n    \"additionalComments_training\": \"リーダーシップ中級編研修\",\n    \"nextYearPlan\": \"継続\"\n  }\n}",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: こんにちは、今日はお時間いただきありがとうございます。まずは簡単に自己紹介をお願いできますか？",
+            "インタビュー対象者: こんにちは、遠藤アオイと申します。新潟県出身で、現在30歳です。よろしくお願いします。",
+            "インタビュアー: 遠藤さん、よろしくお願いします。新潟県ご出身とのことですが、地元のおすすめの場所や食べ物はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 新潟のことはあまり詳しくないんですね。それでは、遠藤さんの趣味やリラックス方法について教えていただけますか？",
+            "インタビュー対象者: 趣味は手芸です。リラックスしたいときに作品を作るのがとても楽しいです。",
+            "インタビュアー: 手芸が趣味なんですね！素敵です。どんな作品を作るのが好きですか？また、これまでに作った中でお気に入りのものはありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 手芸がお好きとのことですが、細かい作業が得意なんですね。ところで、遠藤さんはこれまでどのようなお仕事や経験をされてきましたか？",
+            "インタビュー対象者: 看護師として8年目で、大学病院でずっと勤務してきました。現在は内科で働いています。",
+            "インタビュアー: 現在の内科での勤務において、何か悩みや不満に感じていることはありますか？",
+            "インタビュー対象者: 昇進機会の少なさに不満を感じていますが、人間関係が良好なのは救いです。",
+            "インタビュアー: 遠藤さんは将来どのようなキャリアを目指していますか？",
+            "インタビュー対象者: 看護管理職への進出を目指しています。同じ病院でキャリアを積みたいと考えています。",
+            "インタビュアー: 現在の職場の雰囲気や文化について、どのように感じていますか？",
+            "インタビュー対象者: 現在の職場の人間関係は良好で、協力的な雰囲気があり働きやすいと感じています。",
+            "インタビュアー: 遠藤さんは新しい知識やスキルを学ぶ際に、どのような方法を好みますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 遠藤さんが仕事やプライベートで最も大切にしている価値観は何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 遠藤さんは自己成長のためにどのような取り組みをされていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 遠藤さんは職場外で何か活動やボランティアに参加されていますか？",
+            "インタビュー対象者: わかりません。"
+        ],
+        "speak_count": {
+            "total_count": 24,
+            "interviewer_count": 12,
+            "interviewee_count": 12,
+            "interviewer_idle_talk_count": 5,
+            "interviewee_idle_talk_count": 5,
+            "interviewer_generate_question_count": 7,
+            "interviewee_generate_answer_count": 7
+        },
+        "max_total_count": 40,
+        "persona_coverage": "60",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "看護師として8年目で、大学病院でずっと勤務してきました。現在は内科で働いています。"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "昇進機会の少なさに不満を感じていますが、人間関係が良好なのは救いです。"
+            },
+            "趣味の背景": {
+                "category": "プライベート",
+                "value": "趣味は手芸です。リラックスしたいときに作品を作るのがとても楽しいです。"
+            },
+            "将来の展望": {
+                "category": "キャリア,プライベート",
+                "value": "看護管理職への進出を目指しています。同じ病院でキャリアを積みたいと考えています。"
+            },
+            "職場の文化": {
+                "category": "キャリア,プライベート",
+                "value": "現在の職場の人間関係は良好で、協力的な雰囲気があり働きやすいと感じています。"
+            },
+            "学びの姿勢": {
+                "category": "キャリア,プライベート",
+                "value": "わかりません"
+            },
+            "価値観の優先": {
+                "category": "キャリア,プライベート",
+                "value": "わかりません"
+            },
+            "自己成長意識": {
+                "category": "キャリア,プライベート",
+                "value": "わかりません"
+            },
+            "職場外活動": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "ストレス要因": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    }
+}

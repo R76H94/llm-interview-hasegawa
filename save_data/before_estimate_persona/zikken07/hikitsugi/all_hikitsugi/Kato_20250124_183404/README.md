@@ -1,0 +1,5 @@
+﻿- 開始時刻: 2025/01/24 18:34:04
+- モデル: gpt-4o-2024-11-20
+- ユーザシミュレータ: /mnt/work/interview/data/hashimoto-nakano/persona_settings/kato_p.txt
+- 自己評価アンケート: /mnt/work/interview/data/hashimoto-nakano/questionnaire/kato_q.json
+- スロット引き継ぎ

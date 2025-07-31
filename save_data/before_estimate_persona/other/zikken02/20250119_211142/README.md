@@ -1,0 +1,11 @@
+﻿実験2025/01/19(日)
+
+## 実験概要
+
+インタビュー対象者
+Endo: 1人目
+Ito: 2人目
+Iwahashi: 3人目
+Kato: 4人目
+Kawashima: 5人目
+Kobayashi: 6人目

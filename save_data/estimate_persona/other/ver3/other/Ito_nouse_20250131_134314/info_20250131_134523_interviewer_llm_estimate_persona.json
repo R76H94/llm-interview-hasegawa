@@ -1,0 +1,64 @@
+﻿{
+    "execution_time": "2025/01/31 13:43:14",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f65d5380fd0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f65d1790050> root_client=<openai.OpenAI object at 0x7f65d1689f50> root_async_client=<openai.AsyncOpenAI object at 0x7f65d16fe790> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 個人の基本的な情報 ##\n伊藤アオイ\n28歳\n福岡県\n女性\n## 性格 ##\n誠実で信頼される: 患者や家族に対して真摯に向き合い、信頼を得ている\n協調性があり、チームワークを大切にする: チームの一員として周囲と円滑に連携しながら働いている\n## 過去のキャリア ##\n看護師になって6年目\n地域病院で3年間勤務し、経験を積んだ後、現在の大学病院に転職\n## 現在のキャリア・職場 ##\n大学病院の小児科で勤務\n患者や家族からの信頼が厚い\nチームの一員として認められていると感じるため、現在の職場環境に満足している\n## 未来像 ##\n看護師としてスキルアップを目指す\n可能ならば専門看護師を目指すことを考えている\n## 悩みや不満点 ##\n小児科では患者や家族と深く関わる機会が多いが、特に親の不安を軽減するための説明や対応に難しさを感じることがある\n## 昇進や転職の考え ##\n現在の職場環境に満足している\n今後もこの病院で経験を積みながらスキルアップを目指す\n## 趣味・プライベート ##\n休日はヨガや読書で仕事のストレスを発散\n読書は主に心理学や自己啓発の書籍に興味があり、仕事に活かそうとしている\n## 家族・家庭 ##\n実家には、両親と妹がいる\n妹も看護師で、同じ職業での共通の話題が多い\n## 思い出・エピソード ##\n小児科勤務中、入院中の子どもから感謝の手紙をもらい、看護師としてのやりがいを再認識した\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "min_total_count": 36,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 0,
+                "value": null
+            },
+            "悩みや不満点": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の合間にリフレッシュできる時間は取れていますか？何か趣味や楽しみなことがあれば教えてください。",
+            "インタビュー対象者: 休日にはヨガや読書をしてリフレッシュしています。特に心理学の本が好きです。",
+            "インタビュアー: それは素敵ですね！心理学の本を読むことで、患者さんとのコミュニケーションにも役立ちそうですね。さて、キャリアについて少しお話ししましょうか。",
+            "インタビュー対象者: 現在の職場環境に満足しているので、ここでさらに経験を積みたいと思っています。",
+            "インタビュアー: 現在の職場で、何か改善したいと感じる点や悩みはありますか？",
+            "インタビュー対象者: 小児科では親御さんの不安を軽減する説明や対応に難しさを感じることがあります。"
+        ],
+        "speak_count": {
+            "total_count": 6,
+            "interviewer_count": 3,
+            "interviewee_count": 3,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 1,
+            "interviewee_generate_answer_count": 1
+        },
+        "max_total_count": 40,
+        "min_total_count": 36,
+        "persona_coverage": "10",
+        "estimate_persona": "- キャリア・職場: 済  \n- 趣味やリフレッシュ方法: 済  \n- 悩みや不満点: 済",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 0,
+                "value": "現在の職場環境に満足しているので、ここでさらに経験を積みたいと思っています。"
+            },
+            "悩みや不満点": {
+                "question_priority": 0,
+                "value": "小児科では親御さんの不安を軽減する説明や対応に難しさを感じることがあります。"
+            }
+        }
+    }
+}

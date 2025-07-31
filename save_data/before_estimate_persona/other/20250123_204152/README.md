@@ -1,0 +1,4 @@
+﻿- 開始時刻: 2025/01/23 20:41:52
+- モデル: gpt-4o-2024-11-20
+- ユーザシミュレータ: /mnt/work/interview/data/hashimoto-nakano/persona_settings/endo_p.txt
+- 自己評価アンケート: /mnt/work/interview/data/hashimoto-nakano/questionnaire/endo_q.json

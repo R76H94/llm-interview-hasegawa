@@ -1,0 +1,119 @@
+﻿{
+    "execution_time": "2025/01/22 17:21:46",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_1slot.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f02141ba790> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f0214130d50> root_client=<openai.OpenAI object at 0x7f0214219110> root_async_client=<openai.AsyncOpenAI object at 0x7f0213eb4490> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 伊藤アオイ\n## 年齢\n- 28歳\n## 出身\n- 福岡県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって6年目、地域病院で3年間勤務後、現在の大学病院に転職。\n## 現在のキャリア\n- 小児科で勤務、患者や家族からの信頼が厚い。\n## 未来像\n- 看護師としてスキルアップを目指し、可能ならば専門看護師を目指す。\n## 考え\n- チームの一員として認められていると感じるため、現在の職場環境に満足している。\n## その他の設定\n- 休日はヨガや読書でストレス発散できている。読書では主に心理学や自己啓発の書籍に興味があり、友人に勧めているがなかなか読んでくれる人がいない。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リフレッシュ方法": {
+                "category": "プライベート",
+                "value": null
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "サポートの希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "職場の人間関係": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進に向けた行動": {
+                "category": "キャリア",
+                "value": null
+            },
+            "業務改善の成果": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできたことはありましたか？",
+            "インタビュー対象者: 最近、休日にヨガをしてリフレッシュしました。体を動かすと気分もスッキリしますし、読書もして心の栄養を補っています。"
+        ],
+        "speak_count": {
+            "total_count": 2,
+            "interviewer_count": 1,
+            "interviewee_count": 1,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リフレッシュ方法": {
+                "category": "プライベート",
+                "value": null
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "サポートの希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "職場の人間関係": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進に向けた行動": {
+                "category": "キャリア",
+                "value": null
+            },
+            "業務改善の成果": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    }
+}

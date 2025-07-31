@@ -1,0 +1,76 @@
+﻿{
+    "execution_time": "2025/01/30 22:40:53",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f79b15fad10> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f79b1385b10> root_client=<openai.OpenAI object at 0x7f79b54f0210> root_async_client=<openai.AsyncOpenAI object at 0x7f79b15a3350> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 個人の基本的な情報 ##\n遠藤アオイ\n30歳\n新潟県\n女性\n## 性格 ##\n誠実で責任感が強い: 患者に対して誠実な対応を心がけ、信頼を得ている\n協調性があり、チームワークを大切にする: スタッフ間の連携を重視し、チーム全体の円滑な運営に貢献している\n## 過去のキャリア ##\n看護師になって8年目\n大学病院の内科に勤め続けてきた\n基礎的な看護技術や内科疾患の知識を磨いてきた\n## 現在のキャリア・職場 ##\n内科で勤務\nチームの副リーダー的存在\n後輩の指導やチームの調整にも携わる\n現在の職場の人間関係が良好\n## 未来像 ##\n看護管理職への進出を目指している\nリーダーシップやマネジメントのスキルを磨きたい\n## 悩みや不満点 ##\n昇進機会の少なさに不満を感じている\n## 昇進や転職の考え ##\n現在の職場環境には満足しており、今後も同じ病院で働き続けながら昇進を目指したい\n## 趣味・プライベート ##\n趣味は手芸で、休日は刺繍や編み物を楽しみながらリラックスしている\n患者との会話のきっかけになることも多い\n## 家族・家庭 ##\n子供が1人おり、育児と仕事の両立を意識しながらキャリアを積んでいる\n両親が近くに住んでおり、子育てのサポートを受けられる環境にある\n## 思い出・エピソード ##\n高齢の女性患者と手芸を通じて心を通わせた\n退院前に手作りの刺繍入りハンカチをプレゼントされた\n患者との交流が仕事の励みになっている\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "min_total_count": 24,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 0,
+                "value": null
+            },
+            "悩みや不満点": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の合間にリフレッシュできる時間は取れていますか？何か趣味や楽しみにしていることがあれば教えてください。",
+            "インタビュー対象者: 趣味の手芸を楽しむ時間を大切にしています。刺繍や編み物でリフレッシュしています。",
+            "インタビュアー: 現在、どのような部署や役割で働いていますか？",
+            "インタビュー対象者: 内科で勤務しており、チームの副リーダー的な役割を担っています。後輩の指導やチームの調整にも携わっています。",
+            "インタビュアー: 現在の職場で、特に悩んでいることやストレスを感じることはありますか？",
+            "インタビュー対象者: 昇進機会の少なさに不満を感じていますが、職場環境自体には満足しています。"
+        ],
+        "speak_count": {
+            "total_count": 6,
+            "interviewer_count": 3,
+            "interviewee_count": 3,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 2,
+            "interviewee_generate_answer_count": 2
+        },
+        "max_total_count": 40,
+        "min_total_count": 24,
+        "persona_coverage": "40",
+        "estimate_persona": "- キャリア・職場: 済  \n- 悩みやストレス: 済  \n- 趣味や楽しみ: 済  \n- 役割における責任感: 未",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 0,
+                "value": "内科で勤務しており、チームの副リーダー的な役割を担っています。後輩の指導やチームの調整にも携わっています。"
+            },
+            "悩みや不満点": {
+                "question_priority": 0,
+                "value": "昇進機会の少なさに不満を感じていますが、職場環境自体には満足しています。"
+            },
+            "趣味や楽しみ": {
+                "question_priority": 0,
+                "value": "趣味の手芸を楽しむ時間を大切にしています。刺繍や編み物でリフレッシュしています。"
+            },
+            "役割における責任感": {
+                "question_priority": 0,
+                "value": null
+            },
+            "キャリアの展望": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    }
+}

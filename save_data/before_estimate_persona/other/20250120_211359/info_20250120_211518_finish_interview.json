@@ -1,0 +1,83 @@
+﻿{
+    "execution_time": "2025/01/20 21:13:59",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f4c1adc3290> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f4c1e748210> root_client=<openai.OpenAI object at 0x7f4c1ad72d50> root_async_client=<openai.AsyncOpenAI object at 0x7f4c1ada51d0> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 遠藤アオイ\n## 年齢\n- 30歳\n## 出身\n- 新潟県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって8年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 内科で勤務、チームの副リーダー的存在。\n## 未来像\n- 看護管理職への進出を目指している。\n## 考え\n- 現在の職場の人間関係が良好だが、昇進機会の少なさに不満を感じている。今後も同じ病院で勤務したい。\n## その他の設定\n- 趣味は手芸、子供1人がいる。両親が近くに住んでおり子育ての協力が得られている。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできたことはありましたか？",
+            "インタビュー対象者: 最近、子供と一緒に手芸を楽しむ時間が癒しになっています。",
+            "インタビュアー: 看護管理領域を目指す中で、現在特に困っていることや課題に感じていることはありますか？",
+            "インタビュー対象者: 昇進機会が少なく、管理職への道が遠く感じることです。",
+            "インタビュアー: 昇進機会が少ないと感じる中で、どのような改善策があれば管理職への道が近づくと思いますか？",
+            "インタビュー対象者: リーダーシップ研修の充実や昇進基準の明確化が必要です。"
+        ],
+        "speak_count": {
+            "total_count": 6,
+            "interviewer_count": 3,
+            "interviewee_count": 3,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 2,
+            "interviewee_generate_answer_count": 2
+        },
+        "max_total_count": null,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": "看護管理領域を目指している。"
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": "昇進機会が少なく、管理職への道が遠く感じること。"
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": "来年も現在のキャリアを継続する予定。"
+            },
+            "手芸や趣味の時間": {
+                "category": "個人的な懸念, リフレッシュ方法",
+                "value": "最近、子供と一緒に手芸を楽しむ時間が癒しになっている。"
+            },
+            "昇進機会の改善策": {
+                "category": "キャリアの懸念",
+                "value": "リーダーシップ研修の充実や昇進基準の明確化が必要。"
+            },
+            "リーダーシップ研修の具体的な期待": {
+                "category": "専門スキル, さらなる教育の意向",
+                "value": "リーダーシップ中級編研修の受講を希望。"
+            },
+            "手芸を通じたストレス解消法": {
+                "category": "個人的な懸念, リフレッシュ方法",
+                "value": "子供と一緒に手芸を楽しむことがストレス解消になっている。"
+            }
+        }
+    }
+}

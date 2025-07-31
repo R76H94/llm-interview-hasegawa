@@ -1,0 +1,198 @@
+﻿{
+    "execution_time": "2025/01/30 12:54:45",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f3bb2e45dd0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f3bb6cee390> root_client=<openai.OpenAI object at 0x7f3bb2ca2d10> root_async_client=<openai.AsyncOpenAI object at 0x7f3bb2c83a50> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 個人の基本的な情報 ##\n岩橋アオイ\n41歳\n千葉県\n女性\n## 性格 ##\n外交的\n開放的\n## 過去のキャリア ##\n看護師になって19年目\n大学病院に勤め続けている\n## 現在のキャリア・職場 ##\n大学病院の循環器科で勤務\n看護について深い知識を持ち、看護管理を務めている\n## 未来像 ##\n看護管理をこのまま続けたい\n別の部署間のつながりが欲しいと考えている\n## 悩みや不満点 ##\n管理職としての職務は自身に向いていると考えているが、患者との直接的な関わりを失うことへの不安も感じている\n## 昇進や転職の考え ##\n今の職場で管理職を続けたいと考えている\n## 趣味・プライベート ##\n趣味はランニングで、休みの日によく走っている\n## 家族・家庭 ##\n夫は自宅でリモートワークをしている\n夫は子供の世話を含む多くの家事を担当している\n## 思い出・エピソード ##\n休日のランニング中に偶然元患者と再会し、患者とのつながりの大切さを再認識した\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 1,
+                "value": null
+            },
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": null
+            },
+            "仕事を通じた感動や喜び": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での役割や責任": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での人間関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "将来の目標やビジョン": {
+                "question_priority": 2,
+                "value": null
+            },
+            "得意なスキルや分野": {
+                "question_priority": 0,
+                "value": null
+            },
+            "患者とのコミュニケーション方法": {
+                "question_priority": 0,
+                "value": null
+            },
+            "職場での学びや成長": {
+                "question_priority": 1,
+                "value": null
+            },
+            "感謝やフィードバックの経験": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での信頼構築": {
+                "question_priority": 1,
+                "value": null
+            },
+            "過去の挑戦や適応経験": {
+                "question_priority": 1,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の中で何か楽しかったことや印象に残った出来事はありましたか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の職場で、どのような役割や責任を担っていますか？",
+            "インタビュー対象者: 看護管理を務めており、循環器科での看護業務全体を統括しています。",
+            "インタビュアー: 現在の職場で、何か悩みや不満に感じていることはありますか？",
+            "インタビュー対象者: 管理職としての職務は向いていると感じますが、患者との関わりが減ることに不安があります。",
+            "インタビュアー: 将来、看護師としてどのような目標やビジョンを持っていますか？",
+            "インタビュー対象者: 看護管理をこのまま続けたいですが、別の部署間のつながりも築きたいと考えています。",
+            "インタビュアー: 現在の職場で、同僚や他のスタッフとの人間関係はどのように感じていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: あなたが得意とする看護スキルや専門分野は何ですか？",
+            "インタビュー対象者: 看護について深い知識を持っており、循環器科での専門的なスキルに自信があります。",
+            "インタビュアー: 現在の職場で、どのような学びや成長を感じていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 患者さんとのコミュニケーションで特に心がけていることは何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: これまでの職場で、患者さんや同僚から感謝やフィードバックを受けた経験はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: これまでの看護師としてのキャリアで、特に挑戦的だった経験や適応が必要だった状況はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の職場で、信頼関係を築くためにどのような工夫をしていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: これまでのキャリアの中で、職場での役割がどのように変化してきましたか？",
+            "インタビュー対象者: 大学病院に勤め続けており、現在は循環器科で看護管理を務めています。",
+            "インタビュアー: 現在の職場での役割にどの程度満足していますか？",
+            "インタビュー対象者: 現在の役割には満足していますが、患者との直接的な関わりが減ることに不安もあります。",
+            "インタビュアー: 現在の職場で、自己成長のためにどのような機会を活用していますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 現在の役割に対して、どのような感情を抱いていますか？",
+            "インタビュー対象者: 管理職としての役割にやりがいを感じていますが、患者との関わりが減ることに不安もあります。"
+        ],
+        "speak_count": {
+            "total_count": 30,
+            "interviewer_count": 15,
+            "interviewee_count": 15,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 14,
+            "interviewee_generate_answer_count": 14
+        },
+        "max_total_count": 40,
+        "persona_coverage": "50",
+        "estimate_persona": "- キャリア・職場  \n- 患者との交流やケア  \n- 悩みや不満  \n- 将来の目標やビジョン  \n- 専門スキルや知識  \n- 管理職としての視点  \n- 部署間の連携や協力",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 1,
+                "value": "看護管理を務めており、循環器科での看護業務全体を統括しています。"
+            },
+            "悩みや不満点": {
+                "question_priority": 2,
+                "value": "管理職としての職務は向いていると感じますが、患者との関わりが減ることに不安があります。"
+            },
+            "仕事を通じた感動や喜び": {
+                "question_priority": 2,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での役割や責任": {
+                "question_priority": 2,
+                "value": "看護管理を務めており、循環器科での看護業務全体を統括しています。"
+            },
+            "職場での人間関係": {
+                "question_priority": 2,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "将来の目標やビジョン": {
+                "question_priority": 2,
+                "value": "看護管理をこのまま続けたいですが、別の部署間のつながりも築きたいと考えています。"
+            },
+            "得意なスキルや分野": {
+                "question_priority": 0,
+                "value": "看護について深い知識を持っており、循環器科での専門的なスキルに自信があります。"
+            },
+            "患者とのコミュニケーション方法": {
+                "question_priority": 0,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での学びや成長": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "感謝やフィードバックの経験": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での信頼構築": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "過去の挑戦や適応経験": {
+                "question_priority": 1,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "管理職としての視点": {
+                "question_priority": 0,
+                "value": "管理職としての職務は向いていると感じますが、患者との関わりが減ることに不安があります。"
+            },
+            "職務における自己評価": {
+                "question_priority": 0,
+                "value": "管理職としての職務は向いていると感じます。"
+            },
+            "部署間の連携や協力": {
+                "question_priority": 0,
+                "value": "別の部署間のつながりも築きたいと考えています。"
+            },
+            "部署間のつながり": {
+                "question_priority": 0,
+                "value": "別の部署間のつながりも築きたいと考えています。"
+            },
+            "職場での役割の変化": {
+                "question_priority": 0,
+                "value": "大学病院に勤め続けており、現在は循環器科で看護管理を務めています。"
+            },
+            "職場での役割の満足度": {
+                "question_priority": 0,
+                "value": "現在の役割には満足していますが、患者との直接的な関わりが減ることに不安もあります。"
+            },
+            "職場での自己成長の機会": {
+                "question_priority": 0,
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での役割に対する感情": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    }
+}

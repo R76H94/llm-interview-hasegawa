@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/index.js"></script><script>(r => {
+              setTimeout(r);
+            })(function renderToolbar() {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"","children":[{"content":"&#x5fd9;&#x3057;&#x3055;&#x3068;&#x3084;&#x308a;&#x304c;&#x3044;","children":[{"content":"&#x5fd9;&#x3057;&#x3055;: &#x5fd9;&#x3057;&#x3044;&#x304c;&#x5145;&#x5b9f;&#x3057;&#x3066;&#x3044;&#x308b;","children":[],"payload":{"tag":"li","lines":"1,3"}}],"payload":{"tag":"h1","lines":"0,1"}},{"content":"&#x8077;&#x52d9;&#x5185;&#x5bb9;","children":[{"content":"&#x8077;&#x5834;: &#x5c0f;&#x5150;&#x79d1;","children":[],"payload":{"tag":"li","lines":"4,5"}},{"content":"&#x696d;&#x52d9;&#x5185;&#x5bb9;: &#x60a3;&#x8005;&#x3055;&#x3093;&#x3084;&#x5bb6;&#x65cf;&#x3068;&#x5bc6;&#x306b;&#x95a2;&#x308f;&#x308b;","children":[],"payload":{"tag":"li","lines":"5,7"}}],"payload":{"tag":"h1","lines":"3,4"}},{"content":"&#x3084;&#x308a;&#x304c;&#x3044;&#x306e;&#x77ac;&#x9593;","children":[{"content":"&#x3084;&#x308a;&#x304c;&#x3044;&#x3092;&#x611f;&#x3058;&#x308b;&#x6642;:","children":[{"content":"&#x60a3;&#x8005;&#x3055;&#x3093;&#x304c;&#x5143;&#x6c17;&#x306b;&#x306a;&#x3063;&#x3066;&#x9000;&#x9662;&#x3059;&#x308b;&#x77ac;&#x9593;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x60a3;&#x8005;&#x3055;&#x3093;&#x306e;&#x7b11;&#x9854;&#x3084;&#x611f;&#x8b1d;&#x306e;&#x8a00;&#x8449;&#x3092;&#x3082;&#x3089;&#x3063;&#x305f;&#x6642;","children":[],"payload":{"tag":"li","lines":"10,12"}}],"payload":{"tag":"li","lines":"8,12"}}],"payload":{"tag":"h1","lines":"7,8"}},{"content":"&#x4e0d;&#x6e80;&#x70b9;","children":[{"content":"&#x4e0d;&#x6e80;&#x70b9;: &#x7279;&#x306b;&#x5927;&#x304d;&#x306a;&#x4e0d;&#x6e80;&#x306f;&#x306a;&#x3044;&#x304c;&#x3001;&#x6642;&#x3005;&#x5fd9;&#x3057;&#x3055;&#x306b;&#x75b2;&#x308c;&#x308b;","children":[],"payload":{"tag":"li","lines":"13,15"}}],"payload":{"tag":"h1","lines":"12,13"}},{"content":"&#x5fc5;&#x8981;&#x306a;&#x30b5;&#x30dd;&#x30fc;&#x30c8;","children":[{"content":"&#x5fc5;&#x8981;&#x306a;&#x30b5;&#x30dd;&#x30fc;&#x30c8;:","children":[{"content":"&#x5b9a;&#x671f;&#x7684;&#x306a;&#x4f11;&#x61a9;","children":[],"payload":{"tag":"li","lines":"17,18"}},{"content":"&#x30ea;&#x30d5;&#x30ec;&#x30c3;&#x30b7;&#x30e5;&#x306e;&#x6642;&#x9593;","children":[],"payload":{"tag":"li","lines":"18,20"}}],"payload":{"tag":"li","lines":"16,20"}}],"payload":{"tag":"h1","lines":"15,16"}},{"content":"&#x8077;&#x5834;&#x3067;&#x306e;&#x8ab2;&#x984c;","children":[{"content":"&#x8ab2;&#x984c;: &#x5fd9;&#x3057;&#x3055;&#x3068;&#x611f;&#x60c5;&#x306e;&#x30b3;&#x30f3;&#x30c8;&#x30ed;&#x30fc;&#x30eb;&#x304c;&#x96e3;&#x3057;&#x3044;","children":[],"payload":{"tag":"li","lines":"21,22"}}],"payload":{"tag":"h1","lines":"20,21"}}]},{})</script>
+</body>
+</html>

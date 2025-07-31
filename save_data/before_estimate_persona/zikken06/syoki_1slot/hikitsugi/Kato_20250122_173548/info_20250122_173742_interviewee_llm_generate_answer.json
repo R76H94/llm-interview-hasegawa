@@ -1,0 +1,135 @@
+﻿{
+    "execution_time": "2025/01/22 17:35:48",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_1slot.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f8646622490> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f86465bd190> root_client=<openai.OpenAI object at 0x7f86465b2cd0> root_async_client=<openai.AsyncOpenAI object at 0x7f86462f9410> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 加藤アオイ\n## 年齢\n- 32歳\n## 出身\n- 岡山県\n## 性別\n- 女性\n## 性格\n- 内向的、誠実\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって10年目、この大学病院の小児科でずっと勤務してきた。\n## 現在のキャリア\n- 小児科で勤務、子供との関りにやりがいを感じている。\n## 未来像\n- 専門看護師資格を取得して専門性を深めたい。\n## 考え\n- 小児科に苦手な後輩が居る。内向的な性格や仕事のやりがいなどから他の科への異動をためらっている。\n## その他の設定\n- 既婚者、子供はいない。趣味は映画鑑賞と小説を書くこと。休日はよく映画館で映画を観るか、カフェで小説の執筆を行っている。好きなジャンルはホラー。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リフレッシュ方法": {
+                "category": "プライベート",
+                "value": null
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "サポートの希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "職場の人間関係": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進に向けた行動": {
+                "category": "キャリア",
+                "value": null
+            },
+            "業務改善の成果": {
+                "category": "キャリア",
+                "value": null
+            },
+            "強化したいスキルや知識": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事以外で何か楽しいことありましたか？",
+            "インタビュー対象者: 最近、映画館でホラー映画を観たんです。怖いけど引き込まれる感じがたまらなくて、やっぱりホラーはいいなって思いました。",
+            "インタビュアー: ホラー映画好きなんですね！怖い場面を乗り越えるのって、看護の仕事にも通じる部分があるかもですね。",
+            "インタビュー対象者: 確かに、怖い場面を乗り越える感覚って少し似ているかもしれませんね。冷静さを保つことが大事なのも共通している気がします。",
+            "インタビュアー: 現在のキャリアについて、どのような役割や業務を担当されていますか？",
+            "インタビュー対象者: 現在は小児科で看護師として働いています。子供たちやその家族と関わる中で、信頼関係を築くことを大切にしています。",
+            "インタビュアー: 現在の職場での人間関係について、どのように感じていますか？",
+            "インタビュー対象者: 職場の人間関係は全体的には良好ですが、小児科に少し苦手な後輩がいて、接し方に悩むことがあります。それ以外は特に問題ありません。",
+            "インタビュアー: 昇進に向けて、現在取り組んでいることや意識していることはありますか？",
+            "インタビュー対象者: 昇進に向けては、専門看護師資格の取得を目指して勉強を始めたいと考えています。ただ、具体的な計画はまだ立てられていません。"
+        ],
+        "speak_count": {
+            "total_count": 10,
+            "interviewer_count": 5,
+            "interviewee_count": 5,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 3,
+            "interviewee_generate_answer_count": 3
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "小児科で看護師として働いている。子供たちやその家族と関わる中で、信頼関係を築くことを大切にしている"
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": "専門看護師,ジェネラリスト"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "悩んでいます。職場に少し苦手な後輩がいて、接し方に悩むことがある"
+            },
+            "リフレッシュ方法": {
+                "category": "プライベート",
+                "value": "映画館でホラー映画を観ること"
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": "無し"
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": "継続"
+            },
+            "サポートの希望": {
+                "category": "キャリア",
+                "value": "どうすればいいか分からない"
+            },
+            "職場の人間関係": {
+                "category": "キャリア",
+                "value": "全体的には良好だが、小児科に少し苦手な後輩がいる"
+            },
+            "昇進に向けた行動": {
+                "category": "キャリア",
+                "value": null
+            },
+            "業務改善の成果": {
+                "category": "キャリア",
+                "value": null
+            },
+            "強化したいスキルや知識": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    }
+}

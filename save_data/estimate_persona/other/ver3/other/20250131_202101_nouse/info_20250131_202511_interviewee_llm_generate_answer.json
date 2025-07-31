@@ -1,0 +1,172 @@
+﻿{
+    "execution_time": "2025/01/31 20:21:01",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f766a98cb90> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f7666b331d0> root_client=<openai.OpenAI object at 0x7f7666c4bc90> root_async_client=<openai.AsyncOpenAI object at 0x7f76668f8990> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "個人の基本的な情報\n長谷川アオイ\n30歳\n東京都\n女性\n\n性格\n誠実で信頼される: 患者や家族に対して真摯に向き合い、安心感を与える存在\n向上心があり、努力を惜しまない: 新しい知識や技術を積極的に学び、自己成長を大切にしている\n\n過去のキャリア\n看護師になって8年目\n地方の総合病院で4年間勤務し、幅広い経験を積んだ後、現在の大学病院へ転職\n\n現在のキャリア・職場\n大学病院の産婦人科で勤務\n妊婦や産後の母親へのケアを担当し、患者との信頼関係を築くことを大切にしている\n医師や助産師との連携もスムーズに行えており、職場のチームワークに満足している\n\n未来像\n看護師としてより専門的な知識を身につけ、助産師の資格取得を目指している\n患者の心身のケアをより深くサポートできる存在になりたい\n\n悩みや不満点\n妊娠や出産に関する不安を抱える患者が多く、精神的なケアに難しさを感じることがある\n多忙な日々が続く中で、自分自身の心身のバランスを保つことの難しさを感じる\n\n昇進や転職の考え\n今の職場に満足しており、さらなるスキルアップを目指している\n助産師資格を取得し、現在の病院でより専門的な仕事に携わることを考えている\n\n趣味・プライベート\n休日はカフェ巡りや映画鑑賞を楽しむことでリフレッシュしている\n特にヒューマンドラマの映画を好み、人の心の動きを深く理解しようとしている\n\n家族・家庭\n両親と兄がいるが、現在は都内で一人暮らしをしている\n家族とは頻繁に連絡を取り合い、特に母親とは仕事の相談をすることが多い\n\n思い出・エピソード\n出産に立ち会った患者さんから「あなたがいてくれて安心できた」と感謝の言葉をもらい、看護師としての使命を改めて実感した\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 3,
+                "value": null
+            },
+            "悩みや不満点": {
+                "question_priority": 3,
+                "value": null
+            },
+            "職場での役割": {
+                "question_priority": 3,
+                "value": null
+            },
+            "キャリアの目標": {
+                "question_priority": 3,
+                "value": null
+            },
+            "スキル開発の方向性": {
+                "question_priority": 2,
+                "value": null
+            },
+            "家族や友人との関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "趣味やリフレッシュ方法": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での人間関係と信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "読書のテーマや関心分野": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での人間関係の質": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での信頼関係": {
+                "question_priority": 3,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 1,
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、仕事の合間にリフレッシュできる時間は取れていますか？何か趣味や楽しみなことがあれば教えてください。",
+            "インタビュー対象者: 休日にはカフェ巡りや映画鑑賞を楽しんでリフレッシュしています。特にヒューマンドラマが好きです。",
+            "インタビュアー: 現在の職場でどのような業務を担当されていますか？",
+            "インタビュー対象者: 大学病院の産婦人科で勤務しており、妊婦や産後の母親へのケアを担当しています。",
+            "インタビュアー: 現在の職場で何か悩みや不満に感じていることはありますか？",
+            "インタビュー対象者: 妊娠や出産に不安を抱える患者が多く、精神的なケアの難しさを感じています。",
+            "インタビュアー: 今後のキャリアで目指している目標や理想の姿について教えてください。",
+            "インタビュー対象者: 助産師の資格を取得し、患者の心身のケアをより深くサポートできる存在になりたいです。",
+            "インタビュアー: 現在の職場で同僚や上司との関係についてどのように感じていますか？",
+            "インタビュー対象者: 医師や助産師との連携がスムーズで、職場のチームワークに満足しています。"
+        ],
+        "speak_count": {
+            "total_count": 10,
+            "interviewer_count": 5,
+            "interviewee_count": 5,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 4,
+            "interviewee_generate_answer_count": 4
+        },
+        "max_total_count": 40,
+        "min_total_count": 30,
+        "persona_coverage": "50",
+        "estimate_persona": "- キャリア・職場: 済  \n- 悩みやストレス: 済  \n- キャリア目標とスキル開発: 済  \n- 職場での人間関係と信頼関係: 未  \n- 趣味やリフレッシュ方法: 済  \n- 家族: 未  \n- 過去のキャリア: 未",
+        "slots": {
+            "現在のキャリア": {
+                "question_priority": 3,
+                "value": "大学病院の産婦人科で勤務しており、妊婦や産後の母親へのケアを担当しています。"
+            },
+            "悩みや不満点": {
+                "question_priority": 3,
+                "value": "妊娠や出産に不安を抱える患者が多く、精神的なケアの難しさを感じています。"
+            },
+            "職場での役割": {
+                "question_priority": 3,
+                "value": "妊婦や産後の母親へのケアを担当しています。"
+            },
+            "キャリアの目標": {
+                "question_priority": 3,
+                "value": "助産師の資格を取得し、患者の心身のケアをより深くサポートできる存在になりたいです。"
+            },
+            "スキル開発の方向性": {
+                "question_priority": 2,
+                "value": "助産師の資格取得を目指し、患者の心身のケアを深くサポートするスキルを磨くこと。"
+            },
+            "家族や友人との関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "趣味やリフレッシュ方法": {
+                "question_priority": 2,
+                "value": "休日にはカフェ巡りや映画鑑賞を楽しんでリフレッシュしています。特にヒューマンドラマが好きです。"
+            },
+            "職場での人間関係と信頼関係": {
+                "question_priority": 2,
+                "value": null
+            },
+            "読書のテーマや関心分野": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での満足度要因": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での人間関係の質": {
+                "question_priority": 2,
+                "value": null
+            },
+            "職場での信頼関係": {
+                "question_priority": 3,
+                "value": null
+            },
+            "職場でのモチベーション要因": {
+                "question_priority": 1,
+                "value": null
+            },
+            "職場での価値観": {
+                "question_priority": 1,
+                "value": null
+            },
+            "過去のキャリア": {
+                "question_priority": 0,
+                "value": null
+            },
+            "家族構成": {
+                "question_priority": 0,
+                "value": null
+            }
+        }
+    }
+}

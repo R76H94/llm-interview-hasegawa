@@ -1,0 +1,141 @@
+﻿{
+    "execution_time": "2025/01/21 17:49:01",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f9f4ccae150> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f9f4ca21610> root_client=<openai.OpenAI object at 0x7f9f4cb9e150> root_async_client=<openai.AsyncOpenAI object at 0x7f9f4cc6e210> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 岩橋アオイ\n## 年齢\n- 41歳\n## 出身\n- 千葉県\n## 性別\n- 女性\n## 性格\n- 外交的、開放的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって19年目、この大学病院でずっと勤務してきた。\n## 現在のキャリア\n- 循環器科で勤務しており、看護について深い知識を持ち、看護管理を務めている。\n## 未来像\n- 看護管理をこのまま続けたいが、別の部署間のつながりが欲しいと考えている。\n## 考え\n- 管理職としての職務は自身に向いていると考えているが、患者との直接的な関わりを失うことへの不安も感じている。\n## その他の設定\n- 趣味はランニングで、休みの日によく走っている。夫は自宅でリモートワークをしていて、子供の世話を含む多くの家事を担当している。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "個人の基本的な情報": {
+                "category": "基本情報",
+                "value": null
+            },
+            "性格": {
+                "category": "性格",
+                "value": null
+            },
+            "職場での人間関係": {
+                "category": "性格",
+                "value": null
+            },
+            "過去のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進や転職の考え": {
+                "category": "キャリア",
+                "value": null
+            },
+            "趣味・プライベート": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家族構成": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家庭の事情": {
+                "category": "プライベート",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近、休みの日にランニングコースを少し変えてみたんです。新しい景色を見ながら走ると気分転換になって楽しいですね。",
+            "インタビュアー: 新しい景色を楽しむのは素敵ですね！ランニングは仕事のリフレッシュにも良さそうです。",
+            "インタビュー対象者: そうなんです、ランニングは私にとって大切な時間なんです。走りながら頭を整理したり、次の仕事のアイデアが浮かんだりすることもありますよ。",
+            "インタビュアー: 現在の職場での人間関係について、どのように感じていますか？",
+            "インタビュー対象者: 職場の人間関係は良好だと思います。チーム全体で協力し合える環境があり、困ったときには助け合える雰囲気がとてもありがたいです。",
+            "インタビュアー: 看護師を目指したきっかけや、これまでの経緯について教えていただけますか？",
+            "インタビュー対象者: 看護師を目指したきっかけは、祖母が入院した際に看護師さんたちの温かいケアに感動したことです。それが私の原点ですね。",
+            "インタビュアー: 現在の職場で、何か改善したいと感じる点や悩みはありますか？",
+            "インタビュー対象者: 現在の職場は働きやすい環境ですが、部署間の連携がもう少しスムーズになるといいなと思います。情報共有の仕組みを改善できればと感じています。",
+            "インタビュアー: 看護師として働く前のご経歴や学歴について教えていただけますか？",
+            "インタビュー対象者: 看護師になる前は、千葉県内の看護大学で学びました。在学中から実習を通じて現場の魅力を感じ、卒業後すぐに今の大学病院で働き始めました。",
+            "インタビュアー: お名前や出身地など、基本的な自己紹介をお願いできますか？",
+            "インタビュー対象者: 私は岩橋アオイと申します。千葉県出身で、現在41歳です。看護師として19年間、同じ大学病院で勤務してきました。よろしくお願いします。",
+            "インタビュアー: ご自身の性格について、どのように感じていますか？",
+            "インタビュー対象者: 私は外交的で開放的な性格だと思います。人と関わることが好きで、職場でも積極的にコミュニケーションを取るよう心がけています。"
+        ],
+        "speak_count": {
+            "total_count": 16,
+            "interviewer_count": 8,
+            "interviewee_count": 8,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 6,
+            "interviewee_generate_answer_count": 6
+        },
+        "max_total_count": null,
+        "slots": {
+            "個人の基本的な情報": {
+                "category": "基本情報",
+                "value": "岩橋アオイ、千葉県出身、41歳、看護師として19年間同じ大学病院で勤務"
+            },
+            "性格": {
+                "category": "性格",
+                "value": "外交的で開放的な性格。人と関わることが好きで、職場でも積極的にコミュニケーションを取るよう心がけている。"
+            },
+            "職場での人間関係": {
+                "category": "性格",
+                "value": "職場の人間関係は良好で、チーム全体で協力し合える環境があり、困ったときには助け合える雰囲気がある。"
+            },
+            "過去のキャリア": {
+                "category": "キャリア",
+                "value": "看護師を目指したきっかけは、祖母が入院した際に看護師さんたちの温かいケアに感動したこと。それが原点。千葉県内の看護大学で学び、在学中から実習を通じて現場の魅力を感じ、卒業後すぐに今の大学病院で働き始めた。"
+            },
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "看護管理領域"
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": "継続"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "部署間の連携がもう少しスムーズになると良いと感じている。情報共有の仕組みを改善したい。"
+            },
+            "昇進や転職の考え": {
+                "category": "キャリア",
+                "value": null
+            },
+            "趣味・プライベート": {
+                "category": "プライベート",
+                "value": "ランニング。新しい景色を見ながら走ることで気分転換になり、頭を整理したり次の仕事のアイデアが浮かぶこともある。"
+            },
+            "家族構成": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家庭の事情": {
+                "category": "プライベート",
+                "value": null
+            }
+        }
+    }
+}

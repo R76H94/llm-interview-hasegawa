@@ -1,0 +1,144 @@
+﻿{
+    "execution_time": "2025/01/20 13:51:22",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7fba9ef7a650> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7fba9f11e8d0> root_client=<openai.OpenAI object at 0x7fba9f01e610> root_async_client=<openai.AsyncOpenAI object at 0x7fba9ef871d0> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 伊藤アオイ\n## 年齢\n- 28歳\n## 出身\n- 福岡県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって6年目、地域病院で3年間勤務後、現在の大学病院に転職。\n## 現在のキャリア\n- 小児科で勤務、患者や家族からの信頼が厚い。\n## 未来像\n- 看護師としてスキルアップを目指し、可能ならば専門看護師を目指す。\n## 考え\n- チームの一員として認められていると感じるため、現在の職場環境に満足している。\n## その他の設定\n- 休日はヨガや読書でストレス発散できている。読書では主に心理学や自己啓発の書籍に興味があり、友人に勧めているがなかなか読んでくれる人がいない。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 30,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            },
+            "趣味としての手芸": {
+                "category": "個人的な懸念, キャリアの懸念",
+                "value": null
+            },
+            "手芸と看護の関連性": {
+                "category": "専門スキル, キャリア目標",
+                "value": null
+            },
+            "さらなる教育の意向": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "研修プログラムへの関心": {
+                "category": "教育, キャリア目標",
+                "value": null
+            },
+            "必要なサポート": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "リーダーシップ中級編研修の期待": {
+                "category": "教育, キャリア目標",
+                "value": null
+            },
+            "現在の職場環境で活かせるスキル": {
+                "category": "専門スキル, キャリア目標",
+                "value": null
+            },
+            "キャリア進展のための具体的行動": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "キャリア進展の方向性": {
+                "category": "キャリア目標",
+                "value": null
+            },
+            "上司への相談内容": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近はヨガでリフレッシュして、心身ともに整えています。",
+            "インタビュアー: ヨガいいですね！リフレッシュ方法があると仕事にも良い影響が出ますよね。"
+        ],
+        "speak_count": {
+            "total_count": 3,
+            "interviewer_count": 2,
+            "interviewee_count": 1,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 30,
+        "slots": {
+            "キャリアの相談内容": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリアで困っていること": {
+                "category": "キャリア目標, 個人的な懸念",
+                "value": null
+            },
+            "キャリア希望": {
+                "category": "キャリア目標",
+                "value": null
+            },
+            "趣味としての手芸": {
+                "category": "個人的な懸念, キャリアの懸念",
+                "value": null
+            },
+            "手芸と看護の関連性": {
+                "category": "専門スキル, キャリア目標",
+                "value": null
+            },
+            "さらなる教育の意向": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "研修プログラムへの関心": {
+                "category": "教育, キャリア目標",
+                "value": null
+            },
+            "必要なサポート": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "リーダーシップ中級編研修の期待": {
+                "category": "教育, キャリア目標",
+                "value": null
+            },
+            "現在の職場環境で活かせるスキル": {
+                "category": "専門スキル, キャリア目標",
+                "value": null
+            },
+            "キャリア進展のための具体的行動": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            },
+            "キャリア進展の方向性": {
+                "category": "キャリア目標",
+                "value": null
+            },
+            "上司への相談内容": {
+                "category": "キャリア目標, 教育",
+                "value": null
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.10/dist/index.js"></script><script>(r => {
+              setTimeout(r);
+            })(function renderToolbar() {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root2, jsonOptions) => {
+              const markmap = getMarkmap();
+              window.mm = markmap.Markmap.create(
+                "svg#mindmap",
+                (getOptions || markmap.deriveOptions)(jsonOptions),
+                root2
+              );
+            })(() => window.markmap,null,{"content":"","children":[{"content":"&#x5fd9;&#x3057;&#x3055;&#x3068;&#x3084;&#x308a;&#x304c;&#x3044;","children":[{"content":"&#x5fd9;&#x3057;&#x3055;: &#x5fd9;&#x3057;&#x3044;","children":[],"payload":{"tag":"li","lines":"1,2"}},{"content":"&#x3084;&#x308a;&#x304c;&#x3044;: &#x3084;&#x308a;&#x304c;&#x3044;&#x3092;&#x611f;&#x3058;&#x3066;&#x3044;&#x308b;","children":[],"payload":{"tag":"li","lines":"2,4"}}],"payload":{"tag":"h1","lines":"0,1"}},{"content":"&#x60a9;&#x307f;&#x3068;&#x8ab2;&#x984c;","children":[{"content":"&#x60a9;&#x307f;:","children":[{"content":"&#x60a3;&#x8005;&#x3055;&#x3093;&#x3068;&#x306e;&#x30b3;&#x30df;&#x30e5;&#x30cb;&#x30b1;&#x30fc;&#x30b7;&#x30e7;&#x30f3;&#x304c;&#x96e3;&#x3057;&#x3044;","children":[],"payload":{"tag":"li","lines":"6,7"}}],"payload":{"tag":"li","lines":"5,7"}},{"content":"&#x8ab2;&#x984c;:","children":[{"content":"&#x9ad8;&#x9f62;&#x306e;&#x60a3;&#x8005;&#x3055;&#x3093;&#x3068;&#x306e;&#x4f1a;&#x8a71;&#x304c;&#x7279;&#x306b;&#x96e3;&#x3057;&#x3044;","children":[{"content":"&#x8a71;&#x306e;&#x7406;&#x89e3;&#x304c;&#x96e3;&#x3057;&#x3044;&#x5834;&#x9762;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x805e;&#x304d;&#x53d6;&#x308a;&#x3065;&#x3089;&#x3044;&#x5834;&#x9762;","children":[],"payload":{"tag":"li","lines":"10,11"}}],"payload":{"tag":"li","lines":"8,11"}},{"content":"&#x8a66;&#x3057;&#x305f;&#x5bfe;&#x7b56;:","children":[{"content":"&#x3086;&#x3063;&#x304f;&#x308a;&#x8a71;&#x3059;","children":[],"payload":{"tag":"li","lines":"12,13"}},{"content":"&#x7c21;&#x5358;&#x306a;&#x8a00;&#x8449;&#x3092;&#x4f7f;&#x3046;","children":[],"payload":{"tag":"li","lines":"13,15"}}],"payload":{"tag":"li","lines":"11,15"}}],"payload":{"tag":"li","lines":"7,15"}}],"payload":{"tag":"h1","lines":"4,5"}},{"content":"&#x8077;&#x52d9;&#x5185;&#x5bb9;","children":[{"content":"&#x8077;&#x5834;: &#x5185;&#x79d1;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x696d;&#x52d9;&#x5185;&#x5bb9;:","children":[{"content":"&#x770b;&#x8b77;&#x696d;&#x52d9;&#x5168;&#x822c;","children":[],"payload":{"tag":"li","lines":"18,19"}},{"content":"&#x30b1;&#x30a2;&#x306e;&#x8cea;&#x5411;&#x4e0a;&#x306e;&#x305f;&#x3081;&#x306e;&#x7814;&#x7a76;","children":[],"payload":{"tag":"li","lines":"19,21"}}],"payload":{"tag":"li","lines":"17,21"}}],"payload":{"tag":"h1","lines":"15,16"}},{"content":"&#x5c02;&#x9580;&#x6027;&#x306e;&#x8208;&#x5473;","children":[{"content":"&#x8208;&#x5473;&#x304c;&#x3042;&#x308b;&#x5206;&#x91ce;:","children":[{"content":"&#x9ad8;&#x9f62;&#x8005;&#x770b;&#x8b77;","children":[],"payload":{"tag":"li","lines":"23,24"}},{"content":"&#x8a8d;&#x77e5;&#x75c7;&#x30b1;&#x30a2;","children":[],"payload":{"tag":"li","lines":"24,25"}}],"payload":{"tag":"li","lines":"22,25"}}],"payload":{"tag":"h1","lines":"21,22"}}]},{})</script>
+</body>
+</html>

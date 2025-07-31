@@ -1,0 +1,147 @@
+﻿{
+    "execution_time": "2025/01/22 15:27:27",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f0183893610> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f018377f090> root_client=<openai.OpenAI object at 0x7f018377c210> root_async_client=<openai.AsyncOpenAI object at 0x7f018383da90> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 小林アオイ\n## 年齢\n- 29歳\n## 出身\n- 広島県\n## 性別\n- 女性\n## 性格\n- 外交的、開放的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって7年目、一般外科病棟で5年間勤務した後、2年前に現在の病院の救急科に転職。\n## 現在のキャリア\n- 救急科で勤務しているが、シフトの長さと精神的な負担に疲れ始めている。\n## 未来像\n- 別の職種への転職を考えており、看護業界を離れる可能性を検討中。\n## 考え\n- シフトの長さと夜勤の頻度に不満があり、職場のストレスが高い。\n## その他の設定\n- 趣味はヨガ。週末に授業を受けることがストレス解消になっていて、仕事の疲れが趣味の時間を侵食している。手芸も趣味の1つであり、最近では3歳の姪の誕生日に何かプレゼントをしようと考えている。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "プライベートでのリフレッシュ方法": {
+                "category": "プライベート",
+                "value": null
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在取り組んでいること": {
+                "category": "キャリア",
+                "value": null
+            },
+            "必要なサポート": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在の業務でのやりがい": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在の業務で改善したい点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進に向けた具体的な目標": {
+                "category": "キャリア",
+                "value": null
+            },
+            "目指している役職やポジション": {
+                "category": "キャリア",
+                "value": null
+            },
+            "伸ばしたいスキル": {
+                "category": "キャリア",
+                "value": null
+            },
+            "目標達成のタイムライン": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近はヨガのクラスに通うのが楽しみです。体を動かすと気分がリフレッシュしますし、仕事のストレスも少し和らぎますね。",
+            "インタビュアー: 現在のキャリアについて、どのように感じていますか？",
+            "インタビュー対象者: 救急科での仕事はやりがいがありますが、シフトの長さや夜勤の頻度が負担になっています。最近は疲れが溜まりやすく、将来について考えることが増えました。",
+            "インタビュアー: 現在、キャリアにおいて特に力を入れて取り組んでいることはありますか？",
+            "インタビュー対象者: 特に力を入れていることはありませんが、患者さんに寄り添うケアを心がけています。ただ、将来の方向性を模索中です。"
+        ],
+        "speak_count": {
+            "total_count": 6,
+            "interviewer_count": 3,
+            "interviewee_count": 3,
+            "interviewer_idle_talk_count": 1,
+            "interviewee_idle_talk_count": 1,
+            "interviewer_generate_question_count": 2,
+            "interviewee_generate_answer_count": 2
+        },
+        "max_total_count": null,
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "救急科での仕事はやりがいがあるが、シフトの長さや夜勤の頻度が負担になっている。"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "シフトの長さや夜勤の頻度が負担になっており、疲れが溜まりやすい。"
+            },
+            "プライベートでのリフレッシュ方法": {
+                "category": "プライベート",
+                "value": "ヨガのクラスに通うこと。体を動かすことで気分がリフレッシュし、仕事のストレスが和らぐ。"
+            },
+            "来年のキャリア希望": {
+                "category": "キャリア",
+                "value": "異動,退職"
+            },
+            "研修の希望": {
+                "category": "キャリア",
+                "value": "無し"
+            },
+            "現在取り組んでいること": {
+                "category": "キャリア",
+                "value": null
+            },
+            "必要なサポート": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在の業務でのやりがい": {
+                "category": "キャリア",
+                "value": "救急科での仕事にやりがいを感じている。"
+            },
+            "現在の業務で改善したい点": {
+                "category": "キャリア",
+                "value": "シフトの長さや夜勤の頻度を改善したい。"
+            },
+            "昇進に向けた具体的な目標": {
+                "category": "キャリア",
+                "value": null
+            },
+            "目指している役職やポジション": {
+                "category": "キャリア",
+                "value": null
+            },
+            "伸ばしたいスキル": {
+                "category": "キャリア",
+                "value": null
+            },
+            "目標達成のタイムライン": {
+                "category": "キャリア",
+                "value": null
+            }
+        }
+    }
+}

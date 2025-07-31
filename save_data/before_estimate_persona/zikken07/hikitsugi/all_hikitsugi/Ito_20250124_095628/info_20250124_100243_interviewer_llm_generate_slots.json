@@ -1,0 +1,220 @@
+﻿{
+    "execution_time": "2025/01/24 09:56:28",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_semi_constructed_persona.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f904eba2e50> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f90528d6d10> root_client=<openai.OpenAI object at 0x7f904eba3250> root_async_client=<openai.AsyncOpenAI object at 0x7f904e7dcc10> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 伊藤アオイ\n## 年齢\n- 28歳\n## 出身\n- 福岡県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって6年目、地域病院で3年間勤務後、現在の大学病院に転職。\n## 現在のキャリア\n- 小児科で勤務、患者や家族からの信頼が厚い。\n## 未来像\n- 看護師としてスキルアップを目指し、可能ならば専門看護師を目指す。\n## 考え\n- チームの一員として認められていると感じるため、現在の職場環境に満足している。\n## その他の設定\n- 休日はヨガや読書でストレス発散できている。読書では主に心理学や自己啓発の書籍に興味があり、友人に勧めているがなかなか読んでくれる人がいない。\n",
+    "self_evaluation": "{\n    \"questionnaire\": {\n        \"user_id\": \"Ito_Aoi\",\n        \"careerPlan\": \"専門看護領域\",\n        \"additionalComments_careerPlan\": \"将来的には小児専門看護師になりたいです。\",\n        \"trainingPreference\": \"院内\",\n        \"additionalComments_training\": \"どれ受ければいいか分かりません。\",\n        \"nextYearPlan\": \"継続\"\n    }\n}",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "persona_coverage": "0",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "リーダー経験": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "将来の展望": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場文化": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "学びの姿勢": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "地域貢献": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "価値観": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "職場での役割": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場外活動": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "ストレス管理": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "成長の動機": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の期待": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己成長意識": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: こんにちは、今日はお時間いただきありがとうございます。まずは簡単に自己紹介をお願いできますか？",
+            "インタビュー対象者: こんにちは、伊藤アオイと申します。福岡県出身で、現在28歳です。よろしくお願いします。",
+            "インタビュアー: 福岡ご出身なんですね！福岡は美味しいものがたくさんありますよね。ちなみに、趣味や休日の過ごし方はどんな感じですか？",
+            "インタビュー対象者: 休日はヨガや読書をして過ごしています。読書は心理学や自己啓発の本が好きです。",
+            "インタビュアー: ヨガや読書、素敵な趣味ですね！心理学や自己啓発の本を読むことで、何かお仕事にも活かせていると感じることはありますか？",
+            "インタビュー対象者: 心理学や自己啓発の本を読むことで、患者さんや家族とのコミュニケーションに役立っています。",
+            "インタビュアー: 現在はどのような職場で働いていますか？",
+            "インタビュー対象者: 現在は大学病院の小児科で勤務しています。患者さんや家族からの信頼が厚いです。",
+            "インタビュアー: 現在の職場で何か悩みや不満に感じていることはありますか？",
+            "インタビュー対象者: 現在の職場環境には満足しています。チームの一員として認められていると感じています。",
+            "インタビュアー: これまでにリーダーとしてチームをまとめた経験はありますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 将来的にどのような看護師を目指したいと考えていますか？",
+            "インタビュー対象者: 看護師としてスキルアップを目指し、可能ならば専門看護師を目指したいと考えています。",
+            "インタビュアー: 現在の職場の文化や雰囲気についてどのように感じていますか？",
+            "インタビュー対象者: 現在の職場の文化や雰囲気には満足しています。協力的で働きやすい環境です。",
+            "インタビュアー: 地域社会に対してどのような貢献をしたいと考えていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: あなたが看護師として大切にしている価値観や信念は何ですか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 仕事でストレスを感じたとき、どのように対処していますか？",
+            "インタビュー対象者: 休日にヨガや読書をすることでストレスを発散し、リフレッシュしています。",
+            "インタビュアー: 看護師としてスキルアップを目指すきっかけや動機は何ですか？",
+            "インタビュー対象者: わかりません。"
+        ],
+        "speak_count": {
+            "total_count": 24,
+            "interviewer_count": 12,
+            "interviewee_count": 12,
+            "interviewer_idle_talk_count": 3,
+            "interviewee_idle_talk_count": 3,
+            "interviewer_generate_question_count": 9,
+            "interviewee_generate_answer_count": 9
+        },
+        "max_total_count": null,
+        "persona_coverage": "50",
+        "slots": {
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "大学病院の小児科で勤務している"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "現在の職場環境には満足している。チームの一員として認められていると感じている"
+            },
+            "リーダー経験": {
+                "category": "キャリア,スキル",
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "将来の展望": {
+                "category": "キャリア,目標",
+                "value": "看護師としてスキルアップを目指し、可能ならば専門看護師を目指したいと考えている"
+            },
+            "職場文化": {
+                "category": "キャリア,環境",
+                "value": "現在の職場の文化や雰囲気には満足している。協力的で働きやすい環境"
+            },
+            "学びの姿勢": {
+                "category": "キャリア,スキル",
+                "value": "心理学や自己啓発の本を読むことで学びを深めている"
+            },
+            "地域貢献": {
+                "category": "キャリア,目標",
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "価値観": {
+                "category": "プライベート,キャリア",
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場での役割": {
+                "category": "キャリア,環境",
+                "value": "患者さんや家族からの信頼が厚い"
+            },
+            "職場外活動": {
+                "category": "プライベート,キャリア",
+                "value": "休日はヨガや読書をして過ごしている"
+            },
+            "ストレス管理": {
+                "category": "プライベート,キャリア",
+                "value": "休日にヨガや読書をすることでストレスを発散し、リフレッシュしている"
+            },
+            "成長の動機": {
+                "category": "キャリア,目標",
+                "value": "このスロットに類似するスロットを生成しないでください。別の抽象的なスロットを作成してください。"
+            },
+            "職場の期待": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "自己成長意識": {
+                "category": "キャリア,プライベート",
+                "value": "心理学や自己啓発の本を読むことで自己成長を意識している"
+            },
+            "コミュニケーション": {
+                "category": "キャリア,スキル",
+                "value": "心理学や自己啓発の本を読むことで患者さんや家族とのコミュニケーションに役立てている"
+            },
+            "心理的影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            },
+            "患者理解": {
+                "category": "キャリア,スキル",
+                "value": null
+            },
+            "文化的背景": {
+                "category": "プライベート,キャリア",
+                "value": null
+            },
+            "職場の信念": {
+                "category": "キャリア,価値観",
+                "value": null
+            },
+            "専門分野志向": {
+                "category": "キャリア,目標",
+                "value": null
+            },
+            "職場の挑戦": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の満足度": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "職場の支援": {
+                "category": "キャリア,環境",
+                "value": null
+            },
+            "キャリア転機": {
+                "category": "キャリア,経験",
+                "value": null
+            },
+            "キャリアの影響": {
+                "category": "キャリア,プライベート",
+                "value": null
+            }
+        }
+    }
+}

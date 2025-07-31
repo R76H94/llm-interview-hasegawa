@@ -1,0 +1,22 @@
+# DialBBのコンフィギュレーションファイル
+
+language: ja   # 言語を指定
+
+blocks:  # ブロックのリスト
+  - name: manager
+    block_class: dialbb.builtin_blocks.stn_management.stn_manager.Manager
+    knowledge_file: knowledge.xlsx # 知識記述ファイル
+    function_definitions: scenario_functions  # 知識記述の中で用いる関数の定義ファイル
+    scenario_graph: yes
+    input:
+      sentence: user_utterance
+      nlu_result: nlu_result
+      user_id: user_id
+      aux_data: aux_data
+    output:
+      output_text: system_utterance
+      final: final
+      aux_data: aux_data
+    flags_to_use:
+      - Y
+

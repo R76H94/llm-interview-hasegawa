@@ -1,0 +1,135 @@
+﻿{
+    "execution_time": "2025/01/21 17:27:33",
+    "command": "/mnt/work/interview/src/interview_statetransition/interview_statetransition_constructed.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f83cbd3ae50> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f83cbc93010> root_client=<openai.OpenAI object at 0x7f83cbd69fd0> root_async_client=<openai.AsyncOpenAI object at 0x7f83cba48990> model_name='gpt-4o-2024-11-20' temperature=0.1 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "## 名前\n- 伊藤アオイ\n## 年齢\n- 28歳\n## 出身\n- 福岡県\n## 性別\n- 女性\n## 性格\n- 誠実、協調的\n## 過去のキャリア\n- 大学病院に勤めている看護師、看護師になって6年目、地域病院で3年間勤務後、現在の大学病院に転職。\n## 現在のキャリア\n- 小児科で勤務、患者や家族からの信頼が厚い。\n## 未来像\n- 看護師としてスキルアップを目指し、可能ならば専門看護師を目指す。\n## 考え\n- チームの一員として認められていると感じるため、現在の職場環境に満足している。\n## その他の設定\n- 休日はヨガや読書でストレス発散できている。読書では主に心理学や自己啓発の書籍に興味があり、友人に勧めているがなかなか読んでくれる人がいない。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": null,
+        "slots": {
+            "個人の基本的な情報": {
+                "category": "基本情報",
+                "value": null
+            },
+            "性格": {
+                "category": "性格",
+                "value": null
+            },
+            "職場での人間関係": {
+                "category": "性格",
+                "value": null
+            },
+            "過去のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": null
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": null
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": null
+            },
+            "昇進や転職の考え": {
+                "category": "キャリア",
+                "value": null
+            },
+            "趣味・プライベート": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家族構成": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家庭の事情": {
+                "category": "プライベート",
+                "value": null
+            }
+        }
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: 最近、何か楽しいことやリフレッシュできることありましたか？",
+            "インタビュー対象者: 最近はヨガをしてリフレッシュしています。体を動かすと気分もスッキリしますし、読書も続けていて心理学の本にハマっています。",
+            "インタビュアー: ヨガや読書、素敵ですね！心理学の本は看護にも役立ちそうですね。",
+            "インタビュー対象者: ありがとうございます！心理学の本は患者さんやご家族とのコミュニケーションにも役立つので、読んでいてとても勉強になります。",
+            "インタビュアー: 現在の職場での人間関係について、どのように感じていますか？",
+            "インタビュー対象者: 現在の職場はチームワークが良く、信頼できる同僚に囲まれているのでとても働きやすいです。協力し合える環境に感謝しています。",
+            "インタビュアー: これまでのキャリアで特に印象に残っている経験や学びは何ですか？",
+            "インタビュー対象者: 地域病院での勤務時、小児患者さんの命を救えた経験が特に印象的です。その経験が今の小児科での仕事に繋がっています。",
+            "インタビュアー: 看護師を目指したきっかけや理由を教えていただけますか？",
+            "インタビュー対象者: 看護師を目指したきっかけは、幼い頃に家族が入院した際、看護師さんが親身に支えてくれた姿に感動したことです。その経験が原点です。"
+        ],
+        "speak_count": {
+            "total_count": 10,
+            "interviewer_count": 5,
+            "interviewee_count": 5,
+            "interviewer_idle_talk_count": 2,
+            "interviewee_idle_talk_count": 2,
+            "interviewer_generate_question_count": 3,
+            "interviewee_generate_answer_count": 3
+        },
+        "max_total_count": null,
+        "slots": {
+            "個人の基本的な情報": {
+                "category": "基本情報",
+                "value": null
+            },
+            "性格": {
+                "category": "性格",
+                "value": null
+            },
+            "職場での人間関係": {
+                "category": "性格",
+                "value": "現在の職場はチームワークが良く、信頼できる同僚に囲まれているのでとても働きやすい。協力し合える環境に感謝している。"
+            },
+            "過去のキャリア": {
+                "category": "キャリア",
+                "value": "地域病院での勤務時、小児患者さんの命を救えた経験が特に印象的。その経験が今の小児科での仕事に繋がっている。"
+            },
+            "現在のキャリア": {
+                "category": "キャリア",
+                "value": "専門看護領域"
+            },
+            "未来像": {
+                "category": "キャリア",
+                "value": "将来的には小児専門看護師になりたい"
+            },
+            "悩みや不満点": {
+                "category": "キャリア",
+                "value": "どれ受ければいいか分からない"
+            },
+            "昇進や転職の考え": {
+                "category": "キャリア",
+                "value": "継続"
+            },
+            "趣味・プライベート": {
+                "category": "プライベート",
+                "value": "ヨガをしてリフレッシュしている。読書を続けており、心理学の本にハマっている。心理学の本は患者さんやご家族とのコミュニケーションにも役立つと感じている。"
+            },
+            "家族構成": {
+                "category": "プライベート",
+                "value": null
+            },
+            "家庭の事情": {
+                "category": "プライベート",
+                "value": null
+            }
+        }
+    }
+}

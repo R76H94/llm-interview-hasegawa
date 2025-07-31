@@ -1,0 +1,56 @@
+# model: gpt-3.5-turbo
+model: gpt-4o-2024-05-13
+user_name: ユーザ
+system_name: システム
+max_turns: 20
+settings:
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\endo_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\endo_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\ito_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\ito_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\iwahashi_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\iwahashi_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\kato_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\kato_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\kawashima_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\kawashima_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\kobayashi_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\kobayashi_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\matsumoto_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\matsumoto_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\mizutani_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\mizutani_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\nakamura_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\nakamura_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\osaki_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\osaki_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\sakai_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\sakai_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\sato_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\sato_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\takahashi_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\takahashi_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\takayama_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\takayama_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\tanaka_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\tanaka_q.json
+  - prompt_template: C:\Users\ekaih\kitasato\test\test\persona\yamamoto_p.txt
+    task_description: task.txt
+    initial_aux_data: C:\Users\ekaih\kitasato\test\test\persona\yamamoto_q.json
+temperatures:
+  - 0.7
