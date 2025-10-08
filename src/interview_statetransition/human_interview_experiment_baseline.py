@@ -1,37 +1,66 @@
-# nohup python src/interview_statetransition/interview_statetransition_semi_constructed_persona_estimate_hikitsugi_pool.py > out/log/output_$(date +%Y%m%d_%H%M%S).log 2>&1 &
+# nohup python -m src.interview_statetransition.human_interview_experiment > out/log/output_$(date +%Y%m%d_%H%M%S).log 2>&1 &
+
+# 対話実験の実行時は
+# python -m src.interview_statetransition.human_interview_experiment 2>&1 | tee -a out/log/output_$(date +%Y%m%d_%H%M%S).log
+
 
 # 半構造化インタビューを行うプログラム
+
+import os
+import json
+import datetime
+import time
+import requests
+import copy
+import random
+import sys
+from pathlib import Path
+from langchain_core.prompts import PromptTemplate
+from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.output_parsers import PydanticOutputParser
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import StateGraph, START, END
+from typing import Dict, List, Optional, Set
+from typing_extensions import TypedDict
+from icecream import ic
+from pytz import timezone
+from pydantic import BaseModel, Field, RootModel
+from .config import load_config
+
+cfg = load_config()
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
 # 設定セクション
 # --------------------------------------------------------------------------------------------------------------------------------------------
 
 # モデルの設定
-MODEL_NAME = "gpt-4o-2024-11-20"
-TEMPERATURE = 0
+MODEL_NAME = cfg.model.name
+TEMPERATURE = cfg.model.temperature
 
 # 待機時間
-WAIT_TIME = 5
+WAIT_TIME = cfg.run.wait_time
+
+# 出力ディレクトリ
+OUT_DIR = cfg.run.out_dir
 
 # プロンプトの設定
-PROMPT_IDLE_TALK_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_idle_talk.txt"
-PROMPT_FILL_SLOTS_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_fill_slots.txt"
-PROMPT_GENERATE_SLOTS_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_generate_slots_fukabori.txt"
-PROMPT_GENERATE_SLOTS_2_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_generate_slots_2.txt"
-PROMPT_GENERATE_QUESTIONS_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_generating_question.txt"
-PROMPT_USER_SIMULATOR_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_user_simulator.txt"
-PROMPT_CAREER_TOPIC_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_career_topic.txt"
-PROMPT_END_CONVERSATION_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_end_conversation.txt"
-
-PROMPT_ESTIMATE_PERSONA_PATH = "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/prompt_estimate_persona.txt"
+PROMPT_IDLE_TALK_PATH = cfg.paths.prompts.idle_talk
+PROMPT_FILL_SLOTS_PATH = cfg.paths.prompts.fill_slots
+PROMPT_GENERATE_SLOTS_PATH = cfg.paths.prompts.generate_slots
+PROMPT_GENERATE_SLOTS_2_PATH = cfg.paths.prompts.generate_slots_2
+PROMPT_GENERATE_QUESTIONS_PATH = cfg.paths.prompts.generate_questions
+PROMPT_USER_SIMULATOR_PATH = cfg.paths.prompts.user_simulator
+PROMPT_CAREER_TOPIC_PATH = cfg.paths.prompts.career_topic
+PROMPT_END_CONVERSATION_PATH = cfg.paths.prompts.end_conversation
+PROMPT_ESTIMATE_PERSONA_PATH = cfg.paths.prompts.estimate_persona
 
 # ユーザシミュレータのpersona設定
-PERSONA_SETTINGS_PATH = "/mnt/work/interview/data/hashimoto-nakano/persona_settings/hasegawa_data/hasegawa_p.txt"
+PERSONA_SETTINGS_PATH = cfg.paths.persona_settings
 
 # 自己評価アンケート
-SELF_EVALUATION_PATH = (
-    "/mnt/work/interview/data/hashimoto-nakano/questionnaire/endo_q.json"
-)
+SELF_EVALUATION_PATH = cfg.paths.self_evaluation
 
 # INTERVIEW_CONFIG（初期状態）の定義
 # "value":\s*"[^"]*"   でスロットの値を抽出
@@ -47,58 +76,18 @@ INTERVIEW_CONFIG = {
         "interviewer_generate_question_count": 0,
         "interviewee_generate_answer_count": 0,
     },
-    "max_total_count": 40,  # 40
-    "min_total_count": 34,  # 30
-    "estimate_persona": "リフレッシュ方法: 未  \nキャリア・職場: 未  \n悩みや不満点: 未  \n将来のキャリアプラン: 未  \n家族: 未  \n思い出・エピソード: 未",  # None
-    "persona_attribute_candidates": [
-        "性格",
-        "SNS",
-        "趣味",
-        "個人の基本的情報",
-        "学生時代の失敗エピソード",
-        "昨日起きたとても悲しい出来事",
-        "副業",
-        "恋愛",
-        "株式投資の経験",
-        "起床後のルーティン",
-        "パソコンを使う頻度",
-        "行ってみたい国",
-    ],
-    "slots": {
-        "現在のキャリア": {"question_priority": 1, "value": None},
-        "悩みや不満点": {"question_priority": 1, "value": None},
-        "昇進・転職": {"question_priority": 1, "value": None},
-        "過去のキャリア": {"question_priority": 1, "value": None},
-        "家族": {"question_priority": 1, "value": None},
-        "思い出・エピソード": {"question_priority": 1, "value": None},
-        "未来像": {"question_priority": 1, "value": None},
-    },
+    "max_total_count": cfg.interview.max_total_count,
+    "min_total_count": cfg.interview.min_total_count,
+    "estimate_persona": cfg.interview.estimate_persona,
+    "persona_attribute_candidates": cfg.interview.persona_attribute_candidates,
+    "slots": cfg.interview.slots,
     "slot_generation_count": 0,
     "branch": None,
+    "last_generated_slot": [],
 }
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
 
-
-import os
-import json
-import datetime
-import time
-import requests
-import copy
-import random
-from langchain_core.prompts import PromptTemplate
-from langchain_core.messages import SystemMessage, HumanMessage
-from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.output_parsers import PydanticOutputParser
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import StateGraph, START, END
-from typing import Dict, List, Optional
-from typing_extensions import TypedDict
-from icecream import ic
-from pytz import timezone
-from pydantic import BaseModel, Field, RootModel
 
 # 必要な環境変数を設定
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
@@ -111,29 +100,101 @@ os.environ["LANGCHAIN_TRACING_V2"] = "false"
 # ic.configureOutput(includeContext=True)
 
 # モデルの定義
-model = ChatOpenAI(
-    model_name=MODEL_NAME,
-    temperature=TEMPERATURE,
-)
+if cfg.model.provider == "openai":
+    model = ChatOpenAI(
+        model=cfg.model.name,
+        temperature=cfg.model.temperature,
+    )
+elif cfg.model.provider == "google":
+    model = ChatGoogleGenerativeAI(
+        model=cfg.model.name,
+        temperature=cfg.model.temperature,
+    )
+else:
+    raise ValueError(f"Unknown model provider: {cfg.model.provider}")
 
-# model = ChatGoogleGenerativeAI(
-#     model="gemini-1.5-flash-002",
-#     temperature=TEMPERATURE,
-# )
+random.seed(42)
 
 
 def load_file(file_path: str) -> str:
     """
     ファイルから情報を読み込む関数
+    読み込みに失敗した場合、プログラムを終了する
 
     Args:
         file_path(str): ファイルパス
     Returns:
         str: ファイルの内容
     """
-    with open(file_path, "r", encoding="utf-8-sig") as f:
-        return f.read()
+    if not os.path.exists(file_path):
+        print(f"ファイルが存在しません: {file_path}", file=sys.stderr)
+        sys.exit(1)
 
+    try:
+        with open(file_path, "r", encoding="utf-8-sig") as f:
+            return f.read()
+    except Exception as e:
+        print(
+            f"ファイルの読み込みに失敗しました: {file_path}, エラー: {e}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+
+def _is_tty_stdin() -> bool:
+    try:
+        return sys.stdin.isatty()
+    except Exception:
+        return False
+
+
+def read_human_input(
+    prompt_text: str, input_file: str | None, timeout_sec: int | None
+) -> str:
+    """人間の入力を取得する関数
+    - TTYが利用可能な場合、標準入力から取得
+    - TTYが利用できない場合、input_fileから取得
+    - timeout_secが指定されている場合、タイムアウトを設定
+    """
+    deadline = time.time() + (timeout_sec or 10**9)
+
+    # 1)対話実行
+    if _is_tty_stdin() and input_file is None:
+        try:
+            return input(prompt_text).strip()
+        except EOFError:
+            return ""
+    # 2)input_fileから取得
+    if input_file:
+        path = Path(input_file)
+        print(f"[human-input] Waiting input in file: {path}", flush=True)
+        while time.time() < deadline:
+            if path.exists():
+                try:
+                    text = path.read_text(encoding="utf-8-sig").strip()
+                except Exception:
+                    text = ""
+                if text:
+                    # 1行目だけ消費する（複数行来たら残りは次回に使える）
+                    lines = text.splitlines()
+                    first, rest = lines[0].strip(), "\n".join(lines[1:])
+                    try:
+                        path.write_text(rest, encoding="utf-8-sig")
+                    except Exception:
+                        pass
+                    return first
+            time.sleep(1)
+        return ""
+
+    # 3) どちらも使えない場合
+    print("[human-input] No TTY and no input_file configured.", flush=True)
+    time.sleep(1)
+    return ""
+
+
+INTERVIEWEE_MODE = cfg.interviewee.mode
+HUMAN_INPUT_FILE = cfg.interviewee.input_file
+HUMAN_WAIT_SEC = cfg.interviewee.wait_human_sec
 
 # 雑談を行うプロンプト
 prompt_idle_talk = load_file(PROMPT_IDLE_TALK_PATH)
@@ -185,13 +246,19 @@ class SpeakCount(TypedDict):
 class State(TypedDict):
     """
     State：ノード間の遷移の際に保存される情報
-    各ノードが参照、更新する
+    各ノードはこの情報を受け取り、必要に応じて更新する
 
     Attributes:
         dialogue_history(List[str]): インタビューの対話履歴
         speak_count(SpeakCount): 発言回数
         max_total_count(int): 最大ターン数
+        min_total_count(int): 最小ターン数
+        estimate_persona(Optional[str]): 推定されたペルソナ情報
+        persona_attribute_candidates(List[str]): ペルソナ属性の候補
         slots(Dict): スロット情報
+        slot_generation_count(int): スロット生成の関数が呼び出された回数
+        branch(Optional[str]): 分岐情報
+        last_generated_slot(List[str]): 生成された深堀りスロット
     """
 
     dialogue_history: List[str]
@@ -201,14 +268,12 @@ class State(TypedDict):
     estimate_persona: Optional[str]
     persona_attribute_candidates: List[str]
     slots: Dict
-    slots_generation_count: int
+    slot_generation_count: int
     branch: Optional[str]
+    last_generated_slot: List[str]
 
 
 class Slot(BaseModel):
-    question_priority: int = Field(
-        0, title="過去のインタビューで何回情報を引き出したか（回数）"
-    )
     value: Optional[str] = Field(None, title="スロットの値")
 
 
@@ -216,13 +281,11 @@ class SlotDict(RootModel[Dict[str, Slot]]):
     pass
 
 
+# スロットの出力をパースするためのパーサー
 slot_output_parser = PydanticOutputParser(pydantic_object=SlotDict)
 
 
 class TargetSlot(BaseModel):
-    question_priority: int = Field(
-        0, title="過去のインタビューで何回情報を引き出したか（回数）"
-    )
     value: Optional[str] = Field(None, title="スロットの値")
 
 
@@ -231,6 +294,7 @@ class QuestionOutput(BaseModel):
     Question: str = Field(..., title="質問")
 
 
+# 質問の出力をパースするためのパーサー
 question_output_parser = PydanticOutputParser(pydantic_object=QuestionOutput)
 
 
@@ -241,7 +305,8 @@ formatted_timestamp = now.strftime("%Y/%m/%d %H:%M:%S")
 
 
 # 保存フォルダの作成
-def create_output_folder(base_folder="out/"):
+# out/配下にtimestampのディレクトリを作成
+def create_output_folder(base_folder=OUT_DIR) -> str:
     folder_path = os.path.join(base_folder, timestamp)
     os.makedirs(folder_path, exist_ok=True)
     return folder_path
@@ -299,11 +364,20 @@ def send_line_notify(notification_message):
     """
     LINEに通知する
     """
-    line_notify_token = os.environ["LINE_TOKEN"]
-    line_notify_api = "https://notify-api.line.me/api/notify"
-    headers = {"Authorization": f"Bearer {line_notify_token}"}
-    data = {"message": f"message: {notification_message}"}
-    requests.post(line_notify_api, headers=headers, data=data)
+    token = os.getenv("LINE_TOKEN")
+    if not token:
+        print("LINE_TOKEN未設定", file=sys.stderr)
+        return
+    try:
+        requests.post(
+            "https://notify-api.line.me/api/notify",
+            headers={"Authorization": f"Bearer {token}"},
+            data={"message": f"message: {notification_message}"},
+            timeout=10,
+        )
+    except Exception as e:
+        print(f"LINE通知に失敗しました: {e}", file=sys.stderr)
+        return
 
 
 # ========================================
@@ -311,7 +385,7 @@ def send_line_notify(notification_message):
 # ========================================
 
 
-def interviewer_llm_idle_talk(state: State):
+def interviewer_llm_idle_talk(state: State) -> State:
     """
     interviewer_llm_idle_talk: インタビュアーの雑談を生成する関数
 
@@ -387,8 +461,41 @@ def interviewer_llm_idle_talk(state: State):
     return new_state
 
 
+def interviewee_llm_idle_talk_impl(state: State) -> str:
+    template = prompt_user_simulator
+    prompt = PromptTemplate(
+        template=template,
+        input_variables=["persona_settings", "dialogue_history_str"],
+    )
+    dialogue_history_str = "\n".join(state["dialogue_history"])
+    system_message = prompt.format(
+        persona_settings=persona_settings,
+        dialogue_history_str=dialogue_history_str,
+    )
+    human_message = "インタビュー対象者:"
+    print(
+        f"\n\n===============関数interviewee_llm_idle_talk_impl===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+    )
+
+    response = model.invoke(
+        [SystemMessage(content=system_message), HumanMessage(content=human_message)]
+    )
+    return (
+        response.content
+        if (response and hasattr(response, "content"))
+        else "モデルの呼び出しに失敗しました。再試行してください。"
+    )
+
+
+def interviewee_human_idle_talk_impl(state: State) -> str:
+    dh = "\n".join(state["dialogue_history"])
+    prompt_text = f"\n[あなた=インタビュー対象者] 直近のやり取り:\n{dh}\nあなたの発話を1行で入力してください> "
+    text = read_human_input(prompt_text, HUMAN_INPUT_FILE, HUMAN_WAIT_SEC)
+    return text or "（無回答）"
+
+
 # インタビュー対象者の雑談発話を生成する関数
-def interviewee_llm_idle_talk(state: State):
+def interviewee_llm_idle_talk(state: State) -> State:
     """
     interviewee_llm_idle_talk: インタビュー対象者の雑談を生成する関数
 
@@ -399,57 +506,23 @@ def interviewee_llm_idle_talk(state: State):
     """
     time.sleep(WAIT_TIME)
     new_state = copy.deepcopy(state)
-
-    dialogue_history = new_state["dialogue_history"]
     sc = new_state["speak_count"]
-
-    template = prompt_user_simulator
-    prompt = PromptTemplate(
-        template=template,
-        input_variables=[
-            "persona_settings",
-            "dialogue_history_str",
-        ],
-    )
-
-    dialogue_history_str = "\n".join(dialogue_history)
-    system_message = prompt.format(
-        persona_settings=persona_settings,
-        dialogue_history_str=dialogue_history_str,
-    )
-
-    human_message = "インタビュー対象者:"
-
-    print(
-        f"\n\n===============関数interviewee_llm_idle_talk===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
-    )
-
     try:
-        response = model.invoke(
-            [
-                SystemMessage(content=system_message),
-                HumanMessage(content=human_message),
-            ]
-        )
-        if response and hasattr(response, "content"):
-            new_dialogue = f"インタビュー対象者: {response.content}"
+        if INTERVIEWEE_MODE == "human":
+            utter = interviewee_human_idle_talk_impl(new_state)
         else:
-            new_dialogue = "インタビュー対象者: モデルの呼び出しに失敗しました。再試行してください。"
-
+            utter = interviewee_llm_idle_talk_impl(new_state)
+        new_dialogue = f"インタビュー対象者: {utter}"
     except Exception as e:
-        print(f"Error occurred while invoking the model: {e}")
-        new_dialogue = (
-            "インタビュー対象者: モデルの呼び出しに失敗しました。再試行してください。"
-        )
-
-    print(f"new_dialogue: {new_dialogue}\n")
+        print(f"Error in interviewee idle_talk: {e}")
+        new_dialogue = "インタビュー対象者: （エラーにより無回答）"
 
     # 発言回数を更新
     sc["total_count"] += 1
     sc["interviewee_count"] += 1
     sc["interviewee_idle_talk_count"] += 1
 
-    new_state["dialogue_history"] = dialogue_history + [new_dialogue]
+    new_state["dialogue_history"] = new_state["dialogue_history"] + [new_dialogue]
     new_state["speak_count"] = sc
 
     print(f"new_state: {new_state}\n")
@@ -466,7 +539,7 @@ def interviewee_llm_idle_talk(state: State):
     return new_state
 
 
-def interviewer_llm_generate_question(state: State):
+def interviewer_llm_generate_question(state: State) -> State:
     """
     interviewer_llm_generate_question: インタビュアーの発言(質問)を生成する関数
 
@@ -480,8 +553,14 @@ def interviewer_llm_generate_question(state: State):
 
     dialogue_history = new_state["dialogue_history"]
     sc = new_state["speak_count"]
-    slots = new_state["slots"]
+    pending = new_state.get("last_generated_slot", [])
+    all_slots = new_state["slots"]
     estimate_persona = new_state["estimate_persona"]
+
+    if pending:
+        slots_for_prompt = {k: all_slots[k] for k in pending if k in all_slots}
+    else:
+        slots_for_prompt = all_slots
 
     template = prompt_generate_questions
     prompt = PromptTemplate(
@@ -499,7 +578,7 @@ def interviewer_llm_generate_question(state: State):
     dialogue_history_str = "\n".join(dialogue_history)
     system_message = prompt.format(
         dialogue_history_str=dialogue_history_str,
-        current_slots=slots,
+        current_slots=slots_for_prompt,
         estimate_persona=estimate_persona,
     )
 
@@ -537,6 +616,9 @@ def interviewer_llm_generate_question(state: State):
             "インタビュアー: モデルの呼び出しに失敗しました。再試行してください。"
         )
 
+    if pending:
+        new_state["last_generated_slot"] = []
+
     print(f"new_dialogue: {new_dialogue}\n")
 
     # 発言回数を更新
@@ -561,72 +643,59 @@ def interviewer_llm_generate_question(state: State):
     return new_state
 
 
-# インタビュー対象者の発話(回答)を生成する関数
-def interviewee_llm_generate_answer(state: State):
-    """
-    interviewee_llm_generate_answer: インタビュー対象者の発言(回答)を生成する関数
-
-    Args:
-        state(State): 状態情報
-    Returns:
-        Dict: 更新された状態情報(インタビュー対象者の発言, 発言回数)
-    """
-    time.sleep(WAIT_TIME)
-    new_state = copy.deepcopy(state)
-
-    dialogue_history = new_state["dialogue_history"]
-    sc = new_state["speak_count"]
-
+def interviewee_llm_generate_answer_impl(state: State) -> str:
     template = prompt_user_simulator
     prompt = PromptTemplate(
         template=template,
-        input_variables=[
-            "persona_settings",
-            "dialogue_history_str",
-        ],
+        input_variables=["persona_settings", "dialogue_history_str"],
     )
-
-    dialogue_history_str = "\n".join(dialogue_history)
+    dialogue_history_str = "\n".join(state["dialogue_history"])
     system_message = prompt.format(
         persona_settings=persona_settings,
         dialogue_history_str=dialogue_history_str,
     )
-
     human_message = "インタビュー対象者:"
-
     print(
-        f"\n\n===============関数interviewee_llm_generate_answer===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+        f"\n\n===============関数interviewee_llm_generate_answer_impl===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
     )
 
+    response = model.invoke(
+        [SystemMessage(content=system_message), HumanMessage(content=human_message)]
+    )
+    return (
+        response.content
+        if (response and hasattr(response, "content"))
+        else "モデルの呼び出しに失敗しました。再試行してください。"
+    )
+
+
+def interviewee_human_generate_answer_impl(state: State) -> str:
+    dh = "\n".join(state["dialogue_history"][-6:])
+    prompt_text = f"\n[あなた=インタビュー対象者] 直近のやり取り:\n{dh}\n質問へのあなたの回答を1行で入力してください> "
+    text = read_human_input(prompt_text, HUMAN_INPUT_FILE, HUMAN_WAIT_SEC)
+    return text or "（無回答）"
+
+
+def interviewee_llm_generate_answer(state: State) -> State:
+    """既存関数名は維持。内部で LLM/HUMAN を分岐。"""
+    time.sleep(WAIT_TIME)
+    new_state = copy.deepcopy(state)
+    sc = new_state["speak_count"]
     try:
-        response = model.invoke(
-            [
-                SystemMessage(content=system_message),
-                HumanMessage(content=human_message),
-            ]
-        )
-        if response and hasattr(response, "content"):
-            new_dialogue = f"インタビュー対象者: {response.content}"
+        if INTERVIEWEE_MODE == "human":
+            utter = interviewee_human_generate_answer_impl(new_state)
         else:
-            new_dialogue = "インタビュー対象者: モデルの呼び出しに失敗しました。再試行してください。"
-
+            utter = interviewee_llm_generate_answer_impl(new_state)
+        new_dialogue = f"インタビュー対象者: {utter}"
     except Exception as e:
-        print(f"Error occurred while invoking the model: {e}")
-        new_dialogue = (
-            "インタビュー対象者: モデルの呼び出しに失敗しました。再試行してください。"
-        )
+        print(f"Error in interviewee generate_answer: {e}")
+        new_dialogue = "インタビュー対象者: （エラーにより無回答）"
 
-    print(f"new_dialogue: {new_dialogue}\n")
-
-    # 発言回数を更新
     sc["total_count"] += 1
     sc["interviewee_count"] += 1
     sc["interviewee_generate_answer_count"] += 1
-
-    new_state["dialogue_history"] = dialogue_history + [new_dialogue]
+    new_state["dialogue_history"] = new_state["dialogue_history"] + [new_dialogue]
     new_state["speak_count"] = sc
-
-    print(f"new_state: {new_state}\n")
 
     now = datetime.datetime.now(jst)
     timestamp = now.strftime("%Y%m%d_%H%M%S")
@@ -634,14 +703,12 @@ def interviewee_llm_generate_answer(state: State):
     this_node_path = os.path.join(
         execution_folder, f"info_{timestamp}_{node_name}.json"
     )
-
     save_state_to_file(new_state, this_node_path)
-
     return new_state
 
 
 # スロットを埋める関数
-def interviewer_llm_fill_slots(state: State):
+def interviewer_llm_fill_slots(state: State) -> State:
     """
     interviewer_llm_fill_slots: インタビュアーがスロットを埋める関数
 
@@ -692,7 +759,7 @@ def interviewer_llm_fill_slots(state: State):
             try:
                 new_slots_obj = slot_output_parser.parse(response.content)
                 new_slot_dict = {
-                    slot_name: slot_model.dict()
+                    slot_name: slot_model.model_dump()
                     for slot_name, slot_model in new_slots_obj.root.items()
                 }
                 merged_slots = {**slots, **new_slot_dict}
@@ -725,9 +792,10 @@ def interviewer_llm_fill_slots(state: State):
 
 
 # スロットを生成する関数
-def interviewer_llm_generate_slots(state: State):
+def interviewer_llm_generate_slots(state: State) -> State:
     """
     interviewer_llm_generate_slots: インタビュアーがスロットを生成する関数
+    深堀りスロットを生成する
 
     Args:
         state(State): 状態情報
@@ -739,6 +807,7 @@ def interviewer_llm_generate_slots(state: State):
 
     dialogue_history = new_state["dialogue_history"]
     slots = new_state["slots"]
+    prev_keys = set(slots.keys())
     estimate_persona = new_state["estimate_persona"]
 
     template = prompt_generate_slots
@@ -779,27 +848,33 @@ def interviewer_llm_generate_slots(state: State):
             print(f"new_slots_dict: {content}\n")
             if content == "None":
                 merged_slots = slots
+                added = []
             else:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
                     new_slots_dict = {
-                        slot_name: slot_model.dict()
+                        slot_name: slot_model.model_dump()
                         for slot_name, slot_model in new_slots_obj.root.items()
                     }
                     merged_slots = {**slots, **new_slots_dict}
+                    added = [k for k in merged_slots.keys() if k not in prev_keys]
                 except Exception as e:
                     print(f"Error occurred while decoding the JSON: {e}")
                     merged_slots = slots
+                    added = []
         else:
             merged_slots = slots
+            added = []
 
     except Exception as e:
         print(f"Error occurred while invoking the model: {e}")
         merged_slots = slots
+        added = []
 
     print(f"merged_slots: {merged_slots}\n")
 
     new_state["slots"] = merged_slots
+    new_state["last_generated_slot"] = added
 
     print(f"new_state: {new_state}\n")
 
@@ -815,10 +890,11 @@ def interviewer_llm_generate_slots(state: State):
     return new_state
 
 
-# ループの3回に1回、interviewer_llm_generate_slots関数の代わりに呼び出される関数
-def interviewer_llm_generate_slots_2(state: State):
+# 50%の確率でinterviewer_llm_generate_slots関数の代わりに呼び出される関数
+def interviewer_llm_generate_slots_2(state: State) -> State:
     """
     interviewer_llm_generate_slots_2: インタビュアーがスロットを生成する関数
+    プールからランダムにトピックを選び、そのトピックに関連するスロットを生成する
 
     Args:
         state(State): 状態情報
@@ -878,7 +954,7 @@ def interviewer_llm_generate_slots_2(state: State):
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
                     new_slots_dict = {
-                        slot_name: slot_model.dict()
+                        slot_name: slot_model.model_dump()
                         for slot_name, slot_model in new_slots_obj.root.items()
                     }
                     merged_slots = {**slots, **new_slots_dict}
@@ -911,10 +987,11 @@ def interviewer_llm_generate_slots_2(state: State):
 # スロット生成の関数を選択するための関数
 def select_generate_slots_node(state: State) -> State:
     """
-    3回に1回はinterviewer_llm_generate_slots_2、それ以外はinterviewer_llm_generate_slotsを返す
+    ランダムに50%の確率でinterviewer_llm_generate_slots_2、interviewer_llm_generate_slotsを返す
+    直前の回答が「わからない」の場合はinterviewer_llm_generate_slots_2を返す
     """
     new_state = copy.deepcopy(state)
-    new_state["slots_generation_count"] = new_state.get("slots_generation_count", 0) + 1
+    new_state["slot_generation_count"] = new_state.get("slot_generation_count", 0) + 1
 
     # 直近のインタビュー対象者の発話を取得
     last_interviewee_utternace = None
@@ -924,7 +1001,7 @@ def select_generate_slots_node(state: State) -> State:
             break
 
     # 直前の回答が「わからない」場合
-    if last_interviewee_utternace == "インタビュー対象者: わかりません。":
+    if last_interviewee_utternace and "わかりません" in last_interviewee_utternace:
         new_state["branch"] = "interviewer_llm_generate_slots_2"
     # それ以外の回答の場合
     else:
@@ -937,7 +1014,7 @@ def select_generate_slots_node(state: State) -> State:
 
 
 # インタビュー終了時の処理
-def end_interview(state: State):
+def end_interview(state: State) -> State:
     """
     end_interview: インタビューを終了する関数
 
@@ -946,7 +1023,6 @@ def end_interview(state: State):
     Returns:
         Dict: 更新された状態情報(インタビュー終了)
     """
-    time.sleep(WAIT_TIME)
     new_state = copy.deepcopy(state)
 
     dialogue_history = new_state["dialogue_history"]
@@ -1066,7 +1142,6 @@ def finish_interview(state: State) -> str:
     Returns:
         str: 対話の終了条件
     """
-    time.sleep(WAIT_TIME)
     new_state = copy.deepcopy(state)
 
     dialogue_history = new_state["dialogue_history"]
@@ -1140,14 +1215,14 @@ def finish_interview(state: State) -> str:
 
 
 # ペルソナ情報の推定を行う関数
-def interviewer_llm_estimate_persona(state: State) -> str:
+def interviewer_llm_estimate_persona(state: State) -> State:
     """
     interviewer_llm_estimate_persona: ペルソナ情報の推定を行う関数
 
     Args:
         state(State): 状態情報
     Returns:
-        str: 推定されたペルソナ情報
+        Dict: 推定されたペルソナ情報
     """
     time.sleep(WAIT_TIME)
     new_state = copy.deepcopy(state)
@@ -1185,7 +1260,6 @@ def interviewer_llm_estimate_persona(state: State) -> str:
         )
         if response and hasattr(response, "content"):
             print(f"estimated_persona: {response.content}\n")
-            # str型(大文字小文字を無視)
             estimated_persona = response.content.strip()
         else:
             estimated_persona = "ペルソナ情報の推定に失敗しました。"
@@ -1243,9 +1317,8 @@ graph_builder.add_conditional_edges(
         False: "interviewer_llm_idle_talk",
     },
 )
-graph_builder.add_edge("interviewer_llm_fill_slots", "interviewer_llm_estimate_persona")
 graph_builder.add_conditional_edges(
-    "interviewer_llm_estimate_persona",
+    "interviewer_llm_fill_slots",
     finish_interview,
     {
         "end": "end_interview",
@@ -1290,41 +1363,45 @@ graph_builder.set_entry_point("interviewer_llm_idle_talk")
 # Graphの終点を宣言
 graph_builder.set_finish_point("end_interview")
 
-# Graphのコンパイル
-graph = graph_builder.compile()
+
+def main():
+    # Graphのコンパイル
+    graph = graph_builder.compile()
+
+    # Graphの実行(引数にはStateの初期値を渡す)
+    new_state = graph.invoke(
+        {
+            "dialogue_history": interview_config["dialogue_history"],
+            "speak_count": interview_config["speak_count"],
+            "max_total_count": interview_config["max_total_count"],
+            "min_total_count": interview_config["min_total_count"],
+            "estimate_persona": interview_config["estimate_persona"],
+            "persona_attribute_candidates": interview_config[
+                "persona_attribute_candidates"
+            ],
+            "slots": interview_config["slots"],
+            "slot_generation_count": interview_config["slot_generation_count"],
+            "branch": interview_config["branch"],
+        },
+        config={
+            "recursion_limit": 200,
+        },
+        # debug=True,
+    )
+
+    # Graphの可視化
+    try:
+        with open(graph_image_path, "wb") as f:
+            f.write(graph.get_graph(xray=True).draw_mermaid_png())
+    except Exception as e:
+        print(f"Graphの可視化に失敗しました: {e}")
+
+    send_line_notify(
+        f"インタビューが終了しました。結果は{execution_folder}に保存されました。"
+    )
+
+    print(f"インタビューが終了しました。結果は{execution_folder}に保存されました。")
 
 
-# Graphの実行(引数にはStateの初期値を渡す)
-new_state = graph.invoke(
-    {
-        "dialogue_history": interview_config["dialogue_history"],
-        "speak_count": interview_config["speak_count"],
-        "max_total_count": interview_config["max_total_count"],
-        "min_total_count": interview_config["min_total_count"],
-        "estimate_persona": interview_config["estimate_persona"],
-        "persona_attribute_candidates": interview_config[
-            "persona_attribute_candidates"
-        ],
-        "slots": interview_config["slots"],
-        "slot_generation_count": interview_config["slot_generation_count"],
-        "branch": interview_config["branch"],
-    },
-    config={
-        "recursion_limit": 200,
-    },
-    # debug=True,
-)
-
-
-# Graphの可視化
-try:
-    with open(graph_image_path, "wb") as f:
-        f.write(graph.get_graph(xray=True).draw_mermaid_png())
-except Exception as e:
-    print(f"Graphの可視化に失敗しました: {e}")
-
-send_line_notify(
-    f"インタビューが終了しました。結果は{execution_folder}に保存されました。"
-)
-
-print(f"インタビューが終了しました。結果は{execution_folder}に保存されました。")
+if __name__ == "__main__":
+    main()
