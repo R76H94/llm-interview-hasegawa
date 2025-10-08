@@ -14,7 +14,7 @@ run:
 interview:
   max_total_count: 30
   min_total_count: 25
-  estimate_persona: null
+  estimate_persona: "リフレッシュ方法: 未  \nキャリア・職場: 未  \n悩みや不満点: 未  \n将来のキャリアプラン: 未  \n家族: 未  \n思い出・エピソード: 未"
   persona_attribute_candidates:
     - "性格"
     - "過去のキャリア"

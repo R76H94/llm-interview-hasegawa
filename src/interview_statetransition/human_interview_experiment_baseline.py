@@ -670,7 +670,7 @@ def interviewee_llm_generate_answer_impl(state: State) -> str:
 
 
 def interviewee_human_generate_answer_impl(state: State) -> str:
-    dh = "\n".join(state["dialogue_history"][-6:])
+    dh = "\n".join(state["dialogue_history"])
     prompt_text = f"\n[あなた=インタビュー対象者] 直近のやり取り:\n{dh}\n質問へのあなたの回答を1行で入力してください> "
     text = read_human_input(prompt_text, HUMAN_INPUT_FILE, HUMAN_WAIT_SEC)
     return text or "（無回答）"
