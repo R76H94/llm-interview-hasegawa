@@ -1,7 +1,7 @@
 # nohup python -m src.interview_statetransition.human_interview_experiment > out/log/output_$(date +%Y%m%d_%H%M%S).log 2>&1 &
 
 # 対話実験の実行時は
-# python -m src.interview_statetransition.human_interview_experiment 2>&1 | tee -a out/log/output_$(date +%Y%m%d_%H%M%S).log
+# python -m src.interview_statetransition.human_interview_experiment_proposed_method 2>&1 | tee -a out/log/$(date +%Y%m%d_%H%M%S)_output.log
 
 
 # 半構造化インタビューを行うプログラム
