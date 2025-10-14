@@ -67,8 +67,6 @@ interview:
     - "感情のコントロールで気をつけていること"
     - "金銭感覚の違い"
   slots: {}
-    # 現在のキャリア: null
-    # 悩みや不満点: null
 
 paths:
   prompts:

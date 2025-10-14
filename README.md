@@ -50,10 +50,10 @@
     - 例）リフレッシュ方法: 済  \nキャリア・職場: 済  \n悩みや不満点: 済 → リフレッシュ方法: 未  \nキャリア・職場: 未  \n悩みや不満点: 未
 - persona_attribute_candidates: ペルソナ属性候補
   - baselineの場合：必ずconfigs/default.yamlのデフォルト設定と同じ
-  - proposed methodの場合：1人目は必ずconfigs/default.yamlのデフォルト設定と同じ。2人目からは前のインタビューの終了時点のpersona_attribute_candidatesの結果を入力（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>persona_attribute_candidatesを参照してコピペ）
-- slots: スロット
-  - baselineの場合：必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）
-  - proposed methodの場合：1人目は必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）。2人目からはまず前のインタビューの終了時点のslotsの結果をコピペ。この状態では、各スロットの"value"内に値が入っている状態なので、"value"の値をすべてnullに変更する
+  - proposed methodの場合：1人目は必ずconfigs/default.yamlのデフォルト設定と同じ。2人目からは前のインタビューの終了時点のpersona_attribute_candidatesの結果を入力する。ペルソナ属性候補は徐々に少なくなっていくはず（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>persona_attribute_candidatesを参照してコピペ）
+- slots: スロット（default.yamlファイルを参照）
+  - baselineの場合：必ず`slots: {}`
+  - proposed methodの場合：1人目は必ず`slots: {}`。2人目からはまず前のインタビューの終了時点のslotsの結果をコピペ。この状態では、各スロットの値が入っている状態なので、値をすべてnullに変更する
 - path.persona_settings: インタビュー対象者のペルソナ設定ファイルのパスを設定
 - run.out_dir: 結果の出力先（任意）
 - interview.max_total_count/min_total_count: 会話ターン数の指定（任意）
