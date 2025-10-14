@@ -1,37 +1,67 @@
-# interview
+# interview（2025/10/15更新）
 
-## 設定ファイル（configs）
+## ディレクトリ構成
 
-- configs/default.yamlは書き換えない（デフォルト設定）
-- configs/local.yamlを実験ごとに設定
+- `configs/`
+  設定ファイルを格納
+  configs/default.yamlは書き換えない（デフォルト設定）
+  configs/local.yamlを実験ごとに設定する
 
-### configs/local.
+- `data/hashimoto-nakano/`
+  ペルソナ設定、プロンプトを格納
+  - `persona_settings`
+    ペルソナ設定を格納
+    - `Nurse-Persona-Hasegawa-202510`：看護師データ（論文には載せない）
+    - `IT_engineer-Persona-Sonoda-202510`：ITエンジニア
+    - `Store_Staff-Persona-Sonoda-202510`：店舗スタッフ
+    - `Teacher-Persona-Sonoda-202510`：先生
+  - `prompt_semi_const/`
+    プロンプトを格納
+    - `baseline/all_domain/`
+    ベースライン手法
+    - `proposed_method/all_domain/`
+    提案手法
+
+- `save_data/estimate_persona/`
+  IWSDS2025の結果
+
+- `out/`
+  実験実行時の出力
+  - `log/`
+  実行時のログ
+  - 日時ごとの出力ディレクトリ
+  実験ごとの詳細な出力（info.json, graph.png など）
+
+- `src/interview_statetransition/`
+  ソースコード
+  - `human_interview_experiment_baseline.py`
+  ベースライン
+  - `human_interview_experiment_proposed_method.py`
+  提案手法
+
+### `configs/local.yaml`で書き換える部分
 
 以下の項目はインタビューを始める前に必ず書き換える
 
 - estimate_persona: 推定ペルソナ
-  - baselineの場合は必ずnull
-  - proposed methodの場合、1人目は必ずnull。2人目からは前のインタビューの終了時点のestimate_personaの結果を入力（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>estimate_personaを参照してコピペ）
-    - 例）4人目の開始前に、3人目の結果出力先フォルダ内のinfo.jsonに記録されるnew_state>estimate_personaを参照してコピペ
+  - baselineの場合：必ずnull
+  - proposed methodの場合：1人目は必ずnull。2人目からは前のインタビューの終了時点のestimate_personaの結果を入力（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>estimate_personaを参照してコピペし、「済」をすべて「未」に書き換える。default.yamlを参照）
+    - 例）4人目の開始前に、3人目の結果出力先フォルダ内のinfo.jsonに記録されるnew_state>estimate_personaを参照してコピペ。その後「済」→「未」に書き換える。
+    - 例）リフレッシュ方法: 済  \nキャリア・職場: 済  \n悩みや不満点: 済 → リフレッシュ方法: 未  \nキャリア・職場: 未  \n悩みや不満点: 未
 - persona_attribute_candidates: ペルソナ属性候補
-  - baselineの場合は必ずconfigs/default.yamlのデフォルト設定と同じ
-  - proposed methodの場合、1人目は必ずconfigs/default.yamlのデフォルト設定と同じ。2人目からは前のインタビューの終了時点のpersona_attribute_candidatesの結果を入力（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>persona_attribute_candidatesを参照してコピペ）
+  - baselineの場合：必ずconfigs/default.yamlのデフォルト設定と同じ
+  - proposed methodの場合：1人目は必ずconfigs/default.yamlのデフォルト設定と同じ。2人目からは前のインタビューの終了時点のpersona_attribute_candidatesの結果を入力（結果の出力先フォルダ内のinfo.jsonに記録されるnew_state>persona_attribute_candidatesを参照してコピペ）
 - slots: スロット
-  - baselineの場合は必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）
-  - proposed methodの場合、1人目は必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）。2人目からはまず前のインタビューの終了時点のslotsの結果をコピペ。この状態では、各スロットの"value"内に値が入っている状態なので、"value"の値をすべてnullに変更する
+  - baselineの場合：必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）
+  - proposed methodの場合：1人目は必ずconfigs/default.yamlのデフォルト設定と同じ（現在のキャリア、悩みや不満点）。2人目からはまず前のインタビューの終了時点のslotsの結果をコピペ。この状態では、各スロットの"value"内に値が入っている状態なので、"value"の値をすべてnullに変更する
 - path.persona_settings: インタビュー対象者のペルソナ設定ファイルのパスを設定
 - run.out_dir: 結果の出力先（任意）
 - interview.max_total_count/min_total_count: 会話ターン数の指定（任意）
 
-## 実行ファイル
-
-- src/interview_statetransition/human_interview_experiment_baseline.py: baselineの実行ファイル
-- src/interview_statetransition/human_interview_experiment_proposed_method.py: proposed methodの実行ファイル
-
 ### 実行方法
 
 ```bash
-python -m src.interview_statetransition.human_interview_experiment_proposed_method 2>&1 | tee -a out/log/$(date +%Y%m%d_%H%M%S)_output.log
+python -m src.interview_statetransition.human_interview_experiment_proposed_method 2>&1 | tee -a out/log/$(TZ=Asia/Tokyo date +%Y%m%d_%H%M%S)_output.log
 ```
 
 # 生成物（出力）

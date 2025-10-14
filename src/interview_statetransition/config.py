@@ -33,13 +33,11 @@ class InterviewConfig(BaseModel):
 
 
 class PathsPrompts(BaseModel):
-    idle_talk: str
     fill_slots: str
     generate_slots: str
     generate_slots_2: str
     generate_questions: str
     user_simulator: str
-    career_topic: str
     end_conversation: str
     estimate_persona: str
 
@@ -47,7 +45,6 @@ class PathsPrompts(BaseModel):
 class PathsConfig(BaseModel):
     prompts: PathsPrompts
     persona_settings: str
-    self_evaluation: str
 
 
 class AppConfig(BaseSettings):

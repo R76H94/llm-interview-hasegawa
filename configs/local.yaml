@@ -4,18 +4,20 @@ model:
   temperature: 0
 
 interviewee:
-  mode: "human" # "human" | "llm"
+  mode: "llm" # "human" or "llm"
   wait_human_sec: null  # 人間が回答するまでの待機時間
 
 run:
   wait_time: 3
-  out_dir: "out"
+  out_dir: "out/memo"
 
 interview:
-  max_total_count: 15
-  min_total_count: 15
+  max_total_count: 40  #デフォルト値：40
+  min_total_count: 36  #デフォルト値：36
   estimate_persona: null
-  persona_attribute_candidates:
+  persona_attribute_candidates: # スロット属性候補(デフォルトは50個)
+    - "現在のキャリア"
+    - "悩みや不満点"
     - "性格"
     - "過去のキャリア"
     - "昇進・転職"
@@ -47,7 +49,6 @@ interview:
     - "資産運用の考え方"
     - "人脈の広げ方"
     - "在宅ワーク"
-    - "乗馬の経験"
     - "起床後のルーティン"
     - "パソコンを使う頻度"
     - "かかりつけの病院"
@@ -61,25 +62,21 @@ interview:
     - "乗りたい車"
     - "好きな芸能人"
     - "行ってみたい国"
-    - "テクノロジーとの付き合い方"
     - "通勤時の移動方法"
     - "オンライン会議における悩みごと"
     - "感情のコントロールで気をつけていること"
     - "金銭感覚の違い"
-  slots:
-    現在のキャリア: {value: null}
-    悩みや不満点:   {value: null}
+  slots: {}
+    # 現在のキャリア: null
+    # 悩みや不満点: null
 
 paths:
   prompts:
-    idle_talk: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_idle_talk.txt"
     fill_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_fill_slots.txt"
     generate_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generate_slots.txt"
     generate_slots_2: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generate_slots_2.txt"
     generate_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generating_question.txt"
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
-    career_topic: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_career_topic.txt"
     end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_end_conversation.txt"
     estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_estimate_persona.txt"
-  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
-  self_evaluation: "/mnt/work/interview/data/hashimoto-nakano/questionnaire/endo_q.json"
+  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/Nurse-Persona-Hasegawa-202510/01.txt"

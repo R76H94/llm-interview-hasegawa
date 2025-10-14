@@ -1,7 +1,7 @@
 # nohup python -m src.interview_statetransition.human_interview_experiment > out/log/output_$(date +%Y%m%d_%H%M%S).log 2>&1 &
 
 # 対話実験の実行時は
-# python -m src.interview_statetransition.human_interview_experiment_baseline 2>&1 | tee -a out/log/$(date +%Y%m%d_%H%M%S)_output.log
+# python -m src.interview_statetransition.human_interview_experiment_baseline 2>&1 | tee -a out/log/$(TZ=Asia/Tokyo date +%Y%m%d_%H%M%S)_output.log
 
 
 # 半構造化インタビューを行うプログラム
@@ -46,13 +46,13 @@ WAIT_TIME = cfg.run.wait_time
 OUT_DIR = cfg.run.out_dir
 
 # プロンプトの設定
-PROMPT_IDLE_TALK_PATH = cfg.paths.prompts.idle_talk
+# PROMPT_IDLE_TALK_PATH = cfg.paths.prompts.idle_talk
 PROMPT_FILL_SLOTS_PATH = cfg.paths.prompts.fill_slots
 PROMPT_GENERATE_SLOTS_PATH = cfg.paths.prompts.generate_slots
 PROMPT_GENERATE_SLOTS_2_PATH = cfg.paths.prompts.generate_slots_2
 PROMPT_GENERATE_QUESTIONS_PATH = cfg.paths.prompts.generate_questions
 PROMPT_USER_SIMULATOR_PATH = cfg.paths.prompts.user_simulator
-PROMPT_CAREER_TOPIC_PATH = cfg.paths.prompts.career_topic
+# PROMPT_CAREER_TOPIC_PATH = cfg.paths.prompts.career_topic
 PROMPT_END_CONVERSATION_PATH = cfg.paths.prompts.end_conversation
 PROMPT_ESTIMATE_PERSONA_PATH = cfg.paths.prompts.estimate_persona
 
@@ -60,7 +60,7 @@ PROMPT_ESTIMATE_PERSONA_PATH = cfg.paths.prompts.estimate_persona
 PERSONA_SETTINGS_PATH = cfg.paths.persona_settings
 
 # 自己評価アンケート
-SELF_EVALUATION_PATH = cfg.paths.self_evaluation
+# SELF_EVALUATION_PATH = cfg.paths.self_evaluation
 
 # INTERVIEW_CONFIG（初期状態）の定義
 # "value":\s*"[^"]*"   でスロットの値を抽出
@@ -113,7 +113,7 @@ elif cfg.model.provider == "google":
 else:
     raise ValueError(f"Unknown model provider: {cfg.model.provider}")
 
-random.seed(42)
+# random.seed(42)
 
 
 def load_file(file_path: str) -> str:
@@ -197,7 +197,7 @@ HUMAN_INPUT_FILE = cfg.interviewee.input_file
 HUMAN_WAIT_SEC = cfg.interviewee.wait_human_sec
 
 # 雑談を行うプロンプト
-prompt_idle_talk = load_file(PROMPT_IDLE_TALK_PATH)
+# prompt_idle_talk = load_file(PROMPT_IDLE_TALK_PATH)
 
 # スロットを埋めるプロンプト
 prompt_fill_slots = load_file(PROMPT_FILL_SLOTS_PATH)
@@ -215,7 +215,7 @@ prompt_generate_questions = load_file(PROMPT_GENERATE_QUESTIONS_PATH)
 prompt_user_simulator = load_file(PROMPT_USER_SIMULATOR_PATH)
 
 # キャリアの話題が出たかどうかを判定するプロンプト
-prompt_career_topic = load_file(PROMPT_CAREER_TOPIC_PATH)
+# prompt_career_topic = load_file(PROMPT_CAREER_TOPIC_PATH)
 
 # 会話を終了するかどうかを判定するプロンプト
 prompt_end_conversation = load_file(PROMPT_END_CONVERSATION_PATH)
@@ -227,7 +227,7 @@ prompt_estimate_persona = load_file(PROMPT_ESTIMATE_PERSONA_PATH)
 persona_settings = load_file(PERSONA_SETTINGS_PATH)
 
 # 自己評価アンケート
-self_evaluation = load_file(SELF_EVALUATION_PATH)
+# self_evaluation = load_file(SELF_EVALUATION_PATH)
 
 # interview_config（初期状態）の定義
 interview_config = copy.deepcopy(INTERVIEW_CONFIG)
@@ -273,11 +273,7 @@ class State(TypedDict):
     last_generated_slot: List[str]
 
 
-class Slot(BaseModel):
-    value: Optional[str] = Field(None, title="スロットの値")
-
-
-class SlotDict(RootModel[Dict[str, Slot]]):
+class SlotDict(RootModel[Dict[str, Optional[str]]]):
     pass
 
 
@@ -285,12 +281,8 @@ class SlotDict(RootModel[Dict[str, Slot]]):
 slot_output_parser = PydanticOutputParser(pydantic_object=SlotDict)
 
 
-class TargetSlot(BaseModel):
-    value: Optional[str] = Field(None, title="スロットの値")
-
-
 class QuestionOutput(BaseModel):
-    Target_Slot: Dict[str, TargetSlot] = Field(..., title="スロット")
+    Target_Slot: Dict[str, Optional[str]] = Field(..., title="スロット")
     Question: str = Field(..., title="質問")
 
 
@@ -385,158 +377,158 @@ def send_line_notify(notification_message):
 # ========================================
 
 
-def interviewer_llm_idle_talk(state: State) -> State:
-    """
-    interviewer_llm_idle_talk: インタビュアーの雑談を生成する関数
+# def interviewer_llm_idle_talk(state: State) -> State:
+#     """
+#     interviewer_llm_idle_talk: インタビュアーの雑談を生成する関数
 
-    Args:
-        state(State): 状態情報
-    Returns:
-        Dict: 更新された状態情報(インタビュアーの発言, 発言回数)
-    """
-    time.sleep(WAIT_TIME)
-    new_state = copy.deepcopy(state)
+#     Args:
+#         state(State): 状態情報
+#     Returns:
+#         Dict: 更新された状態情報(インタビュアーの発言, 発言回数)
+#     """
+#     time.sleep(WAIT_TIME)
+#     new_state = copy.deepcopy(state)
 
-    dialogue_history = new_state["dialogue_history"]
-    sc = new_state["speak_count"]
+#     dialogue_history = new_state["dialogue_history"]
+#     sc = new_state["speak_count"]
 
-    template = prompt_idle_talk
-    prompt = PromptTemplate(
-        template=template,
-        input_variables=["dialogue_history_str"],
-    )
+#     template = prompt_idle_talk
+#     prompt = PromptTemplate(
+#         template=template,
+#         input_variables=["dialogue_history_str"],
+#     )
 
-    dialogue_history_str = "\n".join(dialogue_history)
-    system_message = prompt.format(
-        dialogue_history_str=dialogue_history_str,
-    )
+#     dialogue_history_str = "\n".join(dialogue_history)
+#     system_message = prompt.format(
+#         dialogue_history_str=dialogue_history_str,
+#     )
 
-    human_message = "インタビュアー:"
+#     human_message = "インタビュアー:"
 
-    print(
-        f"\n\n===============関数interviewer_llm_idle_talk===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
-    )
+#     print(
+#         f"\n\n===============関数interviewer_llm_idle_talk===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+#     )
 
-    try:
-        response = model.invoke(
-            [
-                SystemMessage(content=system_message),
-                HumanMessage(content=human_message),
-            ]
-        )
-        if response and hasattr(response, "content"):
-            new_dialogue = f"インタビュアー: {response.content}"
-        else:
-            new_dialogue = (
-                "インタビュアー: モデルの呼び出しに失敗しました。再試行してください。"
-            )
+#     try:
+#         response = model.invoke(
+#             [
+#                 SystemMessage(content=system_message),
+#                 HumanMessage(content=human_message),
+#             ]
+#         )
+#         if response and hasattr(response, "content"):
+#             new_dialogue = f"インタビュアー: {response.content}"
+#         else:
+#             new_dialogue = (
+#                 "インタビュアー: モデルの呼び出しに失敗しました。再試行してください。"
+#             )
 
-    except Exception as e:
-        print(f"Error occurred while invoking the model: {e}")
-        new_dialogue = (
-            "インタビュアー: モデルの呼び出しに失敗しました。再試行してください。"
-        )
+#     except Exception as e:
+#         print(f"Error occurred while invoking the model: {e}")
+#         new_dialogue = (
+#             "インタビュアー: モデルの呼び出しに失敗しました。再試行してください。"
+#         )
 
-    print(f"new_dialogue: {new_dialogue}\n")
+#     print(f"new_dialogue: {new_dialogue}\n")
 
-    # 発言回数を更新
-    sc["total_count"] += 1
-    sc["interviewer_count"] += 1
-    sc["interviewer_idle_talk_count"] += 1
+#     # 発言回数を更新
+#     sc["total_count"] += 1
+#     sc["interviewer_count"] += 1
+#     sc["interviewer_idle_talk_count"] += 1
 
-    new_state["dialogue_history"] = dialogue_history + [new_dialogue]
-    new_state["speak_count"] = sc
+#     new_state["dialogue_history"] = dialogue_history + [new_dialogue]
+#     new_state["speak_count"] = sc
 
-    print(f"new_state: {new_state}\n")
+#     print(f"new_state: {new_state}\n")
 
-    now = datetime.datetime.now(jst)
-    timestamp = now.strftime("%Y%m%d_%H%M%S")
-    node_name = "interviewer_llm_idle_talk"
-    this_node_path = os.path.join(
-        execution_folder, f"info_{timestamp}_{node_name}.json"
-    )
+#     now = datetime.datetime.now(jst)
+#     timestamp = now.strftime("%Y%m%d_%H%M%S")
+#     node_name = "interviewer_llm_idle_talk"
+#     this_node_path = os.path.join(
+#         execution_folder, f"info_{timestamp}_{node_name}.json"
+#     )
 
-    save_state_to_file(new_state, this_node_path)
+#     save_state_to_file(new_state, this_node_path)
 
-    return new_state
-
-
-def interviewee_llm_idle_talk_impl(state: State) -> str:
-    template = prompt_user_simulator
-    prompt = PromptTemplate(
-        template=template,
-        input_variables=["persona_settings", "dialogue_history_str"],
-    )
-    dialogue_history_str = "\n".join(state["dialogue_history"])
-    system_message = prompt.format(
-        persona_settings=persona_settings,
-        dialogue_history_str=dialogue_history_str,
-    )
-    human_message = "インタビュー対象者:"
-    print(
-        f"\n\n===============関数interviewee_llm_idle_talk_impl===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
-    )
-
-    response = model.invoke(
-        [SystemMessage(content=system_message), HumanMessage(content=human_message)]
-    )
-    return (
-        response.content
-        if (response and hasattr(response, "content"))
-        else "モデルの呼び出しに失敗しました。再試行してください。"
-    )
+#     return new_state
 
 
-def interviewee_human_idle_talk_impl(state: State) -> str:
-    dh = "\n".join(state["dialogue_history"])
-    prompt_text = f"\n[あなた=インタビュー対象者] 直近のやり取り:\n{dh}\nあなたの発話を1行で入力してください> "
-    text = read_human_input(prompt_text, HUMAN_INPUT_FILE, HUMAN_WAIT_SEC)
-    return text or "（無回答）"
+# def interviewee_llm_idle_talk_impl(state: State) -> str:
+#     template = prompt_user_simulator
+#     prompt = PromptTemplate(
+#         template=template,
+#         input_variables=["persona_settings", "dialogue_history_str"],
+#     )
+#     dialogue_history_str = "\n".join(state["dialogue_history"])
+#     system_message = prompt.format(
+#         persona_settings=persona_settings,
+#         dialogue_history_str=dialogue_history_str,
+#     )
+#     human_message = "インタビュー対象者:"
+#     print(
+#         f"\n\n===============関数interviewee_llm_idle_talk_impl===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+#     )
+
+#     response = model.invoke(
+#         [SystemMessage(content=system_message), HumanMessage(content=human_message)]
+#     )
+#     return (
+#         response.content
+#         if (response and hasattr(response, "content"))
+#         else "モデルの呼び出しに失敗しました。再試行してください。"
+#     )
 
 
-# インタビュー対象者の雑談発話を生成する関数
-def interviewee_llm_idle_talk(state: State) -> State:
-    """
-    interviewee_llm_idle_talk: インタビュー対象者の雑談を生成する関数
+# def interviewee_human_idle_talk_impl(state: State) -> str:
+#     dh = "\n".join(state["dialogue_history"])
+#     prompt_text = f"\n[あなた=インタビュー対象者] 直近のやり取り:\n{dh}\nあなたの発話を1行で入力してください> "
+#     text = read_human_input(prompt_text, HUMAN_INPUT_FILE, HUMAN_WAIT_SEC)
+#     return text or "（無回答）"
 
-    Args:
-        state(State): 状態情報
-    Returns:
-        Dict: 更新された状態情報(インタビュー対象者の発言, 発言回数)
-    """
-    time.sleep(WAIT_TIME)
-    new_state = copy.deepcopy(state)
-    sc = new_state["speak_count"]
-    try:
-        if INTERVIEWEE_MODE == "human":
-            utter = interviewee_human_idle_talk_impl(new_state)
-        else:
-            utter = interviewee_llm_idle_talk_impl(new_state)
-        new_dialogue = f"インタビュー対象者: {utter}"
-    except Exception as e:
-        print(f"Error in interviewee idle_talk: {e}")
-        new_dialogue = "インタビュー対象者: （エラーにより無回答）"
 
-    # 発言回数を更新
-    sc["total_count"] += 1
-    sc["interviewee_count"] += 1
-    sc["interviewee_idle_talk_count"] += 1
+# # インタビュー対象者の雑談発話を生成する関数
+# def interviewee_llm_idle_talk(state: State) -> State:
+#     """
+#     interviewee_llm_idle_talk: インタビュー対象者の雑談を生成する関数
 
-    new_state["dialogue_history"] = new_state["dialogue_history"] + [new_dialogue]
-    new_state["speak_count"] = sc
+#     Args:
+#         state(State): 状態情報
+#     Returns:
+#         Dict: 更新された状態情報(インタビュー対象者の発言, 発言回数)
+#     """
+#     time.sleep(WAIT_TIME)
+#     new_state = copy.deepcopy(state)
+#     sc = new_state["speak_count"]
+#     try:
+#         if INTERVIEWEE_MODE == "human":
+#             utter = interviewee_human_idle_talk_impl(new_state)
+#         else:
+#             utter = interviewee_llm_idle_talk_impl(new_state)
+#         new_dialogue = f"インタビュー対象者: {utter}"
+#     except Exception as e:
+#         print(f"Error in interviewee idle_talk: {e}")
+#         new_dialogue = "インタビュー対象者: （エラーにより無回答）"
 
-    print(f"new_state: {new_state}\n")
+#     # 発言回数を更新
+#     sc["total_count"] += 1
+#     sc["interviewee_count"] += 1
+#     sc["interviewee_idle_talk_count"] += 1
 
-    now = datetime.datetime.now(jst)
-    timestamp = now.strftime("%Y%m%d_%H%M%S")
-    node_name = "interviewee_llm_idle_talk"
-    this_node_path = os.path.join(
-        execution_folder, f"info_{timestamp}_{node_name}.json"
-    )
+#     new_state["dialogue_history"] = new_state["dialogue_history"] + [new_dialogue]
+#     new_state["speak_count"] = sc
 
-    save_state_to_file(new_state, this_node_path)
+#     print(f"new_state: {new_state}\n")
 
-    return new_state
+#     now = datetime.datetime.now(jst)
+#     timestamp = now.strftime("%Y%m%d_%H%M%S")
+#     node_name = "interviewee_llm_idle_talk"
+#     this_node_path = os.path.join(
+#         execution_folder, f"info_{timestamp}_{node_name}.json"
+#     )
+
+#     save_state_to_file(new_state, this_node_path)
+
+#     return new_state
 
 
 def interviewer_llm_generate_question(state: State) -> State:
@@ -758,11 +750,8 @@ def interviewer_llm_fill_slots(state: State) -> State:
             print(f"new_slots_dict: {response.content}\n")
             try:
                 new_slots_obj = slot_output_parser.parse(response.content)
-                new_slot_dict = {
-                    slot_name: slot_model.model_dump()
-                    for slot_name, slot_model in new_slots_obj.root.items()
-                }
-                merged_slots = {**slots, **new_slot_dict}
+                new_slot_dicts = dict(new_slots_obj.root)
+                merged_slots = {**slots, **new_slot_dicts}
             except Exception as e:
                 print(f"Error occurred while decoding the JSON: {e}")
                 merged_slots = slots
@@ -852,10 +841,7 @@ def interviewer_llm_generate_slots(state: State) -> State:
             else:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
-                    new_slots_dict = {
-                        slot_name: slot_model.model_dump()
-                        for slot_name, slot_model in new_slots_obj.root.items()
-                    }
+                    new_slots_dict = dict(new_slots_obj.root)
                     merged_slots = {**slots, **new_slots_dict}
                     added = [k for k in merged_slots.keys() if k not in prev_keys]
                 except Exception as e:
@@ -953,10 +939,7 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
             else:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
-                    new_slots_dict = {
-                        slot_name: slot_model.model_dump()
-                        for slot_name, slot_model in new_slots_obj.root.items()
-                    }
+                    new_slots_dict = dict(new_slots_obj.root)
                     merged_slots = {**slots, **new_slots_dict}
                 except Exception as e:
                     print(f"Error occurred while decoding the JSON: {e}")
@@ -1063,73 +1046,73 @@ def end_interview(state: State) -> State:
 
 
 # キャリアの話題が出たかどうかを判定する関数
-def has_career_topic(state: State) -> bool:
-    """
-    has_career_topic: キャリアの話題が出たかどうかを判定する関数
+# def has_career_topic(state: State) -> bool:
+#     """
+#     has_career_topic: キャリアの話題が出たかどうかを判定する関数
 
-    Args:
-        state(State): 状態情報
-    Returns:
-        bool: キャリアの話題が出たかどうか
-    """
-    time.sleep(WAIT_TIME)
-    new_state = copy.deepcopy(state)
+#     Args:
+#         state(State): 状態情報
+#     Returns:
+#         bool: キャリアの話題が出たかどうか
+#     """
+#     time.sleep(WAIT_TIME)
+#     new_state = copy.deepcopy(state)
 
-    dialogue_history = new_state["dialogue_history"]
+#     dialogue_history = new_state["dialogue_history"]
 
-    # キャリアの話題が出たかどうかを判定
-    template = prompt_career_topic
-    prompt = PromptTemplate(
-        template=template,
-        input_variables=["dialogue_history_str"],
-    )
+#     # キャリアの話題が出たかどうかを判定
+#     template = prompt_career_topic
+#     prompt = PromptTemplate(
+#         template=template,
+#         input_variables=["dialogue_history_str"],
+#     )
 
-    dialogue_history_str = "\n".join(dialogue_history)
-    system_message = prompt.format(dialogue_history_str=dialogue_history_str)
+#     dialogue_history_str = "\n".join(dialogue_history)
+#     system_message = prompt.format(dialogue_history_str=dialogue_history_str)
 
-    human_message = "判定:"
+#     human_message = "判定:"
 
-    print(
-        f"\n\n===============関数has_career_topic===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
-    )
+#     print(
+#         f"\n\n===============関数has_career_topic===============\nSystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+#     )
 
-    try:
-        response = model.invoke(
-            [
-                SystemMessage(content=system_message),
-                HumanMessage(content=human_message),
-            ]
-        )
-        if response and hasattr(response, "content"):
-            # str型からbool型に変換(大文字小文字を無視)
-            content = response.content.strip().lower()
-            if content == "true":
-                has_career_topic = True
-            elif content == "false":
-                has_career_topic = False
-            else:
-                # 判定が不明な場合はFalseとする
-                print(f"トピック話題判定が不明です: {content}")
-                has_career_topic = False
-        else:
-            has_career_topic = False
+#     try:
+#         response = model.invoke(
+#             [
+#                 SystemMessage(content=system_message),
+#                 HumanMessage(content=human_message),
+#             ]
+#         )
+#         if response and hasattr(response, "content"):
+#             # str型からbool型に変換(大文字小文字を無視)
+#             content = response.content.strip().lower()
+#             if content == "true":
+#                 has_career_topic = True
+#             elif content == "false":
+#                 has_career_topic = False
+#             else:
+#                 # 判定が不明な場合はFalseとする
+#                 print(f"トピック話題判定が不明です: {content}")
+#                 has_career_topic = False
+#         else:
+#             has_career_topic = False
 
-    except Exception as e:
-        print(f"Error occurred while invoking the model: {e}")
-        has_career_topic = False
+#     except Exception as e:
+#         print(f"Error occurred while invoking the model: {e}")
+#         has_career_topic = False
 
-    print(f"has_career_topic: {has_career_topic}\n")
+#     print(f"has_career_topic: {has_career_topic}\n")
 
-    now = datetime.datetime.now(jst)
-    timestamp = now.strftime("%Y%m%d_%H%M%S")
-    node_name = "has_career_topic"
-    this_node_path = os.path.join(
-        execution_folder, f"info_{timestamp}_{node_name}.json"
-    )
+#     now = datetime.datetime.now(jst)
+#     timestamp = now.strftime("%Y%m%d_%H%M%S")
+#     node_name = "has_career_topic"
+#     this_node_path = os.path.join(
+#         execution_folder, f"info_{timestamp}_{node_name}.json"
+#     )
 
-    save_state_to_file(new_state, this_node_path)
+#     save_state_to_file(new_state, this_node_path)
 
-    return has_career_topic
+#     return has_career_topic
 
 
 # 対話の終了を判断する関数
@@ -1287,20 +1270,20 @@ def interviewer_llm_estimate_persona(state: State) -> State:
 graph_builder = StateGraph(State)
 
 # ノードの追加
-graph_builder.add_node("interviewer_llm_idle_talk", interviewer_llm_idle_talk)
+# graph_builder.add_node("interviewer_llm_idle_talk", interviewer_llm_idle_talk)
 graph_builder.add_node(
     "interviewer_llm_generate_question", interviewer_llm_generate_question
 )
 graph_builder.add_node("interviewer_llm_fill_slots", interviewer_llm_fill_slots)
-graph_builder.add_node(
-    "interviewer_llm_estimate_persona", interviewer_llm_estimate_persona
-)
+# graph_builder.add_node(
+#     "interviewer_llm_estimate_persona", interviewer_llm_estimate_persona
+# )
 graph_builder.add_node("interviewer_llm_generate_slots", interviewer_llm_generate_slots)
 graph_builder.add_node(
     "interviewer_llm_generate_slots_2", interviewer_llm_generate_slots_2
 )
 graph_builder.add_node("select_generate_slots_node", select_generate_slots_node)
-graph_builder.add_node("interviewee_llm_idle_talk", interviewee_llm_idle_talk)
+# graph_builder.add_node("interviewee_llm_idle_talk", interviewee_llm_idle_talk)
 graph_builder.add_node(
     "interviewee_llm_generate_answer", interviewee_llm_generate_answer
 )
@@ -1308,15 +1291,15 @@ graph_builder.add_node("end_interview", end_interview)
 
 # エッジの追加
 # graph_builder.add_edge(START, "interviewer_start")
-graph_builder.add_edge("interviewer_llm_idle_talk", "interviewee_llm_idle_talk")
-graph_builder.add_conditional_edges(
-    "interviewee_llm_idle_talk",
-    has_career_topic,
-    {
-        True: "interviewer_llm_fill_slots",
-        False: "interviewer_llm_idle_talk",
-    },
-)
+# graph_builder.add_edge("interviewer_llm_idle_talk", "interviewee_llm_idle_talk")
+# graph_builder.add_conditional_edges(
+#     "interviewee_llm_idle_talk",
+#     has_career_topic,
+#     {
+#         True: "interviewer_llm_fill_slots",
+#         False: "interviewer_llm_idle_talk",
+#     },
+# )
 graph_builder.add_conditional_edges(
     "interviewer_llm_fill_slots",
     finish_interview,
@@ -1333,21 +1316,11 @@ graph_builder.add_conditional_edges(
         "interviewer_llm_generate_slots_2": "interviewer_llm_generate_slots_2",
     },
 )
-graph_builder.add_conditional_edges(
-    "interviewer_llm_generate_slots",
-    finish_interview,
-    {
-        "end": "end_interview",
-        "continue": "interviewer_llm_generate_question",
-    },
+graph_builder.add_edge(
+    "interviewer_llm_generate_slots", "interviewer_llm_generate_question"
 )
-graph_builder.add_conditional_edges(
-    "interviewer_llm_generate_slots_2",
-    finish_interview,
-    {
-        "end": "end_interview",
-        "continue": "interviewer_llm_generate_question",
-    },
+graph_builder.add_edge(
+    "interviewer_llm_generate_slots_2", "interviewer_llm_generate_question"
 )
 
 graph_builder.add_edge(
@@ -1358,7 +1331,7 @@ graph_builder.add_edge("interviewee_llm_generate_answer", "interviewer_llm_fill_
 
 
 # Graphの始点を宣言
-graph_builder.set_entry_point("interviewer_llm_idle_talk")
+graph_builder.set_entry_point("interviewer_llm_generate_slots_2")
 
 # Graphの終点を宣言
 graph_builder.set_finish_point("end_interview")
@@ -1382,11 +1355,11 @@ def main():
             "slots": interview_config["slots"],
             "slot_generation_count": interview_config["slot_generation_count"],
             "branch": interview_config["branch"],
+            "last_generated_slot": interview_config["last_generated_slot"],
         },
         config={
             "recursion_limit": 200,
         },
-        # debug=True,
     )
 
     # Graphの可視化
