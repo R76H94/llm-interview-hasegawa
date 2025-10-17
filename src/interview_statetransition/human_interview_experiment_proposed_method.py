@@ -547,10 +547,15 @@ def interviewer_llm_generate_question(state: State) -> State:
     all_slots = new_state["slots"]
     estimate_persona = new_state["estimate_persona"]
 
+    shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
+    shuffled_slots = {key: all_slots[key] for key in shuffled_keys}
+
     if pending:
-        slots_for_prompt = {k: all_slots[k] for k in pending if k in all_slots}
+        slots_for_prompt = {
+            k: shuffled_slots[k] for k in pending if k in shuffled_slots
+        }
     else:
-        slots_for_prompt = all_slots
+        slots_for_prompt = shuffled_slots
 
     template = prompt_generate_questions
     prompt = PromptTemplate(
@@ -874,7 +879,6 @@ def interviewer_llm_generate_slots(state: State) -> State:
     return new_state
 
 
-# 50%の確率でinterviewer_llm_generate_slots関数の代わりに呼び出される関数
 def interviewer_llm_generate_slots_2(state: State) -> State:
     """
     interviewer_llm_generate_slots_2: インタビュアーがスロットを生成する関数
@@ -891,14 +895,16 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
     dialogue_history = new_state["dialogue_history"]
     slots = new_state["slots"]
 
-    if "persona_attribute_candidates" not in new_state:
-        new_state["persona_attribute_candidates"] = []
+    pac = new_state.get("persona_attribute_candidates", [])
 
-    if not new_state["persona_attribute_candidates"]:
-        random_topic = "None"
-    else:
-        random_topic = random.choice(new_state["persona_attribute_candidates"])
-        new_state["persona_attribute_candidates"].remove(random_topic)
+    # 理論上ここは空にならない（select_generate_slots_node が空ならスキップするため）
+    # 将来この関数が単独で呼ばれても壊れないように、安全策として早期 return を入れる
+    if not pac:
+        return new_state
+
+    # ランダムに1件取り出し
+    random_topic = random.choice(pac)
+    pac.remove(random_topic)
 
     template = prompt_generate_slots_2
     prompt = PromptTemplate(
@@ -968,8 +974,9 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
 # スロット生成の関数を選択するための関数
 def select_generate_slots_node(state: State) -> State:
     """
-    ランダムに50%の確率でinterviewer_llm_generate_slots_2、interviewer_llm_generate_slotsを返す
-    直前の回答が「わからない」の場合はinterviewer_llm_generate_slots_2を返す
+    70%で interviewer_llm_generate_slots_2（ただしスロット候補が空ならスキップして質問へ）、
+    30%で interviewer_llm_generate_slots（通常通りその後に質問へ）。
+    直前の回答が「わかりません」の場合はinterviewer_llm_generate_slots_2、同様にスロット候補が空ならスキップ。
     """
     new_state = copy.deepcopy(state)
     new_state["slot_generation_count"] = new_state.get("slot_generation_count", 0) + 1
@@ -981,15 +988,28 @@ def select_generate_slots_node(state: State) -> State:
             last_interviewee_utternace = message
             break
 
+    pac = (
+        new_state.get("persona_attribute_candidates") or []
+    )  # 候補リスト（なければ空）
+
+    def choose_70():
+        if not pac:
+            new_state["branch"] = "skip_to_question"
+        else:
+            new_state["branch"] = "interviewer_llm_generate_slots_2"
+
+    def choose_30():
+        new_state["branch"] = "interviewer_llm_generate_slots"
+
     # 直前の回答が「わからない」場合
     if last_interviewee_utternace and "わかりません" in last_interviewee_utternace:
-        new_state["branch"] = "interviewer_llm_generate_slots_2"
+        choose_70()
+        return new_state
     # それ以外の回答の場合
+    if random.random() < 0.7:
+        choose_70()
     else:
-        if random.random() < 0.5:
-            new_state["branch"] = "interviewer_llm_generate_slots_2"
-        else:
-            new_state["branch"] = "interviewer_llm_generate_slots"
+        choose_30()
 
     return new_state
 
@@ -1313,6 +1333,7 @@ graph_builder.add_conditional_edges(
     {
         "interviewer_llm_generate_slots": "interviewer_llm_generate_slots",
         "interviewer_llm_generate_slots_2": "interviewer_llm_generate_slots_2",
+        "skip_to_question": "interviewer_llm_generate_question",
     },
 )
 graph_builder.add_edge(

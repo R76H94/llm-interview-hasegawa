@@ -988,7 +988,7 @@ def select_generate_slots_node(state: State) -> State:
         new_state["branch"] = "interviewer_llm_generate_slots_2"
     # それ以外の回答の場合
     else:
-        if random.random() < 0.5:
+        if random.random() < 0.7:
             new_state["branch"] = "interviewer_llm_generate_slots_2"
         else:
             new_state["branch"] = "interviewer_llm_generate_slots"

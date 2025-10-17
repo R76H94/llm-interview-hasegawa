@@ -1,5 +1,5 @@
 model:
-  provider: openai   # openai | google
+  provider: openai   # openai or google
   name: gpt-4o-2024-11-20
   temperature: 0
 
@@ -9,12 +9,12 @@ interviewee:
 
 run:
   wait_time: 3
-  out_dir: "out/memo"
+  out_dir: "out/test"
 
 interview:
-  max_total_count: 40  #デフォルト値：40
-  min_total_count: 36  #デフォルト値：36
-  estimate_persona: null
+  max_total_count: 50  #デフォルト値：50
+  min_total_count: 48  #デフォルト値：48
+  estimate_persona: null #デフォルト値 null
   persona_attribute_candidates: # スロット属性候補(デフォルトは50個)
     - "現在のキャリア"
     - "悩みや不満点"
@@ -77,4 +77,4 @@ paths:
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
     end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_end_conversation.txt"
     estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_estimate_persona.txt"
-  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/Nurse-Persona-Hasegawa-202510/01.txt"
+  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
