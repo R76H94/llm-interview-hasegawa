@@ -81,4 +81,4 @@ paths:
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
     end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_end_conversation.txt"
     estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_estimate_persona.txt"
-  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/Nurse-Persona-Hasegawa-202510/01.txt"
+  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
