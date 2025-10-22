@@ -20,7 +20,7 @@ target_persona_files = [
 ]
 
 # 何ターン目のデータを使用するか（空リストの場合はすべて）
-target_turn_numbers = [5, 10, 15, 20, 24]
+target_turn_numbers = []
 
 # few-shotを挿入するキーワードと挿入位置
 insertion_keyword = "# Few-shot挿入ポイント"
@@ -53,15 +53,18 @@ if target_turn_numbers:
 def format_few_shot(row):
     dialogue = row["dialogue_history"].strip()
     slots = row["existing_slots"].strip()
-    predicted = row["true_persona"].strip()
+    true_persona_previous_turn = row["true_persona_previous_turn"].strip()
+    true_persona = row["true_persona"].strip()
 
     return (
         "# 対話履歴\n"
         f"{dialogue}\n"
         "# 既存のスロット\n"
         f"{slots}\n"
-        "# 推定ペルソナ\n"
-        f"{predicted}\n"
+        "# 既存の推定ペルソナ\n"
+        f"{true_persona_previous_turn}\n"
+        "# 新しい推定ペルソナ\n"
+        f"{true_persona}\n"
     )
 
 
