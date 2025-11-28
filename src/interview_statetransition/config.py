@@ -27,6 +27,8 @@ class RunConfig(BaseModel):
 class InterviewConfig(BaseModel):
     max_total_count: int = 40
     min_total_count: int = 34
+    use_question_slot_in_fill_slots: bool = False
+    slot_selection_mode: Literal["random", "llm"] = "random"
     estimate_persona: str | None = None
     persona_attribute_candidates: list[str] = []
     slots: dict = {}
@@ -40,6 +42,7 @@ class PathsPrompts(BaseModel):
     user_simulator: str
     end_conversation: str
     estimate_persona: str
+    fukabori_questions: str
 
 
 class PathsConfig(BaseModel):

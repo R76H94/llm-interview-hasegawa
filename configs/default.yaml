@@ -14,6 +14,8 @@ run:
 interview:
   max_total_count: 50  #デフォルト値：50
   min_total_count: 48  #デフォルト値：48
+  use_question_slot_in_fill_slots: true  #true or false
+  slot_selection_mode: "random"  #"random" or "llm"
   estimate_persona: "リフレッシュ方法: 未  \nキャリア・職場: 未  \n悩みや不満点: 未  \n将来のキャリアプラン: 未  \n家族: 未  \n思い出・エピソード: 未" #デフォルト値 null
   persona_attribute_candidates: # スロット属性候補(デフォルトは50個)
     - "現在のキャリア"
@@ -81,4 +83,5 @@ paths:
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
     end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_end_conversation.txt"
     estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_estimate_persona.txt"
+    fukabori_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fukabori_questions.txt"
   persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"

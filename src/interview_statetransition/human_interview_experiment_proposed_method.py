@@ -45,6 +45,12 @@ WAIT_TIME = cfg.run.wait_time
 # 出力ディレクトリ
 OUT_DIR = cfg.run.out_dir
 
+# 質問生成に使用したスロットを、スロット埋めに使用するかどうか
+USE_QUESTION_SLOT_IN_FILL_SLOTS = cfg.interview.use_question_slot_in_fill_slots
+
+# スロット選択モード ("random" or "llm")
+SLOT_SELECTION_MODE = cfg.interview.slot_selection_mode
+
 # プロンプトの設定
 # PROMPT_IDLE_TALK_PATH = cfg.paths.prompts.idle_talk
 PROMPT_FILL_SLOTS_PATH = cfg.paths.prompts.fill_slots
@@ -55,6 +61,7 @@ PROMPT_USER_SIMULATOR_PATH = cfg.paths.prompts.user_simulator
 # PROMPT_CAREER_TOPIC_PATH = cfg.paths.prompts.career_topic
 PROMPT_END_CONVERSATION_PATH = cfg.paths.prompts.end_conversation
 PROMPT_ESTIMATE_PERSONA_PATH = cfg.paths.prompts.estimate_persona
+PROMPT_FUKABORI_QUESTIONS_PATH = cfg.paths.prompts.fukabori_questions
 
 # ユーザシミュレータのpersona設定
 PERSONA_SETTINGS_PATH = cfg.paths.persona_settings
@@ -82,6 +89,7 @@ INTERVIEW_CONFIG = {
     "slot_generation_count": 0,
     "branch": None,
     "last_generated_slot": [],
+    "last_question_target_slot": {},
 }
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,6 +229,9 @@ prompt_end_conversation = load_file(PROMPT_END_CONVERSATION_PATH)
 # ペルソナ情報を推定するプロンプト
 prompt_estimate_persona = load_file(PROMPT_ESTIMATE_PERSONA_PATH)
 
+# 深堀りLLMが深掘りするかどうかを決める際のプロンプト
+prompt_fukabori_questions = load_file(PROMPT_FUKABORI_QUESTIONS_PATH)
+
 # ユーザシミュレータのpersona設定
 persona_settings = load_file(PERSONA_SETTINGS_PATH)
 
@@ -269,6 +280,7 @@ class State(TypedDict):
     slot_generation_count: int
     branch: Optional[str]
     last_generated_slot: List[str]
+    last_question_target_slot: Dict[str, Optional[str]]
 
 
 class SlotDict(RootModel[Dict[str, Optional[str]]]):
@@ -595,6 +607,11 @@ def interviewer_llm_generate_question(state: State) -> State:
             try:
                 parsed_output = question_output_parser.parse(response.content)
                 question_text = parsed_output.Question
+                try:
+                    target_slot_dict = parsed_output.Target_Slot or {}
+                except Exception:
+                    target_slot_dict = {}
+                new_state["last_question_target_slot"] = dict(target_slot_dict)
                 new_dialogue = f"インタビュアー: {question_text}"
 
             except Exception as e:
@@ -718,13 +735,15 @@ def interviewer_llm_fill_slots(state: State) -> State:
     dialogue_history = new_state["dialogue_history"]
     slots = new_state["slots"]
 
+    if USE_QUESTION_SLOT_IN_FILL_SLOTS:
+        target_slot_for_prompt = new_state.get("last_question_target_slot", {})
+    else:
+        target_slot_for_prompt = {}
+
     template = prompt_fill_slots
     prompt = PromptTemplate(
         template=template,
-        input_variables=[
-            "dialogue_history_str",
-            "current_slots",
-        ],
+        input_variables=["dialogue_history_str", "current_slots", "target_slot"],
         partial_variables={
             "format_instructions": slot_output_parser.get_format_instructions()
         },
@@ -734,6 +753,7 @@ def interviewer_llm_fill_slots(state: State) -> State:
     system_message = prompt.format(
         dialogue_history_str=dialogue_history_str,
         current_slots=slots,
+        target_slot=target_slot_for_prompt,
     )
 
     human_message = "出力:"
@@ -971,6 +991,72 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
     return new_state
 
 
+# LLMにbranchを決めさせるための関数
+def decide_next_branch_by_llm(state: State) -> str:
+    """
+    LLM に次の遷移先ノードを決めさせる。
+    戻り値はいずれか:
+        - "interviewer_llm_generate_slots"
+        - "interviewer_llm_generate_slots_2"
+        - "skip_to_question"
+    想定外の出力の場合はフォールバックとしてランダム 70/30 を返す。
+    """
+    dialogue_history_str = "\n".join(state["dialogue_history"])
+    current_slots = state["slots"]
+    estimate_persona = state.get("estimate_persona")
+
+    template = prompt_fukabori_questions
+    prompt = PromptTemplate(
+        template=template,
+        input_variables=["dialogue_history_str", "current_slots", "estimate_persona"],
+    )
+
+    system_message = prompt.format(
+        dialogue_history_str=dialogue_history_str,
+        current_slots=current_slots,
+        estimate_persona=estimate_persona,
+    )
+    human_message = "出力:"
+
+    print(
+        "\n\n===============関数_decide_next_branch_by_llm===============\n"
+        f"SystemMessage=\n{system_message}\nHumanMessage=\n{human_message}\n"
+    )
+
+    try:
+        response = model.invoke(
+            [
+                SystemMessage(content=system_message),
+                HumanMessage(content=human_message),
+            ]
+        )
+        if not (response and hasattr(response, "content")):
+            raise ValueError("empty response")
+
+        raw = response.content.strip().lower()
+        print(f"LLM next-branch raw output: {raw}")
+
+        # 想定される出力パターンを雑に吸収するマッピング
+        if "generate_slots_2" in raw or "slots_2" in raw:
+            return "interviewer_llm_generate_slots_2"
+        if "generate_slots" in raw and "generate_slots_2" not in raw:
+            return "interviewer_llm_generate_slots"
+        if "skip" in raw or "question" in raw:
+            return "skip_to_question"
+
+        # 想定外 → 例外扱いしてフォールバックへ
+        raise ValueError(f"unexpected content: {raw}")
+
+    except Exception as e:
+        print(f"Error in _decide_next_branch_by_llm: {e}")
+        # フォールバック：従来通り 70/30 で決める
+        return (
+            "interviewer_llm_generate_slots_2"
+            if random.random() < 0.7
+            else "interviewer_llm_generate_slots"
+        )
+
+
 # スロット生成の関数を選択するための関数
 def select_generate_slots_node(state: State) -> State:
     """
@@ -992,24 +1078,36 @@ def select_generate_slots_node(state: State) -> State:
         new_state.get("persona_attribute_candidates") or []
     )  # 候補リスト（なければ空）
 
-    def choose_70():
+    def choose_slots_2_or_skip():
         if not pac:
             new_state["branch"] = "skip_to_question"
         else:
             new_state["branch"] = "interviewer_llm_generate_slots_2"
 
-    def choose_30():
+    def choose_slots_deep():
         new_state["branch"] = "interviewer_llm_generate_slots"
 
     # 直前の回答が「わからない」場合
     if last_interviewee_utternace and "わかりません" in last_interviewee_utternace:
-        choose_70()
+        choose_slots_2_or_skip()
         return new_state
-    # それ以外の回答の場合
-    if random.random() < 0.7:
-        choose_70()
+
+    # それ以外の場合：モードに応じて分岐
+    if SLOT_SELECTION_MODE == "llm":
+        # LLM に決めさせる
+        branch = decide_next_branch_by_llm(new_state)
+
+        # persona_attribute_candidates が空なのに slots_2 が選ばれた場合は skip にフォールバック
+        if branch == "interviewer_llm_generate_slots_2" and not pac:
+            new_state["branch"] = "skip_to_question"
+        else:
+            new_state["branch"] = branch
     else:
-        choose_30()
+        # 従来のランダムロジック (デフォルト)
+        if random.random() < 0.7:
+            choose_slots_2_or_skip()
+        else:
+            choose_slots_deep()
 
     return new_state
 
@@ -1376,6 +1474,7 @@ def main():
             "slot_generation_count": interview_config["slot_generation_count"],
             "branch": interview_config["branch"],
             "last_generated_slot": interview_config["last_generated_slot"],
+            "last_question_target_slot": interview_config["last_question_target_slot"],
         },
         config={
             "recursion_limit": 200,

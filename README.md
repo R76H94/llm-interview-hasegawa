@@ -1,4 +1,77 @@
-# interview（2025/10/15更新）
+# interviewアップデート内容（2025/11/28更新）
+
+## 質問生成に使用したTarget_Slotをスロットフィリングに活用する機能を追加(wikiのSRW-1に対応)
+
+- 概要
+  - 質問生成時にLLMが出力する下記JSONフォーマットのうち、 Target_Slotを「スロットフィリング（fill_slots）」時の入力として使用するかどうかを設定ファイルで切り替えられるようにした。
+
+```
+generated_question: {
+  "Target_Slot": { "個人の基本的情報": null },
+  "Question": "〜〜〜"
+}
+```
+
+- 設定項目
+
+```
+interview:
+  use_question_slot_in_fill_slots: true  #true or false
+```
+
+- 実装概要
+  - interviewer_llm_generate_question内でTarget_Slotをstate["last_question_target_slot"] に保存。
+  - interviewer_llm_fill_slots内でUSE_QUESTION_SLOT_IN_FILL_SLOTS == True の場合に限り{target_slot} としてプロンプトに渡すよう変更。
+  - `"data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fill_slots.txt"`に変更を加えたプロンプト`"data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fill_slots_show_question_slot.txt"`を作成した。（変更部分は要確認）
+
+## スロット生成ノードの遷移方法を設定ファイルで変更できるようにした(wikiのSRW-2に対応)
+
+- 新しい設定項目
+
+```
+interview:
+  slot_selection_mode: "random"   # 70/30 ランダム（従来方式）
+  # slot_selection_mode: "llm"    # LLMが次ノードを決める新方式
+```
+
+- 変更の要点
+  - これまではgenerate_slotsとgenerate_slots_2の選択は固定:
+    - 「わかりません」発話 → 70% 側（slots_2）
+    - それ以外 → 70% / 30% ランダム
+  - これに対し、新たにLLMに次の遷移先を決めさせる関数を追加。
+
+## LLMが次のスロット生成ノードを決める機能の実装(wikiのSRW-2に対応)
+
+- 新規関数decide_next_branch_by_llmを実装
+- LLMに
+  - interviewer_llm_generate_slots（深堀り）
+  - interviewer_llm_generate_slots_2（深堀り不要）
+  - skip_to_question（スロット生成自体不要）のいずれかを選ばせるための関数を作成。
+
+- 使用されるプロンプト
+  - prompt_fukabori_questions を新設し、インタビュアーが「深堀りの価値があるか」判断するプロセスを LLM に行わせる。
+
+## select_generate_slots_node を改造し、遷移方式を切り替え可能にした(wikiのSRW-2に対応)
+
+- 仕様
+  - 直前の回答が「わかりません」なら強制的にslots_2側（従来通り）
+  - それ以外の場合はslot_selection_modeによって挙動を選択
+    - "random" → 70/30 のランダム（従来方式）
+    - "llm" → _decide_next_branch_by_llm による遷移
+
+## 深堀り判定プロンプト（prompt_fukabori_questions）を新規作成(wikiのSRW-2に対応)
+
+- 主な内容
+  - 対話履歴を読み、インタビュアーが「深堀りの価値があるか」判断するロジックを文章で説明
+  - 深堀りすべき場合と不要な場合の具体例を提示
+  - 出力を
+    - interviewer_llm_generate_slots
+    - interviewer_llm_generate_slots_2
+    - skip_to_questionのいずれか1つに限定し、遷移先を決定
+
+---
+
+## 以下は2025/10/15更新アップデート内容
 
 ## ディレクトリ構成
 
