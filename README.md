@@ -1,3 +1,27 @@
+# interviewアップデート内容（2025/12/22更新）
+
+## CoTの追加
+
+- CoT（zero-shot CoT、推論過程を出力させる）：/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot-CoT.txt
+- CoT（few-shot CoT、few-shotにもCoTの推論過程を追加）：/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona_teacher_human_fewshot-CoT.txt
+
+## CoTの追加に伴いペルソナ推定の出力整形を追加
+- 追加関数: `extract_final_output(text: str) -> str`
+  - 出力に `# 最終出力` というマーカーが含まれる場合、それ以降のみを採用
+  - 含まれない場合は全文を使用
+- 変更箇所: `interviewer_llm_estimate_persona`
+  - 以前: `estimated_persona = response.content.strip()`
+  - 変更後: `raw_output` を受け取り、`extract_final_output(raw_output)` を `estimate_persona` として保存
+- 目的: プロンプトが途中経過や説明を返しても、最終結果だけを state に残すため
+
+## READMEに実行時設定の追記機能を追加
+- 追加関数: `append_final_config_to_readme(readme_path: str, cfg) -> None`
+  - `cfg.model_dump()` を `json.dumps(..., ensure_ascii=False, indent=2)` で整形し、
+  - README の末尾に以下の形式で追記するようにした：
+    - `## 実行時設定（最終確定値）`
+    - ` ```json ... ``` `
+- 目的: 実験結果フォルダ単体で「実行時の設定が何だったか」を再現できるようにする
+
 # interviewアップデート内容（2025/11/28更新）
 
 ## 質問生成に使用したTarget_Slotをスロットフィリングに活用する機能を追加(wikiのSRW-1に対応)

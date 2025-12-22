@@ -75,7 +75,7 @@ def load_config(config_path: str | None = None) -> AppConfig:
     default_path = base / "default.yaml"
     cfg = AppConfig.from_yaml(default_path)
 
-    local_path = base / "local.yaml"
+    local_path = base / "local_human.yaml"
     if local_path.exists():
         with open(local_path, "r", encoding="utf-8-sig") as f:
             local = yaml.safe_load(f)

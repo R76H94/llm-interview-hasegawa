@@ -314,20 +314,35 @@ def create_output_folder(base_folder=OUT_DIR) -> str:
     return folder_path
 
 
+def append_final_config_to_readme(readme_path: str, cfg) -> None:
+    p = Path(readme_path)
+
+    cfg_json = json.dumps(cfg.model_dump(), indent=2, ensure_ascii=False)
+
+    block = (
+        "\n\n---\n" "## 実行時設定（最終確定値）\n" "```json\n" f"{cfg_json}\n" "```\n"
+    )
+
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("a", encoding="utf-8-sig") as f:
+        f.write(block)
+
+
 # 保存するデータの初期化
 execution_folder = create_output_folder()
 info_path = os.path.join(execution_folder, "info.json")
 graph_image_path = os.path.join(execution_folder, "graph.png")
-readme_path = os.path.join(execution_folder, "_README.md")
+readme_path = os.path.join(execution_folder, "README.md")
 
 # 空の情報を保存
 with open(info_path, "w", encoding="utf-8-sig") as f:
     json.dump({}, f, indent=4, ensure_ascii=False)
 with open(readme_path, "w", encoding="utf-8-sig") as f:
     f.write(
-        f"- 開始時刻: {formatted_timestamp}\n- モデル: {MODEL_NAME}\n- ユーザシミュレータ: {PERSONA_SETTINGS_PATH}\n提案手法"
+        f"- 開始時刻: {formatted_timestamp}\n- モデル: {MODEL_NAME}\n- ユーザシミュレータ: {PERSONA_SETTINGS_PATH}\n"
     )
 
+append_final_config_to_readme(readme_path, cfg)
 
 # 保存される情報
 execution_info = {
@@ -386,7 +401,7 @@ def send_line_notify(notification_message):
 # -----ノードの定義-----
 # ========================================
 
-
+# 雑談生成に関する部分は削除しました
 # def interviewer_llm_idle_talk(state: State) -> State:
 #     """
 #     interviewer_llm_idle_talk: インタビュアーの雑談を生成する関数
@@ -1160,7 +1175,7 @@ def end_interview(state: State) -> State:
 # -----条件分岐判定関数-----
 # ========================================
 
-
+# 雑談を行わないことに伴い、以下の関数は削除しました
 # キャリアの話題が出たかどうかを判定する関数
 # def has_career_topic(state: State) -> bool:
 #     """
@@ -1313,6 +1328,13 @@ def finish_interview(state: State) -> str:
     return output
 
 
+def extract_final_output(text: str) -> str:
+    marker = "# 最終出力"
+    if marker not in text:
+        return text.strip()
+    return text.split(marker, 1)[1].strip()
+
+
 # ペルソナ情報の推定を行う関数
 def interviewer_llm_estimate_persona(state: State) -> State:
     """
@@ -1358,8 +1380,9 @@ def interviewer_llm_estimate_persona(state: State) -> State:
             ]
         )
         if response and hasattr(response, "content"):
-            print(f"estimated_persona: {response.content}\n")
-            estimated_persona = response.content.strip()
+            raw_output = response.content.strip()
+            print(f"estimated_persona: {raw_output}\n")
+            estimated_persona = extract_final_output(raw_output)
         else:
             estimated_persona = "ペルソナ情報の推定に失敗しました。"
     except Exception as e:

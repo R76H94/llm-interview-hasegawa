@@ -9,11 +9,13 @@ interviewee:
 
 run:
   wait_time: 3
-  out_dir: "out/IT_engineer-human-fewshot"
+  out_dir: "out/NLP/fukabori_random_or_llm/human"
 
 interview:
   max_total_count: 50  #デフォルト値：50
   min_total_count: 48  #デフォルト値：48
+  use_question_slot_in_fill_slots: true  #true or false
+  slot_selection_mode: "llm"  #"random" or "llm"
   estimate_persona: null #デフォルト値 null
   persona_attribute_candidates: # スロット属性候補(デフォルトは50個)
     - "現在のキャリア"
@@ -70,11 +72,13 @@ interview:
 
 paths:
   prompts:
-    fill_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_fill_slots.txt"
-    generate_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generate_slots.txt"
-    generate_slots_2: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generate_slots_2.txt"
-    generate_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_generating_question.txt"
+    # fill_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fill_slots.txt"
+    fill_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fill_slots_show_question_slot.txt"
+    generate_slots: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_generate_slots.txt"
+    generate_slots_2: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_generate_slots_2.txt"
+    generate_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_generating_question.txt"
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
-    end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_end_conversation.txt"
-    estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_estimate_persona-fewshot.txt"
+    end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_end_conversation.txt"
+    estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot-CoT.txt"
+    fukabori_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fukabori_questions.txt"
   persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
