@@ -29,6 +29,8 @@ class InterviewConfig(BaseModel):
     min_total_count: int = 34
     use_question_slot_in_fill_slots: bool = False
     slot_selection_mode: Literal["random", "llm"] = "random"
+    topic_mode: Literal["record", "replay", "free"] = "free"
+    topic_order_file: Optional[str] = None
     estimate_persona: str | None = None
     persona_attribute_candidates: list[str] = []
     slots: dict = {}
@@ -75,7 +77,7 @@ def load_config(config_path: str | None = None) -> AppConfig:
     default_path = base / "default.yaml"
     cfg = AppConfig.from_yaml(default_path)
 
-    local_path = base / "local_human.yaml"
+    local_path = base / "local_zero-shot_few-shot.yaml"
     if local_path.exists():
         with open(local_path, "r", encoding="utf-8-sig") as f:
             local = yaml.safe_load(f)

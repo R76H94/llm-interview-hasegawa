@@ -1,0 +1,122 @@
+﻿{
+    "execution_time": "2026/02/05 22:53:51",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "作るのが得意な料理",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 2,
+            "selected_topic": "過去のキャリア",
+            "slot_generation_count": 1
+        },
+        {
+            "step": 3,
+            "selected_topic": "行ってみたい国",
+            "slot_generation_count": 2
+        },
+        {
+            "step": 4,
+            "selected_topic": "服装の好み",
+            "slot_generation_count": 3
+        },
+        {
+            "step": 5,
+            "selected_topic": "海外旅行の楽しみ方",
+            "slot_generation_count": 4
+        },
+        {
+            "step": 6,
+            "selected_topic": "100年後の未来",
+            "slot_generation_count": 5
+        },
+        {
+            "step": 7,
+            "selected_topic": "乗りたい車",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 8,
+            "selected_topic": "尊敬する人",
+            "slot_generation_count": 7
+        },
+        {
+            "step": 9,
+            "selected_topic": "好きなお菓子",
+            "slot_generation_count": 8
+        },
+        {
+            "step": 10,
+            "selected_topic": "スポーツ観戦",
+            "slot_generation_count": 9
+        },
+        {
+            "step": 11,
+            "selected_topic": "家族",
+            "slot_generation_count": 10
+        },
+        {
+            "step": 12,
+            "selected_topic": "起床後のルーティン",
+            "slot_generation_count": 11
+        },
+        {
+            "step": 13,
+            "selected_topic": "通勤時の移動方法",
+            "slot_generation_count": 12
+        },
+        {
+            "step": 14,
+            "selected_topic": "語学学習のポイント",
+            "slot_generation_count": 13
+        },
+        {
+            "step": 15,
+            "selected_topic": "個人の基本的情報",
+            "slot_generation_count": 14
+        },
+        {
+            "step": 16,
+            "selected_topic": "嫌いな食べ物",
+            "slot_generation_count": 15
+        },
+        {
+            "step": 17,
+            "selected_topic": "悩みや不満点",
+            "slot_generation_count": 16
+        },
+        {
+            "step": 20,
+            "selected_topic": "恋愛",
+            "slot_generation_count": 19
+        },
+        {
+            "step": 21,
+            "selected_topic": "昨日起きたとても悲しい出来事",
+            "slot_generation_count": 20
+        },
+        {
+            "step": 22,
+            "selected_topic": "株式投資の経験",
+            "slot_generation_count": 21
+        },
+        {
+            "step": 23,
+            "selected_topic": "在宅ワーク",
+            "slot_generation_count": 22
+        },
+        {
+            "step": 24,
+            "selected_topic": "人脈の広げ方",
+            "slot_generation_count": 23
+        },
+        {
+            "step": 25,
+            "selected_topic": "スポーツジムの利用",
+            "slot_generation_count": 24
+        }
+    ]
+}

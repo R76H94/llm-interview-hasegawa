@@ -9,66 +9,80 @@ interviewee:
 
 run:
   wait_time: 3
-  out_dir: "out/NLP/fukabori_random_or_llm/human"
+  out_dir: "out/NLP/random_zero-shot/human"
 
 interview:
   max_total_count: 50  #デフォルト値：50
   min_total_count: 48  #デフォルト値：48
   use_question_slot_in_fill_slots: true  #true or false
-  slot_selection_mode: "llm"  #"random" or "llm"
-  estimate_persona: null #デフォルト値 null
+  slot_selection_mode: "random"  #"random" or "llm"
+  estimate_persona: "悩みやストレス: 未  \n仕事の満足度: 未  \n語学学習: 未  \n仕事における自己成長: 未  \n健康管理: 未  \n仕事におけるモチベーション: 未  \nパソコン利用状況: 未  \n服装の好み: 未  \n仕事における課題感: 未  \n職場での役割認識: 未  \n趣味: 未  \n職場でのコミュニケーション: 未  \nデザインへの価値観: 未  \n将来のキャリアビジョン: 未" #デフォルト値 null
   persona_attribute_candidates: # スロット属性候補(デフォルトは50個)
-    - "現在のキャリア"
-    - "悩みや不満点"
-    - "性格"
-    - "過去のキャリア"
-    - "昇進・転職"
-    - "SNS"
-    - "趣味"
-    - "家族"
-    - "使用しているスマートフォンアプリ"
-    - "個人の基本的情報"
-    - "未来像"
-    - "タスク管理"
-    - "学生時代の失敗エピソード"
-    - "服装の好み"
-    - "昨日起きたとても悲しい出来事"
-    - "思い出・エピソード"
-    - "好きなゆるキャラ"
-    - "好きな食べ物"
-    - "好きな言葉・座右の銘"
-    - "嫌いな食べ物"
-    - "尊敬する人"
-    - "好きな音楽"
-    - "100年後の未来"
-    - "時間管理で気をつけていること"
-    - "副業"
-    - "好きなお菓子"
-    - "恋愛"
-    - "人生で一番つらかった出来事"
-    - "学生時代の得意科目"
-    - "株式投資の経験"
-    - "資産運用の考え方"
-    - "人脈の広げ方"
-    - "在宅ワーク"
-    - "起床後のルーティン"
-    - "パソコンを使う頻度"
-    - "かかりつけの病院"
-    - "作るのが得意な料理"
-    - "断捨離や片付けのコツ"
-    - "海外旅行の楽しみ方"
-    - "語学学習のポイント"
-    - "スポーツ観戦"
-    - "スポーツジムの利用"
-    - "飼っているペット"
-    - "乗りたい車"
-    - "好きな芸能人"
-    - "行ってみたい国"
-    - "通勤時の移動方法"
-    - "オンライン会議における悩みごと"
-    - "感情のコントロールで気をつけていること"
-    - "金銭感覚の違い"
-  slots: {}
+    - 現在のキャリア
+    - 性格
+    - 過去のキャリア
+    - タスク管理
+    - 思い出・エピソード
+    - 好きなゆるキャラ
+    - 嫌いな食べ物
+    - 好きな音楽
+    - 100年後の未来
+    - 時間管理で気をつけていること
+    - 人生で一番つらかった出来事
+    - 在宅ワーク
+    - 海外旅行の楽しみ方
+    - スポーツジムの利用
+    - 乗りたい車
+    - オンライン会議における悩みごと
+  slots:
+    悩みや不満点: null
+    仕事の満足度: null
+    語学学習のポイント: null
+    仕事における自己成長: null
+    かかりつけの病院: null
+    仕事におけるモチベーション: null
+    学生時代の失敗エピソード: null
+    仕事における課題解決力: null
+    学生時代の得意科目: null
+    パソコンを使う頻度: null
+    服装の好み: null
+    通勤時の移動方法: null
+    作るのが得意な料理: null
+    仕事における課題感: null
+    恋愛: null
+    職場環境の改善案: null
+    職場でのコミュニケーション: null
+    感情のコントロールで気をつけていること: null
+    副業: null
+    起床後のルーティン: null
+    株式投資の経験: null
+    職場での役割認識: null
+    スポーツ観戦: null
+    週末の過ごし方: null
+    個人の基本的情報: null
+    人脈の広げ方: null
+    好きなお菓子: null
+    家族: null
+    使用しているスマートフォンアプリ: null
+    職場でのコミュニケーションスタイル: null
+    資産運用の考え方: null
+    デザインへの価値観: null
+    好きな食べ物: null
+    趣味: null
+    金銭感覚の違い: null
+    将来のキャリアビジョン: null
+    未来像: null
+    好きな芸能人: null
+    好きな言葉・座右の銘: null
+    SNS: null
+    尊敬する人: null
+    飼っているペット: null
+    昇進・転職: null
+    行ってみたい国: null
+    断捨離や片付けのコツ: null
+    職場でのリーダーシップ: null
+    職場での課題解決アプローチ: null
+    昨日起きたとても悲しい出来事: null
 
 paths:
   prompts:
@@ -79,6 +93,6 @@ paths:
     generate_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_generating_question.txt"
     user_simulator: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
     end_conversation: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_end_conversation.txt"
-    estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot-CoT.txt"
+    estimate_persona: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot.txt"
     fukabori_questions: "/mnt/work/interview/data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fukabori_questions.txt"
-  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
+  persona_settings: "/mnt/work/interview/data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/03.txt"

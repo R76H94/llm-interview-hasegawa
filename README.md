@@ -1,3 +1,219 @@
+# interviewアップデート内容（2026/02/05更新）
+
+## 概要
+
+zero-shotとfew-shotで同じ話題順のインタビューを実施するための機能を追加した。
+
+## 主な変更点
+
+### 1. 話題順の記録・再生機能
+
+- `interviewer_llm_generate_slots_2`関数で選択された話題を記録
+- 記録された話題順を使って、2回目のインタビューで同じ話題を再現
+
+### 2. 深堀りスロットの扱い
+
+- `interviewer_llm_generate_slots`(深堀り)は各インタビューで独立に実行
+- 話題順の記録・再生対象外
+
+### 3. 設定ファイル (config.yaml)
+
+```yaml
+interview:
+  topic_mode: "record" # "record", "replay", "free"
+  topic_order_file: null # replay時に指定
+```
+
+## 実行フロー
+
+### 1回目: zero-shot (話題順を記録)
+
+1. **config.yaml の設定**
+
+```yaml
+interview:
+  topic_mode: "record"
+  topic_order_file: null
+
+paths:
+  prompts:
+    estimate_persona: "zero-shot用プロンプトのパス"
+```
+
+2. **実行**
+
+```bash
+python -m src.interview_statetransition.human_interview_experiment_proposed_method 2>&1 | tee -a out/log/$(TZ=Asia/Tokyo date +%Y%m%d_%H%M%S)_output.log
+```
+
+3. **出力**
+
+- `out/20260205_143022/topic_order.json` - 話題順が記録されたファイル
+- `out/20260205_143022/info.json` - 実験結果
+
+### 2回目: few-shot (同じ話題順で実行)
+
+1. **config.yaml の設定**
+
+```yaml
+interview:
+  topic_mode: "replay"
+  topic_order_file: "out/20260205_143022/topic_order.json" # 1回目の話題順ファイル
+
+paths:
+  prompts:
+    estimate_persona: "zero-shot用プロンプトのパス"
+```
+
+2. **実行**
+
+```bash
+python -m src.interview_statetransition.human_interview_experiment_proposed_method 2>&1 | tee -a out/log/$(TZ=Asia/Tokyo date +%Y%m%d_%H%M%S)_output.log
+```
+
+3. **出力**
+
+- `out/20260205_154500/info.json` - 同じ話題順での実験結果
+
+## topic_order.json の構造
+
+```json
+{
+  "execution_time": "2026/02/05 14:30:22",
+  "model": "gpt-4o",
+  "topic_mode": "record",
+  "topic_sequence": [
+    {
+      "step": 1,
+      "selected_topic": "趣味・興味",
+      "slot_generation_count": 1
+    },
+    {
+      "step": 2,
+      "selected_topic": "仕事・キャリア",
+      "slot_generation_count": 2
+    },
+    {
+      "step": 3,
+      "selected_topic": "家族構成",
+      "slot_generation_count": 3
+    }
+  ]
+}
+```
+
+## モード詳細
+
+### record モード
+
+- 話題を選択するたびに`topic_sequence`に記録
+- インタビュー終了時に`topic_order.json`を保存
+- ランダム選択またはLLMによる選択（`slot_selection_mode`に依存）
+
+### replay モード
+
+- `topic_order_file`から話題順を読み込み
+- `topic_sequence`の順番通りに話題を使用（**新規生成はしない**）
+- **記録された話題が終わった場合**: `persona_attribute_candidates`からランダムに選択する通常動作に戻る
+
+### free モード（既存動作）
+
+- 話題順の記録・再生を行わない
+- 従来通りの動作
+
+## 注意事項
+
+1. **深堀りスロット**
+   - `interviewer_llm_generate_slots`は各インタビューで独立
+   - 話題順の記録・再生対象外
+
+2. **プロンプトの違い**
+   - zero-shotとfew-shotの違いは主にプロンプトファイルで制御
+   - `estimate_persona`プロンプトなどを適切に変更すること
+
+## トラブルシューティング
+
+### replay時に話題が見つからない
+
+→ `topic_order_file`のパスが正しいか確認
+
+### 話題順ファイルが保存されない
+
+→ `topic_mode`が`"record"`になっているか確認
+
+# extract_persona_to_csv.py - 使い方
+
+## 概要
+複数の`info.json`ファイルから`estimate_persona`を抽出し、比較しやすいCSV形式で出力します。
+評価作業の際に使用してください
+
+## 使い方
+
+### 基本的な使い方
+```bash
+python extract_persona_to_csv.py <info.jsonのパス1> <info.jsonのパス2> ... [オプション]
+```
+
+### 具体例
+
+#### 例1: 2つのファイルを比較
+```bash
+python extract_persona_to_csv.py \
+    out/20260205_143022/info.json \
+    out/20260205_154500/info.json
+```
+
+#### 例2: 出力ファイル名を指定
+```bash
+python extract_persona_to_csv.py \
+    out/20260205_143022/info.json \
+    out/20260205_154500/info.json \
+    -o zero_vs_few_shot.csv
+```
+
+#### 例3: 複数の実験結果をまとめて比較
+```bash
+python extract_persona_to_csv.py \
+    out/20260205_143022/info.json \
+    out/20260205_154500/info.json \
+    out/20260205_160000/info.json \
+    out/20260205_170000/info.json \
+    -o experiment_results.csv
+```
+
+#### 例4: ワイルドカードで一括指定（bash/zsh）
+```bash
+python extract_persona_to_csv.py out/*/info.json -o all_results.csv
+```
+
+## オプション
+
+| オプション | 説明 | デフォルト |
+|-----------|------|-----------|
+| `-o`, `--output` | 出力CSVファイルのパス | `persona_comparison.csv` |
+
+## 出力されるCSV形式
+
+### 構造
+```csv
+,out/20260205_143022/info.json,out/20260205_154500/info.json,out/20260205_160000/info.json
+zero-shot/few-shot,,,
+人間/LLM,,,
+何人目,,,
+行1,思い出・エピソード: 済,思い出・エピソード: 済,思い出・エピソード: 未
+行2,仕事の達成感: 済,仕事の達成感: 済,仕事の達成感: 済
+行3,キャリア・職場: 済,キャリア・職場: 未,キャリア・職場: 済
+行4,未来像: 済,未来像: 済,未来像: 済
+```
+
+### ヘッダー行の説明
+
+1. **1行目**: ファイルパス（自動入力）
+2. **2行目**: `zero-shot/few-shot` - 手動で記入するための空白行
+3. **3行目**: `人間/LLM` - 手動で記入するための空白行
+4. **4行目**: `何人目` - 手動で記入するための空白行
+5. **5行目以降**: `estimate_persona`の各行
+
 # interviewアップデート内容（2025/12/22更新）
 
 ## CoTの追加

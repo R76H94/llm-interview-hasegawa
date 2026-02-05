@@ -1,0 +1,107 @@
+﻿{
+    "execution_time": "2026/02/05 21:52:31",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "使用しているスマートフォンアプリ",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 2,
+            "selected_topic": "作るのが得意な料理",
+            "slot_generation_count": 1
+        },
+        {
+            "step": 3,
+            "selected_topic": "好きな芸能人",
+            "slot_generation_count": 2
+        },
+        {
+            "step": 4,
+            "selected_topic": "好きな言葉・座右の銘",
+            "slot_generation_count": 3
+        },
+        {
+            "step": 5,
+            "selected_topic": "資産運用の考え方",
+            "slot_generation_count": 4
+        },
+        {
+            "step": 6,
+            "selected_topic": "昨日起きたとても悲しい出来事",
+            "slot_generation_count": 5
+        },
+        {
+            "step": 7,
+            "selected_topic": "過去のキャリア",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 9,
+            "selected_topic": "好きなお菓子",
+            "slot_generation_count": 8
+        },
+        {
+            "step": 10,
+            "selected_topic": "尊敬する人",
+            "slot_generation_count": 9
+        },
+        {
+            "step": 11,
+            "selected_topic": "性格",
+            "slot_generation_count": 10
+        },
+        {
+            "step": 13,
+            "selected_topic": "思い出・エピソード",
+            "slot_generation_count": 12
+        },
+        {
+            "step": 16,
+            "selected_topic": "好きなゆるキャラ",
+            "slot_generation_count": 15
+        },
+        {
+            "step": 17,
+            "selected_topic": "飼っているペット",
+            "slot_generation_count": 16
+        },
+        {
+            "step": 18,
+            "selected_topic": "金銭感覚の違い",
+            "slot_generation_count": 17
+        },
+        {
+            "step": 19,
+            "selected_topic": "海外旅行の楽しみ方",
+            "slot_generation_count": 18
+        },
+        {
+            "step": 20,
+            "selected_topic": "昇進・転職",
+            "slot_generation_count": 19
+        },
+        {
+            "step": 22,
+            "selected_topic": "未来像",
+            "slot_generation_count": 21
+        },
+        {
+            "step": 23,
+            "selected_topic": "タスク管理",
+            "slot_generation_count": 22
+        },
+        {
+            "step": 24,
+            "selected_topic": "好きな音楽",
+            "slot_generation_count": 23
+        },
+        {
+            "step": 25,
+            "selected_topic": "行ってみたい国",
+            "slot_generation_count": 24
+        }
+    ]
+}
