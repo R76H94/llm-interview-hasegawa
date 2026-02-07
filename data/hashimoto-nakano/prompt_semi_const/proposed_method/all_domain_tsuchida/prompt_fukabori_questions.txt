@@ -25,10 +25,6 @@
 - interviewer_llm_generate_slots_2
   - 今の話題をこれ以上深堀りする必要は低く、別のペルソナ属性や新しい切り口に話題を広げた方がよいと判断する場合に選びます。
 
-- skip_to_question
-  - 追加のスロット生成を行わず、現在のスロット情報だけでそのまま次の質問生成に進んでよいと判断する場合に選びます。
-  - 特に深堀りの必要もなく、新しいスロットも増やさなくてよいタイミングだと感じる場合に用います。
-
 # 対話履歴:
 {dialogue_history_str}
 
@@ -44,4 +40,3 @@
 
 - interviewer_llm_generate_slots
 - interviewer_llm_generate_slots_2
-- skip_to_question

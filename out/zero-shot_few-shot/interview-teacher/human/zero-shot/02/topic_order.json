@@ -1,0 +1,37 @@
+﻿{
+    "execution_time": "2026/02/06 17:58:46",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "未来像",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 3,
+            "selected_topic": "恋愛",
+            "slot_generation_count": 2
+        },
+        {
+            "step": 13,
+            "selected_topic": "好きなゆるキャラ",
+            "slot_generation_count": 12
+        },
+        {
+            "step": 14,
+            "selected_topic": "100年後の未来",
+            "slot_generation_count": 13
+        },
+        {
+            "step": 15,
+            "selected_topic": "乗りたい車",
+            "slot_generation_count": 14
+        },
+        {
+            "step": 16,
+            "selected_topic": "過去のキャリア",
+            "slot_generation_count": 15
+        }
+    ]
+}

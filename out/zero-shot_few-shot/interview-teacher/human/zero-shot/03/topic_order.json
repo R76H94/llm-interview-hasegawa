@@ -1,0 +1,62 @@
+﻿{
+    "execution_time": "2026/02/06 19:13:42",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "昇進・転職",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 4,
+            "selected_topic": "スポーツ観戦",
+            "slot_generation_count": 3
+        },
+        {
+            "step": 5,
+            "selected_topic": "人生で一番つらかった出来事",
+            "slot_generation_count": 4
+        },
+        {
+            "step": 6,
+            "selected_topic": "かかりつけの病院",
+            "slot_generation_count": 5
+        },
+        {
+            "step": 7,
+            "selected_topic": "断捨離や片付けのコツ",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 8,
+            "selected_topic": "行ってみたい国",
+            "slot_generation_count": 7
+        },
+        {
+            "step": 10,
+            "selected_topic": "性格",
+            "slot_generation_count": 9
+        },
+        {
+            "step": 11,
+            "selected_topic": "語学学習のポイント",
+            "slot_generation_count": 10
+        },
+        {
+            "step": 12,
+            "selected_topic": "通勤時の移動方法",
+            "slot_generation_count": 11
+        },
+        {
+            "step": 13,
+            "selected_topic": "人脈の広げ方",
+            "slot_generation_count": 12
+        },
+        {
+            "step": 15,
+            "selected_topic": "個人の基本的情報",
+            "slot_generation_count": 14
+        }
+    ]
+}

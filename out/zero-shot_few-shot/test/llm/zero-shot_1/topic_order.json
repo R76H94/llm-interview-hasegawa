@@ -1,0 +1,52 @@
+﻿{
+    "execution_time": "2026/02/08 00:51:01",
+    "model": "gpt-4.1",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "通勤時の移動方法",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 2,
+            "selected_topic": "好きなお菓子",
+            "slot_generation_count": 1
+        },
+        {
+            "step": 3,
+            "selected_topic": "かかりつけの病院",
+            "slot_generation_count": 2
+        },
+        {
+            "step": 4,
+            "selected_topic": "好きな言葉・座右の銘",
+            "slot_generation_count": 3
+        },
+        {
+            "step": 5,
+            "selected_topic": "悩みや不満点",
+            "slot_generation_count": 4
+        },
+        {
+            "step": 7,
+            "selected_topic": "家族",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 8,
+            "selected_topic": "飼っているペット",
+            "slot_generation_count": 7
+        },
+        {
+            "step": 9,
+            "selected_topic": "在宅ワーク",
+            "slot_generation_count": 8
+        },
+        {
+            "step": 10,
+            "selected_topic": "人生で一番つらかった出来事",
+            "slot_generation_count": 9
+        }
+    ]
+}

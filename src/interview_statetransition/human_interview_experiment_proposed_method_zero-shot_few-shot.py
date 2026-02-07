@@ -92,6 +92,7 @@ INTERVIEW_CONFIG = {
     "last_question_target_slot": {},
     "topic_sequence": [],  # 話題順を記録
     "topic_replay_index": 0,  # 再生時のインデックス
+    "current_topic": None,  # 現在の話題
 }
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,11 +102,12 @@ INTERVIEW_CONFIG = {
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 
-# ic.enable()
+ic.enable()
+# デバッグ出力のフォーマットを設定
+ic.configureOutput(includeContext=True)
+
 # ic.disable()
 
-# デバッグ出力のフォーマットを設定
-# ic.configureOutput(includeContext=True)
 
 # モデルの定義
 if cfg.model.provider == "openai":
@@ -322,6 +324,7 @@ class State(TypedDict):
         last_generated_slot(List[str]): 生成された深堀りスロット
         topic_sequence(List[Dict]): 話題順を記録
         topic_replay_index(int): 再生時のインデックス
+        current_topic(Optional[str]): 現在の話題
     """
 
     dialogue_history: List[str]
@@ -337,6 +340,7 @@ class State(TypedDict):
     last_question_target_slot: Dict[str, Optional[str]]
     topic_sequence: List[Dict]
     topic_replay_index: int
+    current_topic: Optional[str]
 
 
 class SlotDict(RootModel[Dict[str, Optional[str]]]):
@@ -390,6 +394,7 @@ info_path = os.path.join(execution_folder, "info.json")
 graph_image_path = os.path.join(execution_folder, "graph.png")
 readme_path = os.path.join(execution_folder, "README.md")
 topic_order_path = os.path.join(execution_folder, "topic_order.json")
+log_path = os.path.join(execution_folder, f"output_{timestamp}.log")
 
 # 空の情報を保存
 with open(info_path, "w", encoding="utf-8-sig") as f:
@@ -473,16 +478,25 @@ def interviewer_llm_generate_question(state: State) -> State:
     pending = new_state.get("last_generated_slot", [])
     all_slots = new_state["slots"]
     estimate_persona = new_state["estimate_persona"]
+    current_topic = new_state.get("current_topic", None)
 
-    shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
-    shuffled_slots = {key: all_slots[key] for key in shuffled_keys}
+    ic(pending)
+    ic(all_slots)
+    ic(estimate_persona)
+    ic(current_topic)
 
     if pending:
-        slots_for_prompt = {
-            k: shuffled_slots[k] for k in pending if k in shuffled_slots
-        }
+        # 深掘りスロットを優先
+        slots_for_prompt = {k: all_slots[k] for k in pending if k in all_slots}
+    elif current_topic and current_topic in all_slots:
+        # 記録した話題に完全一致するスロットがある場合
+        slots_for_prompt = {current_topic: all_slots[current_topic]}
     else:
-        slots_for_prompt = shuffled_slots
+        # 全スロットからランダム選択
+        shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
+        slots_for_prompt = {key: all_slots[key] for key in shuffled_keys}
+
+    ic(slots_for_prompt)
 
     template = prompt_generate_questions
     prompt = PromptTemplate(
@@ -527,6 +541,7 @@ def interviewer_llm_generate_question(state: State) -> State:
                 except Exception:
                     target_slot_dict = {}
                 new_state["last_question_target_slot"] = dict(target_slot_dict)
+                ic(new_state["last_question_target_slot"])
                 new_dialogue = f"インタビュアー: {question_text}"
 
             except Exception as e:
@@ -831,8 +846,11 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
 
     dialogue_history = new_state["dialogue_history"]
     slots = new_state["slots"]
+    prev_keys = set(slots.keys())
+    pac = list(new_state.get("persona_attribute_candidates") or [])
 
-    pac = new_state.get("persona_attribute_candidates", [])
+    ic(prev_keys)
+    ic(pac)
 
     # 話題順の記録・再生処理
     if TOPIC_MODE == "replay":
@@ -840,9 +858,14 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
         topic_sequence = new_state.get("topic_sequence", [])
         replay_index = new_state.get("topic_replay_index", 0)
 
+        ic(topic_sequence)
+        ic(replay_index)
+
         if replay_index < len(topic_sequence):
             random_topic = topic_sequence[replay_index]["selected_topic"]
             new_state["topic_replay_index"] = replay_index + 1
+            if random_topic in pac:
+                pac.remove(random_topic)
             print(f"[REPLAY MODE] 話題を再生: {random_topic} (index: {replay_index})")
         else:
             # 記録された話題が終わった場合、通常動作に戻る
@@ -874,6 +897,9 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
             }
             new_state["topic_sequence"].append(topic_entry)
             print(f"[RECORD MODE] 話題を記録: {random_topic}")
+
+    ic(random_topic)
+    ic(pac)
 
     template = prompt_generate_slots_2
     prompt = PromptTemplate(
@@ -909,25 +935,32 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
             print(f"new_slots_dict: {content}\n")
             if content == "None":
                 merged_slots = slots
+                added = []
             else:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
                     new_slots_dict = dict(new_slots_obj.root)
                     merged_slots = {**slots, **new_slots_dict}
+                    added = [k for k in merged_slots.keys() if k not in prev_keys]
                 except Exception as e:
                     print(f"Error occurred while decoding the JSON: {e}")
                     merged_slots = slots
+                    added = []
         else:
             merged_slots = slots
+            added = []
 
     except Exception as e:
         print(f"Error occurred while invoking the model: {e}")
         merged_slots = slots
+        added = []
 
     print(f"merged_slots: {merged_slots}\n")
 
+    new_state["persona_attribute_candidates"] = pac
+    new_state["current_topic"] = random_topic
     new_state["slots"] = merged_slots
-
+    new_state["last_generated_slot"] = added
     now = datetime.datetime.now(jst)
     timestamp = now.strftime("%Y%m%d_%H%M%S")
     node_name = "interviewer_llm_generate_slots_2"
@@ -1023,7 +1056,7 @@ def select_generate_slots_node(state: State) -> State:
             last_interviewee_utternace = message
             break
 
-    pac = (
+    pac = list(
         new_state.get("persona_attribute_candidates") or []
     )  # 候補リスト（なければ空）
 
@@ -1381,6 +1414,7 @@ def main():
             "last_question_target_slot": interview_config["last_question_target_slot"],
             "topic_sequence": interview_config["topic_sequence"],
             "topic_replay_index": interview_config["topic_replay_index"],
+            "current_topic": interview_config["current_topic"],
         },
         config={
             "recursion_limit": 200,

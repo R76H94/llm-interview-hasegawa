@@ -1,0 +1,52 @@
+﻿{
+    "execution_time": "2026/02/06 14:33:21",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "未来像",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 2,
+            "selected_topic": "スポーツジムの利用",
+            "slot_generation_count": 1
+        },
+        {
+            "step": 7,
+            "selected_topic": "趣味",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 9,
+            "selected_topic": "パソコンを使う頻度",
+            "slot_generation_count": 8
+        },
+        {
+            "step": 10,
+            "selected_topic": "感情のコントロールで気をつけていること",
+            "slot_generation_count": 9
+        },
+        {
+            "step": 11,
+            "selected_topic": "現在のキャリア",
+            "slot_generation_count": 10
+        },
+        {
+            "step": 12,
+            "selected_topic": "起床後のルーティン",
+            "slot_generation_count": 11
+        },
+        {
+            "step": 13,
+            "selected_topic": "好きなお菓子",
+            "slot_generation_count": 12
+        },
+        {
+            "step": 14,
+            "selected_topic": "オンライン会議における悩みごと",
+            "slot_generation_count": 13
+        }
+    ]
+}

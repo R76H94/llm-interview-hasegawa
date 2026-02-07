@@ -1,0 +1,57 @@
+﻿{
+    "execution_time": "2026/02/08 02:32:25",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "step": 1,
+            "selected_topic": "好きな芸能人",
+            "slot_generation_count": 0
+        },
+        {
+            "step": 2,
+            "selected_topic": "語学学習のポイント",
+            "slot_generation_count": 1
+        },
+        {
+            "step": 3,
+            "selected_topic": "SNS",
+            "slot_generation_count": 2
+        },
+        {
+            "step": 4,
+            "selected_topic": "好きな音楽",
+            "slot_generation_count": 3
+        },
+        {
+            "step": 5,
+            "selected_topic": "資産運用の考え方",
+            "slot_generation_count": 4
+        },
+        {
+            "step": 6,
+            "selected_topic": "好きなゆるキャラ",
+            "slot_generation_count": 5
+        },
+        {
+            "step": 7,
+            "selected_topic": "作るのが得意な料理",
+            "slot_generation_count": 6
+        },
+        {
+            "step": 8,
+            "selected_topic": "100年後の未来",
+            "slot_generation_count": 7
+        },
+        {
+            "step": 9,
+            "selected_topic": "個人の基本的情報",
+            "slot_generation_count": 8
+        },
+        {
+            "step": 10,
+            "selected_topic": "未来像",
+            "slot_generation_count": 9
+        }
+    ]
+}
