@@ -574,15 +574,11 @@ def interviewer_llm_generate_question(state: State) -> State:
     all_slots = new_state["slots"]
     estimate_persona = new_state["estimate_persona"]
 
-    shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
-    shuffled_slots = {key: all_slots[key] for key in shuffled_keys}
-
     if pending:
-        slots_for_prompt = {
-            k: shuffled_slots[k] for k in pending if k in shuffled_slots
-        }
+        slots_for_prompt = {k: all_slots[k] for k in pending if k in all_slots}
     else:
-        slots_for_prompt = shuffled_slots
+        shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
+        slots_for_prompt = {key: all_slots[key] for key in shuffled_keys}
 
     template = prompt_generate_questions
     prompt = PromptTemplate(

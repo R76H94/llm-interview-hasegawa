@@ -1,0 +1,37 @@
+﻿{
+    "execution_time": "2026/02/10 04:53:58",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "selected_topic": "服装の好み"
+        },
+        {
+            "selected_topic": "家族"
+        },
+        {
+            "selected_topic": "現在のキャリア"
+        },
+        {
+            "selected_topic": "悩みや不満点"
+        },
+        {
+            "selected_topic": "職場でのモチベーション"
+        },
+        {
+            "selected_topic": "思い出・エピソード"
+        },
+        {
+            "selected_topic": "趣味"
+        },
+        {
+            "selected_topic": "好きな音楽"
+        },
+        {
+            "selected_topic": "好きな芸能人"
+        },
+        {
+            "selected_topic": "趣味"
+        }
+    ]
+}

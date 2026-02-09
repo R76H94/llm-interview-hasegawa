@@ -92,7 +92,7 @@ INTERVIEW_CONFIG = {
     "last_question_target_slot": {},
     "topic_sequence": [],  # 話題順を記録
     "topic_replay_index": 0,  # 再生時のインデックス
-    "current_topic": None,  # 現在の話題
+    "last_slot2_topic": None,
 }
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
@@ -324,7 +324,7 @@ class State(TypedDict):
         last_generated_slot(List[str]): 生成された深堀りスロット
         topic_sequence(List[Dict]): 話題順を記録
         topic_replay_index(int): 再生時のインデックス
-        current_topic(Optional[str]): 現在の話題
+        last_slot2_topic(Optional[str]):
     """
 
     dialogue_history: List[str]
@@ -340,7 +340,7 @@ class State(TypedDict):
     last_question_target_slot: Dict[str, Optional[str]]
     topic_sequence: List[Dict]
     topic_replay_index: int
-    current_topic: Optional[str]
+    last_slot2_topic: Optional[str]
 
 
 class SlotDict(RootModel[Dict[str, Optional[str]]]):
@@ -478,19 +478,21 @@ def interviewer_llm_generate_question(state: State) -> State:
     pending = new_state.get("last_generated_slot", [])
     all_slots = new_state["slots"]
     estimate_persona = new_state["estimate_persona"]
-    current_topic = new_state.get("current_topic", None)
+    last_slot2_topic = new_state.get("last_slot2_topic", None)
 
     ic(pending)
     ic(all_slots)
     ic(estimate_persona)
-    ic(current_topic)
+
+    used_slot2_topic = False
 
     if pending:
         # 深掘りスロットを優先
         slots_for_prompt = {k: all_slots[k] for k in pending if k in all_slots}
-    elif current_topic and current_topic in all_slots:
-        # 記録した話題に完全一致するスロットがある場合
-        slots_for_prompt = {current_topic: all_slots[current_topic]}
+    elif last_slot2_topic and last_slot2_topic in all_slots:
+        # 前回の話題に該当するスロットを優先
+        slots_for_prompt = {last_slot2_topic: all_slots[last_slot2_topic]}
+        used_slot2_topic = True
     else:
         # 全スロットからランダム選択
         shuffled_keys = random.sample(list(all_slots.keys()), k=len(all_slots))
@@ -541,6 +543,10 @@ def interviewer_llm_generate_question(state: State) -> State:
                 except Exception:
                     target_slot_dict = {}
                 new_state["last_question_target_slot"] = dict(target_slot_dict)
+                if TOPIC_MODE == "record":
+                    selected = next(iter(target_slot_dict.keys()), None)
+                    if selected:
+                        new_state["topic_sequence"].append({"selected_topic": selected})
                 ic(new_state["last_question_target_slot"])
                 new_dialogue = f"インタビュアー: {question_text}"
 
@@ -560,6 +566,8 @@ def interviewer_llm_generate_question(state: State) -> State:
 
     if pending:
         new_state["last_generated_slot"] = []
+    if used_slot2_topic:
+        new_state["last_slot2_topic"] = None
 
     print(f"new_dialogue: {new_dialogue}\n")
 
@@ -796,8 +804,11 @@ def interviewer_llm_generate_slots(state: State) -> State:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
                     new_slots_dict = dict(new_slots_obj.root)
-                    merged_slots = {**slots, **new_slots_dict}
-                    added = [k for k in merged_slots.keys() if k not in prev_keys]
+                    filtered_new_slots_dict = {
+                        k: v for k, v in new_slots_dict.items() if k not in slots
+                    }
+                    merged_slots = {**slots, **filtered_new_slots_dict}
+                    added = list(filtered_new_slots_dict.keys())
                 except Exception as e:
                     print(f"Error occurred while decoding the JSON: {e}")
                     merged_slots = slots
@@ -888,16 +899,7 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
         random_topic = random.choice(pac)
         pac.remove(random_topic)
 
-        # record モードの場合、話題を記録
-        if TOPIC_MODE == "record":
-            topic_entry = {
-                "step": new_state["slot_generation_count"] + 1,
-                "selected_topic": random_topic,
-                "slot_generation_count": new_state["slot_generation_count"],
-            }
-            new_state["topic_sequence"].append(topic_entry)
-            print(f"[RECORD MODE] 話題を記録: {random_topic}")
-
+    new_state["last_slot2_topic"] = random_topic
     ic(random_topic)
     ic(pac)
 
@@ -935,32 +937,25 @@ def interviewer_llm_generate_slots_2(state: State) -> State:
             print(f"new_slots_dict: {content}\n")
             if content == "None":
                 merged_slots = slots
-                added = []
             else:
                 try:
                     new_slots_obj = slot_output_parser.parse(content)
                     new_slots_dict = dict(new_slots_obj.root)
                     merged_slots = {**slots, **new_slots_dict}
-                    added = [k for k in merged_slots.keys() if k not in prev_keys]
                 except Exception as e:
                     print(f"Error occurred while decoding the JSON: {e}")
                     merged_slots = slots
-                    added = []
         else:
             merged_slots = slots
-            added = []
 
     except Exception as e:
         print(f"Error occurred while invoking the model: {e}")
         merged_slots = slots
-        added = []
 
     print(f"merged_slots: {merged_slots}\n")
 
     new_state["persona_attribute_candidates"] = pac
-    new_state["current_topic"] = random_topic
     new_state["slots"] = merged_slots
-    new_state["last_generated_slot"] = added
     now = datetime.datetime.now(jst)
     timestamp = now.strftime("%Y%m%d_%H%M%S")
     node_name = "interviewer_llm_generate_slots_2"
@@ -1414,7 +1409,7 @@ def main():
             "last_question_target_slot": interview_config["last_question_target_slot"],
             "topic_sequence": interview_config["topic_sequence"],
             "topic_replay_index": interview_config["topic_replay_index"],
-            "current_topic": interview_config["current_topic"],
+            "last_slot2_topic": interview_config["last_slot2_topic"],
         },
         config={
             "recursion_limit": 200,
