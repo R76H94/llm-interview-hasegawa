@@ -25,10 +25,10 @@ class RunConfig(BaseModel):
 
 
 class InterviewConfig(BaseModel):
-    max_total_count: int = 40
-    min_total_count: int = 34
-    use_question_slot_in_fill_slots: bool = False
-    slot_selection_mode: Literal["random", "llm"] = "random"
+    max_total_count: int = 50
+    min_total_count: int = 50
+    use_question_slot_in_fill_slots: bool = True
+    slot_selection_mode: Literal["random", "llm"] = "llm"
     topic_mode: Literal["record", "replay", "free"] = "free"
     topic_order_file: Optional[str] = None
     estimate_persona: str | None = None
@@ -77,7 +77,7 @@ def load_config(config_path: str | None = None) -> AppConfig:
     default_path = base / "default.yaml"
     cfg = AppConfig.from_yaml(default_path)
 
-    local_path = base / "local_zero-shot_few-shot.yaml"
+    local_path = base / "local.yaml"
     if local_path.exists():
         with open(local_path, "r", encoding="utf-8-sig") as f:
             local = yaml.safe_load(f)

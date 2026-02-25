@@ -1,0 +1,404 @@
+﻿{
+    "execution_time": "2026/02/24 22:59:18",
+    "command": "/mnt/work/interview/src/interview_statetransition/human_interview_experiment_proposed_method_zero-shot_few-shot.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7f20dfc768d0> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7f20dfccfc90> root_client=<openai.OpenAI object at 0x7f20dfa01f90> root_async_client=<openai.AsyncOpenAI object at 0x7f20df8b8290> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "#個人の基本的な情報\n鈴木 ショウタ\n25歳\n東京都出身\n男性\n\n#性格\n論理的思考が得意で、知的好奇心が旺盛\n一度集中すると深く没頭するタイプで、粘り強く課題解決に取り組む\n\n#過去のキャリア\n情報系の大学を卒業後、新卒で現在のメガベンチャーに入社し3年目\n大学の研究室では、画像認識技術の研究に携わり、学会での発表経験もある\n\n#現在のキャリア・職場\n国内最大級のSNSを運営する企業でバックエンドエンジニアとして勤務\n主にAPIの新規開発やマイクロサービスの保守運用を担当している\n\n#未来像\n大規模サービスの全体のアーキテクチャ設計に携わりたい\n技術選定から関われるテックリードになることを目標にしている\n\n#悩みや不満点\n組織が大きく縦割りなため、自分の仕事がプロダクト全体にどう貢献しているか見えにくい\nコードを書く以外の会議やドキュメント作成といった調整業務の多さにストレスを感じる\n\n#昇進や転職の考え\nマネジメントよりも技術を追求したい専門職志向\n将来的には、より裁量権の大きいアーリーステージのスタートアップで働くことも視野に入れている\n\n#趣味・プライベート\n趣味は、思考力を要するボードゲームと、週末のボルダリング\n休日は話題の技術書を読んだり、友人と興味のある技術について語り合ったりすることが多い\n\n#家族・家庭\n現在は都内の実家から独立し、会社の近くで一人暮らし\n実家には両親と大学生の妹がいる\n\n#思い出・エピソード\n入社1年目の時、自分が担当した機能がリリースされ、SNS上で「この機能便利だ」というユーザーの声を直接目にしたこと。自分のコードが世の中の役に立っていると実感でき、大きなやりがいを感じた。",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 50,
+        "min_total_count": 50,
+        "estimate_persona": null,
+        "persona_attribute_candidates": [
+            "現在のキャリア",
+            "悩みや不満点",
+            "性格",
+            "過去のキャリア",
+            "昇進・転職",
+            "SNS",
+            "趣味",
+            "家族",
+            "使用しているスマートフォンアプリ",
+            "個人の基本的情報",
+            "未来像",
+            "タスク管理",
+            "学生時代の失敗エピソード",
+            "服装の好み",
+            "昨日起きたとても悲しい出来事",
+            "思い出・エピソード",
+            "好きなゆるキャラ",
+            "好きな食べ物",
+            "好きな言葉・座右の銘",
+            "嫌いな食べ物",
+            "尊敬する人",
+            "好きな音楽",
+            "100年後の未来",
+            "時間管理で気をつけていること",
+            "副業",
+            "好きなお菓子",
+            "恋愛",
+            "人生で一番つらかった出来事",
+            "学生時代の得意科目",
+            "株式投資の経験",
+            "資産運用の考え方",
+            "人脈の広げ方",
+            "在宅ワーク",
+            "起床後のルーティン",
+            "パソコンを使う頻度",
+            "かかりつけの病院",
+            "作るのが得意な料理",
+            "断捨離や片付けのコツ",
+            "海外旅行の楽しみ方",
+            "語学学習のポイント",
+            "スポーツ観戦",
+            "スポーツジムの利用",
+            "飼っているペット",
+            "乗りたい車",
+            "好きな芸能人",
+            "行ってみたい国",
+            "通勤時の移動方法",
+            "オンライン会議における悩みごと",
+            "感情のコントロールで気をつけていること",
+            "金銭感覚の違い"
+        ],
+        "slots": {},
+        "slot_generation_count": 0,
+        "branch": null,
+        "last_generated_slot": [],
+        "last_question_target_slot": {},
+        "topic_sequence": [
+            {
+                "step": 1,
+                "selected_topic": "思い出・エピソード",
+                "slot_generation_count": 0
+            },
+            {
+                "step": 3,
+                "selected_topic": "昨日起きたとても悲しい出来事",
+                "slot_generation_count": 2
+            },
+            {
+                "step": 4,
+                "selected_topic": "パソコンを使う頻度",
+                "slot_generation_count": 3
+            },
+            {
+                "step": 5,
+                "selected_topic": "悩みや不満点",
+                "slot_generation_count": 4
+            },
+            {
+                "step": 8,
+                "selected_topic": "作るのが得意な料理",
+                "slot_generation_count": 7
+            },
+            {
+                "step": 9,
+                "selected_topic": "好きなお菓子",
+                "slot_generation_count": 8
+            },
+            {
+                "step": 10,
+                "selected_topic": "人生で一番つらかった出来事",
+                "slot_generation_count": 9
+            },
+            {
+                "step": 11,
+                "selected_topic": "家族",
+                "slot_generation_count": 10
+            },
+            {
+                "step": 12,
+                "selected_topic": "好きな芸能人",
+                "slot_generation_count": 11
+            },
+            {
+                "step": 13,
+                "selected_topic": "断捨離や片付けのコツ",
+                "slot_generation_count": 12
+            },
+            {
+                "step": 14,
+                "selected_topic": "行ってみたい国",
+                "slot_generation_count": 13
+            },
+            {
+                "step": 15,
+                "selected_topic": "時間管理で気をつけていること",
+                "slot_generation_count": 14
+            },
+            {
+                "step": 16,
+                "selected_topic": "現在のキャリア",
+                "slot_generation_count": 15
+            },
+            {
+                "step": 17,
+                "selected_topic": "スポーツジムの利用",
+                "slot_generation_count": 16
+            },
+            {
+                "step": 18,
+                "selected_topic": "昇進・転職",
+                "slot_generation_count": 17
+            },
+            {
+                "step": 19,
+                "selected_topic": "スポーツ観戦",
+                "slot_generation_count": 18
+            },
+            {
+                "step": 20,
+                "selected_topic": "副業",
+                "slot_generation_count": 19
+            },
+            {
+                "step": 21,
+                "selected_topic": "SNS",
+                "slot_generation_count": 20
+            },
+            {
+                "step": 22,
+                "selected_topic": "好きなゆるキャラ",
+                "slot_generation_count": 21
+            },
+            {
+                "step": 23,
+                "selected_topic": "性格",
+                "slot_generation_count": 22
+            },
+            {
+                "step": 24,
+                "selected_topic": "海外旅行の楽しみ方",
+                "slot_generation_count": 23
+            },
+            {
+                "step": 25,
+                "selected_topic": "在宅ワーク",
+                "slot_generation_count": 24
+            }
+        ],
+        "topic_replay_index": 0,
+        "last_slot2_topic": null
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: これまでの人生で特に印象に残っている思い出やエピソードがあれば教えていただけますか？",
+            "インタビュー対象者: 入社1年目に担当した機能がリリースされ、ユーザーから便利だという声を聞けたことです。",
+            "インタビュアー: これまでの経験の中で、特に達成感を感じた瞬間について教えていただけますか？",
+            "インタビュー対象者: 入社1年目に担当した機能がリリースされ、ユーザーの声で役立ったと実感した瞬間です。",
+            "インタビュアー: 昨日、何か悲しい出来事があったとしたら、差し支えなければ教えていただけますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 普段、パソコンをどのくらいの頻度で使われていますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 普段の生活やお仕事の中で、何か悩みや不満に感じていることがあれば教えていただけますか？",
+            "インタビュー対象者: 組織が縦割りで自分の仕事の全体貢献が見えにくい点に悩みを感じています。",
+            "インタビュアー: お仕事をされる上で、特に大切にしている価値観や信念があれば教えていただけますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 料理をされることはありますか？もしあれば、特に作るのが得意な料理について教えていただけますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: 甘いものやお菓子で特に好きなものがあれば教えていただけますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: これまでの人生で特に辛かった出来事や困難に感じたことがあれば、教えていただけますか？",
+            "インタビュー対象者: わかりません。",
+            "インタビュアー: ご家族についてお伺いしてもよろしいですか？どのようなご家族構成なのか教えていただけると嬉しいです。",
+            "インタビュー対象者: 現在は都内の実家から独立し、会社の近くで一人暮らしをしています。"
+        ],
+        "speak_count": {
+            "total_count": 20,
+            "interviewer_count": 10,
+            "interviewee_count": 10,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 10,
+            "interviewee_generate_answer_count": 10
+        },
+        "max_total_count": 50,
+        "min_total_count": 50,
+        "estimate_persona": "思い出・エピソード: 済  \n達成感: 済  \n悩みやストレス: 済  \n家族: 済",
+        "persona_attribute_candidates": [
+            "現在のキャリア",
+            "性格",
+            "過去のキャリア",
+            "昇進・転職",
+            "SNS",
+            "趣味",
+            "使用しているスマートフォンアプリ",
+            "個人の基本的情報",
+            "未来像",
+            "タスク管理",
+            "学生時代の失敗エピソード",
+            "服装の好み",
+            "好きなゆるキャラ",
+            "好きな食べ物",
+            "好きな言葉・座右の銘",
+            "嫌いな食べ物",
+            "尊敬する人",
+            "好きな音楽",
+            "100年後の未来",
+            "時間管理で気をつけていること",
+            "副業",
+            "恋愛",
+            "学生時代の得意科目",
+            "株式投資の経験",
+            "資産運用の考え方",
+            "人脈の広げ方",
+            "在宅ワーク",
+            "起床後のルーティン",
+            "かかりつけの病院",
+            "断捨離や片付けのコツ",
+            "海外旅行の楽しみ方",
+            "語学学習のポイント",
+            "スポーツ観戦",
+            "スポーツジムの利用",
+            "飼っているペット",
+            "乗りたい車",
+            "行ってみたい国",
+            "通勤時の移動方法",
+            "オンライン会議における悩みごと",
+            "感情のコントロールで気をつけていること",
+            "金銭感覚の違い"
+        ],
+        "slots": {
+            "思い出・エピソード": "入社1年目に担当した機能がリリースされ、ユーザーから便利だという声を聞けたこと",
+            "達成感": "入社1年目に担当した機能がリリースされ、ユーザーの声で役立ったと実感した瞬間",
+            "昨日起きたとても悲しい出来事": "情報なし",
+            "パソコンを使う頻度": "情報なし",
+            "悩みや不満点": "組織が縦割りで自分の仕事の全体貢献が見えにくい点に悩みを感じています",
+            "仕事の価値観": "情報なし",
+            "作るのが得意な料理": "情報なし",
+            "好きなお菓子": "情報なし",
+            "人生で一番つらかった出来事": "情報なし",
+            "家族": "現在は都内の実家から独立し、会社の近くで一人暮らしをしています",
+            "好きな芸能人": null
+        },
+        "slot_generation_count": 10,
+        "branch": "interviewer_llm_generate_slots_2",
+        "last_generated_slot": [],
+        "last_question_target_slot": {
+            "家族": null
+        },
+        "topic_sequence": [
+            {
+                "step": 1,
+                "selected_topic": "思い出・エピソード",
+                "slot_generation_count": 0
+            },
+            {
+                "step": 3,
+                "selected_topic": "昨日起きたとても悲しい出来事",
+                "slot_generation_count": 2
+            },
+            {
+                "step": 4,
+                "selected_topic": "パソコンを使う頻度",
+                "slot_generation_count": 3
+            },
+            {
+                "step": 5,
+                "selected_topic": "悩みや不満点",
+                "slot_generation_count": 4
+            },
+            {
+                "step": 8,
+                "selected_topic": "作るのが得意な料理",
+                "slot_generation_count": 7
+            },
+            {
+                "step": 9,
+                "selected_topic": "好きなお菓子",
+                "slot_generation_count": 8
+            },
+            {
+                "step": 10,
+                "selected_topic": "人生で一番つらかった出来事",
+                "slot_generation_count": 9
+            },
+            {
+                "step": 11,
+                "selected_topic": "家族",
+                "slot_generation_count": 10
+            },
+            {
+                "step": 12,
+                "selected_topic": "好きな芸能人",
+                "slot_generation_count": 11
+            },
+            {
+                "step": 13,
+                "selected_topic": "断捨離や片付けのコツ",
+                "slot_generation_count": 12
+            },
+            {
+                "step": 14,
+                "selected_topic": "行ってみたい国",
+                "slot_generation_count": 13
+            },
+            {
+                "step": 15,
+                "selected_topic": "時間管理で気をつけていること",
+                "slot_generation_count": 14
+            },
+            {
+                "step": 16,
+                "selected_topic": "現在のキャリア",
+                "slot_generation_count": 15
+            },
+            {
+                "step": 17,
+                "selected_topic": "スポーツジムの利用",
+                "slot_generation_count": 16
+            },
+            {
+                "step": 18,
+                "selected_topic": "昇進・転職",
+                "slot_generation_count": 17
+            },
+            {
+                "step": 19,
+                "selected_topic": "スポーツ観戦",
+                "slot_generation_count": 18
+            },
+            {
+                "step": 20,
+                "selected_topic": "副業",
+                "slot_generation_count": 19
+            },
+            {
+                "step": 21,
+                "selected_topic": "SNS",
+                "slot_generation_count": 20
+            },
+            {
+                "step": 22,
+                "selected_topic": "好きなゆるキャラ",
+                "slot_generation_count": 21
+            },
+            {
+                "step": 23,
+                "selected_topic": "性格",
+                "slot_generation_count": 22
+            },
+            {
+                "step": 24,
+                "selected_topic": "海外旅行の楽しみ方",
+                "slot_generation_count": 23
+            },
+            {
+                "step": 25,
+                "selected_topic": "在宅ワーク",
+                "slot_generation_count": 24
+            }
+        ],
+        "topic_replay_index": 9,
+        "last_slot2_topic": "好きな芸能人"
+    }
+}
