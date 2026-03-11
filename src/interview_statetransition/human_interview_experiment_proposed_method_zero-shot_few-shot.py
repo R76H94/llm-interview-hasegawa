@@ -222,7 +222,10 @@ def read_human_input(
     # 1)対話実行
     if _is_tty_stdin() and input_file is None:
         try:
-            return input(prompt_text).strip()
+            sys.stdout.write(prompt_text)
+            sys.stdout.flush()
+            raw = sys.stdin.buffer.readline()
+            return raw.decode("utf-8", errors="replace").rstrip("\n").strip()
         except EOFError:
             return ""
     # 2)input_fileから取得

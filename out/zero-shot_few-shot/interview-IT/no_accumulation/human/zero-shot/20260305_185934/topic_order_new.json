@@ -1,0 +1,79 @@
+﻿{
+    "execution_time": "2026/03/05 19:23:07",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "selected_topic": "かかりつけの病院"
+        },
+        {
+            "selected_topic": "感情のコントロールで気をつけていること"
+        },
+        {
+            "selected_topic": "好きな音楽"
+        },
+        {
+            "selected_topic": "株式投資の経験"
+        },
+        {
+            "selected_topic": "性格"
+        },
+        {
+            "selected_topic": "スポーツジムの利用"
+        },
+        {
+            "selected_topic": "在宅ワーク"
+        },
+        {
+            "selected_topic": "昇進・転職"
+        },
+        {
+            "selected_topic": "タスク管理"
+        },
+        {
+            "selected_topic": "通勤時の移動方法"
+        },
+        {
+            "selected_topic": "好きなお菓子"
+        },
+        {
+            "selected_topic": "好きなゆるキャラ"
+        },
+        {
+            "selected_topic": "海外旅行の楽しみ方"
+        },
+        {
+            "selected_topic": "副業"
+        },
+        {
+            "selected_topic": "飼っているペット"
+        },
+        {
+            "selected_topic": "100年後の未来"
+        },
+        {
+            "selected_topic": "過去のキャリア"
+        },
+        {
+            "selected_topic": "個人の基本的情報"
+        },
+        {
+            "selected_topic": "スポーツ観戦"
+        },
+        {
+            "selected_topic": "悩みや不満点"
+        },
+        {
+            "selected_topic": "好きな言葉・座右の銘"
+        },
+        {
+            "selected_topic": "人脈の広げ方"
+        },
+        {
+            "selected_topic": "SNS"
+        },
+        {
+            "selected_topic": "パソコンを使う頻度"
+        }
+    ]
+}

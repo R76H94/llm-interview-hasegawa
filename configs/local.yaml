@@ -9,7 +9,7 @@ interviewee:
 
 run:
   wait_time: 3
-  out_dir: "out/zero-shot_few-shot/IT/LLM/zero-shot"
+  out_dir: "out/zero-shot_few-shot/interview-IT/no_accumulation/human/few-shot"
 
 interview:
   max_total_count: 50  #デフォルト値：50
@@ -18,7 +18,7 @@ interview:
   slot_selection_mode: "llm"  #"random" or "llm"
   # 話題順の制御 (新規追加)
   topic_mode: "replay"  # "record": 記録する, "replay": 再生する, "free": 自由(既存動作)
-  topic_order_file: "out/zero-shot_few-shot/interview-IT/LLM/topic_order.json"  # replay時に指定: "out/20260205_143022/topic_order.json" など (デフォルト値 null)
+  topic_order_file: "out/zero-shot_few-shot/interview-IT/no_accumulation/human/zero-shot/20260305_185934/topic_order_new.json"  # replay時に指定: "out/20260205_143022/topic_order.json" など (デフォルト値 null)
   # 実行例:
   #
   # 1回目 (zero-shot, record モード):
@@ -95,7 +95,7 @@ paths:
     generate_questions: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_generating_question.txt"
     user_simulator: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain/prompt_user_simulator.txt"
     end_conversation: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_end_conversation.txt"
-    estimate_persona: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot.txt"
-    # estimate_persona: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona_teacher_llm_fewshot.txt"
+    # estimate_persona: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona-zeroshot.txt"
+    estimate_persona: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_estimate_persona_teacher_llm_fewshot.txt"
     fukabori_questions: "data/hashimoto-nakano/prompt_semi_const/proposed_method/all_domain_tsuchida/prompt_fukabori_questions.txt"
-  persona_settings: "data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/01.txt"
+  persona_settings: "data/hashimoto-nakano/persona_settings/IT_engineer-Persona-Sonoda-202510/03.txt"

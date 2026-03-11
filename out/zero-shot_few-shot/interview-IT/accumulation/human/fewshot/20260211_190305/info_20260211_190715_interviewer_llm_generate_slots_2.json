@@ -1,0 +1,288 @@
+﻿{
+    "execution_time": "2026/02/11 19:03:05",
+    "command": "/mnt/work/src/interview_statetransition/human_interview_experiment_proposed_method_zero-shot_few-shot.py",
+    "model_info": "client=<openai.resources.chat.completions.Completions object at 0x7fd2df32c790> async_client=<openai.resources.chat.completions.AsyncCompletions object at 0x7fd2db1298d0> root_client=<openai.OpenAI object at 0x7fd2db31cd90> root_async_client=<openai.AsyncOpenAI object at 0x7fd2db13a890> model_name='gpt-4o-2024-11-20' temperature=0.0 model_kwargs={} openai_api_key=SecretStr('**********')",
+    "persona_settings": "#個人の基本的な情報\n田中 ケンイチ\n35歳\n大阪府出身\n男性\n\n#性格\n面倒見が良く、チームメンバーの成長を自分のことのように喜ぶ\n現実的で、常に冷静にリスクを分析し、着実なプロジェクト進行を好む\n\n#過去のキャリア\n顧客のシステム開発を請け負うIT企業で10年間、銀行などで使われる大規模なシステムの開発を担当\nウォーターフォール開発の経験が長く、品質を守ることや大人数が関わる開発の進め方を学んだ\n\n#現在のキャリア・職場\nインターネット経由でソフトウェアを提供するITベンチャー企業で、開発チームの管理職として勤務\n開発チームの目標設定、メンバーの評価や定期的な個人面談、採用活動などを担当\n\n#未来像\n事業の成長を支える強いエンジニア組織を作りたい\n将来的には技術部門の責任者として、会社全体の経営にも関わっていきたい\n\n#悩みや不満点\n管理業務が増え、自らコードを書く時間がほとんどなくなったことに寂しさを感じている\nメンバーのキャリアプランと会社の事業計画との間で、難しい判断を迫られることが多い\n\n#昇進や転職の考え\n現在の会社で組織と共に成長していきたい\nいつかは地元関西のIT業界を盛り上げるような活動にも関わりたいと思っている\n\n#趣味・プライベート\n趣味は高校時代から続けているラグビー観戦と、家族とのキャンプ\n二人の息子の良き父親でありたいと思っている\n\n#家族・家庭\n妻と小学生の息子が2人いる\nリモートワーク中心の生活で、家族と過ごす時間を大切にしている\n\n#思い出・エピソード\n前の会社にいた頃、絶対に納期を遅らせられない開発で問題が多発したが、チーム一丸となって乗り越え、無事にシステムを完成させたこと。あの時の達成感と仲間との一体感が、今のマネジメントスタイルの原点になっている。\n",
+    "interview_info": {
+        "dialogue_history": [],
+        "speak_count": {
+            "total_count": 0,
+            "interviewer_count": 0,
+            "interviewee_count": 0,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 0,
+            "interviewee_generate_answer_count": 0
+        },
+        "max_total_count": 50,
+        "min_total_count": 50,
+        "estimate_persona": "思い出・エピソード: 未  \n達成感を得た瞬間: 未  \n悩みや不満点: 未  \nパソコンの使用頻度: 未  \n仕事のやりがい: 未  \n家族: 未  \n現在のキャリア: 未  \n昇進・転職: 未  \n未来像: 未  \n価値観: 未  \n使用しているスマートフォンアプリ: 未  \n通勤時の移動方法: 未  \n趣味: 未",
+        "persona_attribute_candidates": [
+            "個人の基本的情報",
+            "好きな音楽",
+            "学生時代の得意科目",
+            "かかりつけの病院"
+        ],
+        "slots": {
+            "思い出・エピソード": null,
+            "達成感を得た瞬間": null,
+            "昨日起きたとても悲しい出来事": null,
+            "パソコンを使う頻度": null,
+            "悩みや不満点": null,
+            "仕事のやりがい": null,
+            "作るのが得意な料理": null,
+            "好きなお菓子": null,
+            "人生で一番つらかった出来事": null,
+            "家族": null,
+            "好きな芸能人": null,
+            "断捨離や片付けのコツ": null,
+            "行ってみたい国": null,
+            "時間管理で気をつけていること": null,
+            "現在のキャリア": null,
+            "スポーツジムの利用": null,
+            "昇進・転職": null,
+            "スポーツ観戦": null,
+            "副業": null,
+            "SNS": null,
+            "好きなゆるキャラ": null,
+            "性格": null,
+            "海外旅行の楽しみ方": null,
+            "在宅ワーク": null,
+            "資産運用の考え方": null,
+            "オンライン会議における悩みごと": null,
+            "飼っているペット": null,
+            "感情のコントロールで気をつけていること": null,
+            "100年後の未来": null,
+            "金銭感覚の違い": null,
+            "尊敬する人": null,
+            "タスク管理": null,
+            "乗りたい車": null,
+            "起床後のルーティン": null,
+            "嫌いな食べ物": null,
+            "未来像": null,
+            "価値観": null,
+            "使用しているスマートフォンアプリ": null,
+            "通勤時の移動方法": null,
+            "恋愛": null,
+            "株式投資の経験": null,
+            "人脈の広げ方": null,
+            "語学学習のポイント": null,
+            "趣味": null,
+            "過去のキャリア": null,
+            "服装の好み": null,
+            "好きな言葉・座右の銘": null,
+            "好きな食べ物": null,
+            "学生時代の失敗エピソード": null
+        },
+        "slot_generation_count": 0,
+        "branch": null,
+        "last_generated_slot": [],
+        "last_question_target_slot": {},
+        "topic_sequence": [
+            {
+                "selected_topic": "個人の基本的情報"
+            },
+            {
+                "selected_topic": "かかりつけの病院"
+            },
+            {
+                "selected_topic": "学生時代の得意科目"
+            },
+            {
+                "selected_topic": "好きな食べ物"
+            },
+            {
+                "selected_topic": "好きな音楽"
+            },
+            {
+                "selected_topic": "学生時代の失敗エピソード"
+            },
+            {
+                "selected_topic": "現在のキャリア"
+            },
+            {
+                "selected_topic": "思い出・エピソード"
+            },
+            {
+                "selected_topic": "パソコンを使う頻度"
+            },
+            {
+                "selected_topic": "家族"
+            },
+            {
+                "selected_topic": "SNS"
+            },
+            {
+                "selected_topic": "未来像"
+            },
+            {
+                "selected_topic": "趣味"
+            },
+            {
+                "selected_topic": "服装の好み"
+            },
+            {
+                "selected_topic": "乗りたい車"
+            },
+            {
+                "selected_topic": "起床後のルーティン"
+            },
+            {
+                "selected_topic": "人脈の広げ方"
+            },
+            {
+                "selected_topic": "金銭感覚の違い"
+            }
+        ],
+        "topic_replay_index": 0,
+        "last_slot2_topic": null
+    },
+    "new_state": {
+        "dialogue_history": [
+            "インタビュアー: まずは簡単に自己紹介をお願いできますか？どんなお仕事や活動をされているのかも教えていただけると嬉しいです。",
+            "インタビュー対象者: 田中ケンイチ、３５歳大阪府出身です",
+            "インタビュアー: 普段、何かあったときに通われている病院やクリニックはありますか？",
+            "インタビュー対象者: かかりつけの病院は無いです",
+            "インタビュアー: 学生時代に特に得意だった科目や、好きだった授業は何かありますか？",
+            "インタビュー対象者: 理系科目が得意でした",
+            "インタビュアー: 普段、どんな食べ物が好きですか？特にお気に入りのものがあれば教えてください。",
+            "インタビュー対象者: なんでも好んで食べます",
+            "インタビュアー: 普段、どんな音楽を聴くのが好きですか？特にお気に入りのジャンルやアーティストがいれば教えてください。",
+            "インタビュー対象者: 音楽にはあまり詳しくないので分からないです",
+            "インタビュアー: 学生時代に何か失敗した経験や、そこから学んだことがあれば教えていただけますか？",
+            "インタビュー対象者: そこまで大きな失敗というのは無かったですね"
+        ],
+        "speak_count": {
+            "total_count": 12,
+            "interviewer_count": 6,
+            "interviewee_count": 6,
+            "interviewer_idle_talk_count": 0,
+            "interviewee_idle_talk_count": 0,
+            "interviewer_generate_question_count": 6,
+            "interviewee_generate_answer_count": 6
+        },
+        "max_total_count": 50,
+        "min_total_count": 50,
+        "estimate_persona": "思い出・エピソード: 未  \n達成感を得た瞬間: 未  \n悩みや不満点: 未  \nパソコンの使用頻度: 未  \n仕事のやりがい: 未  \n家族: 未  \n現在のキャリア: 未  \n昇進・転職: 未  \n未来像: 未  \n価値観: 未  \n使用しているスマートフォンアプリ: 未  \n通勤時の移動方法: 未  \n趣味: 未  \n個人の基本的情報: 済  \n学生時代の得意科目: 済",
+        "persona_attribute_candidates": [],
+        "slots": {
+            "思い出・エピソード": null,
+            "達成感を得た瞬間": null,
+            "昨日起きたとても悲しい出来事": null,
+            "パソコンを使う頻度": null,
+            "悩みや不満点": null,
+            "仕事のやりがい": null,
+            "作るのが得意な料理": null,
+            "好きなお菓子": null,
+            "人生で一番つらかった出来事": null,
+            "家族": null,
+            "好きな芸能人": null,
+            "断捨離や片付けのコツ": null,
+            "行ってみたい国": null,
+            "時間管理で気をつけていること": null,
+            "現在のキャリア": null,
+            "スポーツジムの利用": null,
+            "昇進・転職": null,
+            "スポーツ観戦": null,
+            "副業": null,
+            "SNS": null,
+            "好きなゆるキャラ": null,
+            "性格": null,
+            "海外旅行の楽しみ方": null,
+            "在宅ワーク": null,
+            "資産運用の考え方": null,
+            "オンライン会議における悩みごと": null,
+            "飼っているペット": null,
+            "感情のコントロールで気をつけていること": null,
+            "100年後の未来": null,
+            "金銭感覚の違い": null,
+            "尊敬する人": null,
+            "タスク管理": null,
+            "乗りたい車": null,
+            "起床後のルーティン": null,
+            "嫌いな食べ物": null,
+            "未来像": null,
+            "価値観": null,
+            "使用しているスマートフォンアプリ": null,
+            "通勤時の移動方法": null,
+            "恋愛": null,
+            "株式投資の経験": null,
+            "人脈の広げ方": null,
+            "語学学習のポイント": null,
+            "趣味": null,
+            "過去のキャリア": null,
+            "服装の好み": null,
+            "好きな言葉・座右の銘": null,
+            "好きな食べ物": "なんでも好んで食べます",
+            "学生時代の失敗エピソード": "そこまで大きな失敗というのは無かった",
+            "個人の基本的情報": "田中ケンイチ、35歳、大阪府出身",
+            "かかりつけの病院": "情報なし",
+            "学生時代の得意科目": "理系科目が得意でした",
+            "好きな音楽": "情報なし"
+        },
+        "slot_generation_count": 6,
+        "branch": "interviewer_llm_generate_slots_2",
+        "last_generated_slot": [],
+        "last_question_target_slot": {
+            "学生時代の失敗エピソード": null
+        },
+        "topic_sequence": [
+            {
+                "selected_topic": "個人の基本的情報"
+            },
+            {
+                "selected_topic": "かかりつけの病院"
+            },
+            {
+                "selected_topic": "学生時代の得意科目"
+            },
+            {
+                "selected_topic": "好きな食べ物"
+            },
+            {
+                "selected_topic": "好きな音楽"
+            },
+            {
+                "selected_topic": "学生時代の失敗エピソード"
+            },
+            {
+                "selected_topic": "現在のキャリア"
+            },
+            {
+                "selected_topic": "思い出・エピソード"
+            },
+            {
+                "selected_topic": "パソコンを使う頻度"
+            },
+            {
+                "selected_topic": "家族"
+            },
+            {
+                "selected_topic": "SNS"
+            },
+            {
+                "selected_topic": "未来像"
+            },
+            {
+                "selected_topic": "趣味"
+            },
+            {
+                "selected_topic": "服装の好み"
+            },
+            {
+                "selected_topic": "乗りたい車"
+            },
+            {
+                "selected_topic": "起床後のルーティン"
+            },
+            {
+                "selected_topic": "人脈の広げ方"
+            },
+            {
+                "selected_topic": "金銭感覚の違い"
+            }
+        ],
+        "topic_replay_index": 7,
+        "last_slot2_topic": "現在のキャリア"
+    }
+}

@@ -1,0 +1,82 @@
+﻿{
+    "execution_time": "2026/03/05 19:21:58",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "selected_topic": "嫌いな食べ物"
+        },
+        {
+            "selected_topic": "昨日起きたとても悲しい出来事"
+        },
+        {
+            "selected_topic": "行ってみたい国"
+        },
+        {
+            "selected_topic": "通勤時の移動方法"
+        },
+        {
+            "selected_topic": "好きなお菓子"
+        },
+        {
+            "selected_topic": "性格"
+        },
+        {
+            "selected_topic": "こだわりの対象"
+        },
+        {
+            "selected_topic": "プロダクトへの情熱"
+        },
+        {
+            "selected_topic": "将来の目標"
+        },
+        {
+            "selected_topic": "100年後の未来"
+        },
+        {
+            "selected_topic": "未来像"
+        },
+        {
+            "selected_topic": "思い出・エピソード"
+        },
+        {
+            "selected_topic": "好きな言葉・座右の銘"
+        },
+        {
+            "selected_topic": "好きな芸能人"
+        },
+        {
+            "selected_topic": "オンライン会議における悩みごと"
+        },
+        {
+            "selected_topic": "断捨離や片付けのコツ"
+        },
+        {
+            "selected_topic": "人脈の広げ方"
+        },
+        {
+            "selected_topic": "海外旅行の楽しみ方"
+        },
+        {
+            "selected_topic": "スポーツ観戦"
+        },
+        {
+            "selected_topic": "語学学習のポイント"
+        },
+        {
+            "selected_topic": "悩みや不満点"
+        },
+        {
+            "selected_topic": "職場でのコミュニケーション"
+        },
+        {
+            "selected_topic": "職場での課題解決方法"
+        },
+        {
+            "selected_topic": "服装の好み"
+        },
+        {
+            "selected_topic": "尊敬する人"
+        }
+    ]
+}

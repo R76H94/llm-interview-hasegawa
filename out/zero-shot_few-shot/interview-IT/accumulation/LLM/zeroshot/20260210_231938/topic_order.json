@@ -1,0 +1,82 @@
+﻿{
+    "execution_time": "2026/02/10 23:28:48",
+    "model": "gpt-4o-2024-11-20",
+    "topic_mode": "record",
+    "topic_sequence": [
+        {
+            "selected_topic": "家族"
+        },
+        {
+            "selected_topic": "学生時代の失敗エピソード"
+        },
+        {
+            "selected_topic": "昇進・転職"
+        },
+        {
+            "selected_topic": "作るのが得意な料理"
+        },
+        {
+            "selected_topic": "性格"
+        },
+        {
+            "selected_topic": "趣味"
+        },
+        {
+            "selected_topic": "思い出・エピソード"
+        },
+        {
+            "selected_topic": "悩みや不満点"
+        },
+        {
+            "selected_topic": "仕事の価値観"
+        },
+        {
+            "selected_topic": "個人の基本的情報"
+        },
+        {
+            "selected_topic": "未来像"
+        },
+        {
+            "selected_topic": "仕事のやりがい"
+        },
+        {
+            "selected_topic": "学生時代の得意科目"
+        },
+        {
+            "selected_topic": "好きな音楽"
+        },
+        {
+            "selected_topic": "専門性を高めるための取り組み"
+        },
+        {
+            "selected_topic": "オンライン会議における悩みごと"
+        },
+        {
+            "selected_topic": "飼っているペット"
+        },
+        {
+            "selected_topic": "仕事へのモチベーション"
+        },
+        {
+            "selected_topic": "時間管理で気をつけていること"
+        },
+        {
+            "selected_topic": "好きな食べ物"
+        },
+        {
+            "selected_topic": "好きな芸能人"
+        },
+        {
+            "selected_topic": "思考力を活かした活動"
+        },
+        {
+            "selected_topic": "行ってみたい国"
+        },
+        {
+            "selected_topic": "断捨離や片付けのコツ"
+        },
+        {
+            "selected_topic": "かかりつけの病院"
+        }
+    ]
+}
